@@ -43,10 +43,6 @@ function LogInPage() {
                                 ĐĂNG NHẬP
                             </button>
 
-                            <button className="my-5 w-full py-2 text-white bg-amber-500 rounded">
-                                ĐĂNG NHẬP
-                            </button>
-
                             <p className="text-center">
                                 Bạn chưa có tài khoản?
                                 <a href="/signup" className="text-violet-900 ml-1.5 font-normal">Đăng ký</a>
