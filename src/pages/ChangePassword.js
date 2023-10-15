@@ -83,7 +83,7 @@ function ChangePassword() {
                                 />
                             </div>
 
-                            <button className="mt-4 w-40 bg-violet-900 px-4 py-2 text-white">
+                            <button className="mt-4 w-40 bg-amber-500 px-4 py-2 text-white">
                                 Lưu thay đổi
                             </button>
                         </form>
