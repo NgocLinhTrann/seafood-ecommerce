@@ -42,19 +42,20 @@ function Sidebar() {
                                             d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"
                                         />
                                     </svg>
-                                    Manage account</a>
+                                    Quản lý tài khoản</a>
                                 <a
                                     href="/profile-information"
                                     className="text-gray-500 duration-100 hover:text-yellow-400"
-                                >Profile information</a>
+                                >Thông tin cá nhân</a>
                                 <a
                                     href="/manage-address"
-                                    className="text-violet-900 duration-100"
-                                >Manage Addresses</a>
+                                    // className="text-violet-900 duration-100"
+                                    className="text-gray-500 duration-100 hover:text-yellow-400"
+                                >Địa chỉ</a>
                                 <a
                                     href="/change-password"
                                     className="text-gray-500 duration-100 hover:text-yellow-400"
-                                >Change password</a>
+                                >Đổi mật khẩu</a>
                             </div>
                         </div>
                     </div>
@@ -83,39 +84,12 @@ function Sidebar() {
                                     />
                                 </svg>
 
-                                My Order History</a>
+                                Lịch sử đơn hàng</a>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex border-b py-5">
-                    <div className="flex w-full">
-                        <div className="flex flex-col gap-2">
-                            <a
-                                href="/payment-methods"
-                                className="flex items-center gap-2 font-medium active:text-violet-900"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    className="h-5 w-5"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
-                                    />
-                                </svg>
-
-                                Payment Methods</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex border-b py-5">
+                {/* <div className="flex border-b py-5">
                     <div className="flex w-full">
                         <div className="flex flex-col gap-2">
                             <a
@@ -140,7 +114,7 @@ function Sidebar() {
                                 My Wishlist</a>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="flex py-5">
                     <div className="flex w-full">
@@ -164,7 +138,7 @@ function Sidebar() {
                                     />
                                 </svg>
 
-                                Log Out</a>
+                                Đăng xuất</a>
                         </div>
                     </div>
                 </div>

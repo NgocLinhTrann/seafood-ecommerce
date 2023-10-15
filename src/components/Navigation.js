@@ -14,7 +14,11 @@ function Navigation() {
                         src={CompanyLogo}
                         alt="company logo"
                     /> */}
-                    <div className=' text-white text-3xl font-extrabold'>OCEANS</div>
+                    <div className='text-white text-3xl font-extrabold place-items-centerr'>
+                        <span className='text-base'>SEAFOOD</span>
+                        <br/> 
+                        <div>HARBOR</div>
+                    </div>
                 </a>
 
                 <form className="hidden h-9 w-2/5 items-center border md:flex bg-white rounded-lg">
@@ -36,7 +40,7 @@ function Navigation() {
                     <input
                         className="hidden w-11/12 outline-none md:block"
                         type="search"
-                        placeholder="Tìm kiếm trong Oceans"
+                        placeholder="Tìm kiếm trong Harbor"
                     />
 
                     <button

@@ -33,7 +33,7 @@ function ManageAddress() {
                         <span className="mx-2 text-gray-500">&gt;</span>
                     </li>
 
-                    <li className="text-gray-500">Manage Addresses</li>
+                    <li className="text-gray-500">Địa chỉ</li>
                 </ul>
             </nav>
             {/* breadcrumbs */}

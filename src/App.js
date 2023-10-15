@@ -17,6 +17,7 @@ import AccountPage from './pages/AccountPage';
 import ManageAddress from './pages/ManageAddress';
 import ProfileInformation from './pages/ProfileInformation';
 import ChangePassword from './pages/ChangePassword';
+import MyOrderHistory from './pages/MyOrderHistory';
 
 function App() {
     return (
@@ -50,9 +51,9 @@ function App() {
                     <ChangePassword />
                 </Route>
 
-                
-                
-                
+                <Route path="/my-order-history">
+                    <MyOrderHistory />
+                </Route>
 
                 <Route path="/discount">
                     <DiscountPage />
