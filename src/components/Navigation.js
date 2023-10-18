@@ -121,6 +121,12 @@ function Navigation() {
                             href="/signup"
                         >Đăng ký
                         </a>
+
+                        <a
+                            className="font-light text-white duration-100 hover:text-yellow-400"
+                            href="/admin-page"
+                        >Admin
+                        </a>
                     </div>
                 </div>
             </nav>

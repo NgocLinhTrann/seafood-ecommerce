@@ -19,6 +19,12 @@ import ProfileInformation from './pages/ProfileInformation';
 import ChangePassword from './pages/ChangePassword';
 import MyOrderHistory from './pages/MyOrderHistory';
 
+import AdminPage from './pages/AdminPage';
+import ADManageProduct from './pages/AdminPages/ADManageProduct';
+import ADAddProduct from './pages/AdminPages/ADAddProduct';
+import ADManageOrder from './pages/AdminPages/ADManageOrder';
+import ADManageCustomer from './pages/AdminPages/ADManageCustomer';
+
 function App() {
     return (
         <div>
@@ -90,6 +96,28 @@ function App() {
                 <Route path="/squid">
                     <SquidPage />
                 </Route>
+
+                <Route path="/admin-page">
+                    <AdminPage />
+                </Route>
+
+                {/* Admin */}
+                <Route path="/ad-manage-product">
+                    <ADManageProduct />
+                </Route>
+
+                <Route path="/ad-add-product">
+                    <ADAddProduct />
+                </Route>
+
+                <Route path="/ad-manage-order">
+                    <ADManageOrder />
+                </Route>
+
+                <Route path="/ad-manage-customer">
+                    <ADManageCustomer />
+                </Route>
+                
             </div>
         </div>
     )
