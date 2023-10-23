@@ -1,7 +1,16 @@
 import { RxDashboard } from "react-icons/rx";
 import { GoTasklist, GoPeople, GoPackage, GoSignOut } from "react-icons/go";
+import ProductCreate from "../../components/Product/ProductCreate";
+import ProductsContext from "../../context/product";
+import { useEffect, useContext } from "react";
 
 function ADAddProduct() {
+    const {fetchProducts} = useContext(ProductsContext);
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
     return (
         <div className="flex justify-start">
             <div className="text-white bg-cyan-500 w-2/12 absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0">
@@ -35,10 +44,8 @@ function ADAddProduct() {
                     </button>
                 </div>
                 {/* <!-- SIDEBAR HEADER --> */}
-
                 <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
                     {/* <!-- Sidebar Menu --> */}
-
                     <nav
                         className="mt-5 py-4 px-4 lg:mt-9 lg:px-6"
                         x-data="{selected: $persist('Dashboard')}"
@@ -57,7 +64,6 @@ function ADAddProduct() {
                                         Thống kê/Báo cáo
                                     </a>
                                 </li>
-
                                 {/* <!-- Menu Item Forms --> */}
                                 <li>
                                     <a
@@ -67,7 +73,6 @@ function ADAddProduct() {
                                         <GoTasklist size={23} />
                                         Sản phẩm
                                     </a>
-
                                     {/* <!-- Dropdown Menu Start --> */}
                                     <div className="overflow-hidden">
                                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-5 ml-1">
@@ -88,7 +93,6 @@ function ADAddProduct() {
                                     {/* <!-- Dropdown Menu End --> */}
                                 </li>
                                 {/* <!-- Menu Item Forms --> */}
-
                                 {/* <!-- Menu Item Tables --> */}
                                 <li li >
                                     <a
@@ -101,8 +105,6 @@ function ADAddProduct() {
                                     </a>
                                 </li >
                                 {/* <!-- Menu Item Tables --> */}
-
-
                                 {/* <!-- Menu Item Settings --> */}
                                 <li>
                                     <a
@@ -113,7 +115,6 @@ function ADAddProduct() {
                                         Khách hàng
                                     </a>
                                 </li>
-
                                 <li>
                                     <a
                                         className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -129,7 +130,7 @@ function ADAddProduct() {
                     </nav >
                 </div >
             </div >
-            <div>Trang thêm sản phẩm</div>
+            <ProductCreate/>
         </div>
     )
 }

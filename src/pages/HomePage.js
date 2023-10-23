@@ -5,7 +5,7 @@ import Product from "../components/Product";
 import ConsBages from "../components/ConsBages";
 import Footer from "../components/Footer";
 
-function HomePape() {
+function HomePage() {
     return (
         <div>
             <Navigation/>
@@ -18,4 +18,4 @@ function HomePape() {
     )
 }
 
-export default HomePape;
+export default HomePage;

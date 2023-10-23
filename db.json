@@ -1,0 +1,44 @@
+{
+  "seafood": [
+    {
+      "productname": "Ốc móng tay",
+      "category": "Ốc",
+      "weight": 1000,
+      "price": 180000,
+      "stock": 101,
+      "id": 5
+    },
+    {
+      "productname": "Cá tra",
+      "category": "Cá",
+      "weight": 2000,
+      "price": 140000,
+      "stock": 200,
+      "id": 6
+    },
+    {
+      "productname": "Ghẹ xanh sống",
+      "category": "Cua, Ghẹ",
+      "weight": "500",
+      "price": "225000",
+      "stock": "20",
+      "id": 7
+    },
+    {
+      "productname": "Bào Ngư Hàn Quốc Sống",
+      "category": "Ngao, Sò, Ốc",
+      "weight": "1000",
+      "price": "200000",
+      "stock": "15",
+      "id": 8
+    },
+    {
+      "productname": "Cá Hồi",
+      "category": "Cá",
+      "weight": "200",
+      "price": "180000",
+      "stock": "12",
+      "id": 9
+    }
+  ]
+}

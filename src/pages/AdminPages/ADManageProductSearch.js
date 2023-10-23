@@ -4,22 +4,34 @@ import ProductShow from "../../components/Product/ProductShow"
 import ProductsContext from "../../context/product";
 import React, { useState, useContext, useEffect } from 'react';
 import Avatar from "../../assets/images/avatar-photo.jpg"
-import { useNavigate  } from 'react-router-dom';
 
-function ADManageProduct() {
+import { useSearchParams, useNavigate } from 'react-router-dom';
+
+function ADManageProductSearch() {
     const navigate = useNavigate ("");
-    const [searchString, setSearchString] = useState("");
+    const {searchProduct} = useContext(ProductsContext);
+
+    const [searchParams] = useSearchParams();
+    const searchQuery = searchParams.get('keyword') || '';
+    const [searchString, setSearchString] = useState(searchQuery);
+
+    useEffect(() => {
+        searchProduct(searchString);
+    }, [searchString]);
 
     const handleSearch = async () => {
+        // event.preventDefault();
         const encodedQuery = encodeURIComponent(searchString);
-        console.log(encodedQuery)
+        console.log("searchString: " + searchString)
+        console.log("encodedQuery: " + encodedQuery)
         navigate(`/ad-manage-product/search?keyword=${encodedQuery}`);
+        searchProduct(searchString);
     };
 
-    const { fetchProducts } = useContext(ProductsContext);
-    useEffect(() => {
-        fetchProducts();
-    }, []);
+    // useEffect(() => {
+    //     console.log("searchQuery in useEffect: " + searchQuery);
+    //     searchProduct(searchString);
+    // }, [searchQuery]);
 
     return (
         <div className="flex justify-start">
@@ -204,4 +216,4 @@ function ADManageProduct() {
     )
 }
 
-export default ADManageProduct;
+export default ADManageProductSearch;

@@ -1,7 +1,17 @@
 import { RxDashboard } from "react-icons/rx";
 import { GoTasklist, GoPeople, GoPackage, GoSignOut } from "react-icons/go";
+import { useContext, useEffect } from "react";
+import ProductsContext from "../../context/product";
+import ProductCreate from "../../components/Product/ProductCreate";
+import ADHeader from "./ADHeader";
+
 
 function ADManageCustomer() {
+    const { fetchProducts } = useContext(ProductsContext);
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
     return (
         <div className="flex justify-start">
             <div className="text-white bg-cyan-500 w-2/12 absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0">
@@ -129,7 +139,41 @@ function ADManageCustomer() {
                     </nav >
                 </div >
             </div >
-            <div>Trang quản lý khách hàng</div>
+            <div className="w-full">
+                <ADHeader />
+                <div className="text-2xl ml-12">Danh sách sản phẩm</div>
+                <div className="w-11/12">
+                    
+                    <div>
+                        <div class="flex flex-col">
+                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full text-left text-sm font-light">
+                                            <thead class="border-b font-medium dark:border-neutral-500">
+                                                {/* <tr>
+                                                    <th scope="col" class="px-6 py-4">Mã sản phẩm</th>
+                                                    <th scope="col" class="px-6 py-4">Tên sản phẩm</th>
+                                                    <th scope="col" class="px-6 py-4">Phân loại</th>
+                                                    <th scope="col" class="px-6 py-4">Trọng lượng <span>&#40;</span>gram<span>&#41;</span></th>
+                                                    <th scope="col" class="px-6 py-4">Giá</th>
+                                                    <th scope="col" class="px-6 py-4">SL tồn</th>
+                                                </tr> */}
+                                            </thead>
+                                            <tbody>
+                                                {/* <ProductList /> */}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {/* <ProductList /> */}
         </div>
     )
 }

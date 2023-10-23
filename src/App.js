@@ -4,7 +4,7 @@ import SalmonPage from "./pages/SalmonPage";
 import DiscountPage from "../src/pages/DiscountPage";
 import FishPage from "./pages/FishPage";
 import SaucePage from "./pages/SaucePage";
-import HomePape from "./pages/HomePape";
+import HomePage from "./pages/HomePage";
 import ReadyToEatPage from "./pages/ReadyToEatPage"
 import ClamOysterSnailPage from "../src/pages/ClamOysterSnailPage"
 import ShrimpPage from "../src/pages/ShrimpPage"
@@ -12,7 +12,7 @@ import SquidPage from "../src/pages/SquidPage";
 import SignUpPage from "../src/pages/SignUpPage";
 import LogInPage from '../src/pages/LogInPage';
 
-import Route from '../src/components/Route';
+// import Route from '../src/components/Route';
 import AccountPage from './pages/AccountPage';
 import ManageAddress from './pages/ManageAddress';
 import ProfileInformation from './pages/ProfileInformation';
@@ -21,105 +21,161 @@ import MyOrderHistory from './pages/MyOrderHistory';
 
 import AdminPage from './pages/AdminPage';
 import ADManageProduct from './pages/AdminPages/ADManageProduct';
+import ADManageProductSearch from './pages/AdminPages/ADManageProductSearch';
 import ADAddProduct from './pages/AdminPages/ADAddProduct';
 import ADManageOrder from './pages/AdminPages/ADManageOrder';
 import ADManageCustomer from './pages/AdminPages/ADManageCustomer';
 
-function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// function App() {
+//     return (
+//         <div className="">
+//             <Route path="/">
+//                 <HomePape />
+//             </Route>
+
+//             <Route path="/signup">
+//                 <SignUpPage />
+//             </Route>
+
+//             <Route path="/login">
+//                 <LogInPage />
+//             </Route>
+
+//             <Route path="/account-page">
+//                 <AccountPage />
+//             </Route>
+
+//             <Route path="/profile-information">
+//                 <ProfileInformation />
+//             </Route>
+
+//             <Route path="/manage-address">
+//                 <ManageAddress />
+//             </Route>
+
+//             <Route path="/change-password">
+//                 <ChangePassword />
+//             </Route>
+
+//             <Route path="/my-order-history">
+//                 <MyOrderHistory />
+//             </Route>
+
+//             <Route path="/discount">
+//                 <DiscountPage />
+//             </Route>
+
+//             <Route path="/fish">
+//                 <FishPage />
+//             </Route>
+
+//             <Route path="/sauce">
+//                 <SaucePage />
+//             </Route>
+
+//             <Route path="/readytoeat">
+//                 <ReadyToEatPage />
+//             </Route>
+
+//             <Route path="/salmon">
+//                 <SalmonPage />
+//             </Route>
+
+//             <Route path="/clam-oyster-snail">
+//                 <ClamOysterSnailPage />
+//             </Route>
+
+//             <Route path="/crab">
+//                 <CrabPage />
+//             </Route>
+
+//             <Route path="/shrimp">
+//                 <ShrimpPage />
+//             </Route>
+
+//             <Route path="/squid">
+//                 <SquidPage />
+//             </Route>
+
+//             <Route path="/admin-page">
+//                 <AdminPage />
+//             </Route>
+
+//             {/* Admin */}
+//             <Route path="/ad-manage-product">
+//                 <ADManageProduct />
+//             </Route>
+
+//             <Route path="/ad-add-product">
+//                 <ADAddProduct />
+//             </Route>
+
+//             <Route path="/ad-manage-order">
+//                 <ADManageOrder />
+//             </Route>
+
+//             <Route path="/ad-manage-customer">
+//                 <ADManageCustomer />
+//             </Route>
+
+//         </div>
+//     )
+// }
+
+const App = () => {
     return (
-        <div>
-            <div className="">
-                <Route path="/">
-                    <HomePape />
-                </Route>
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
 
-                <Route path="/signup">
-                    <SignUpPage />
-                </Route>
+                <Route path="/signup" element={<SignUpPage />} />
 
-                <Route path="/login">
-                    <LogInPage />
-                </Route>
+                <Route path="/login" element={<LogInPage />} />
 
-                <Route path="/account-page">
-                    <AccountPage />
-                </Route>
+                <Route path="/account-page" element={<AccountPage />} />
 
-                <Route path="/profile-information">
-                    <ProfileInformation />
-                </Route>
+                <Route path="/profile-information" element={<ProfileInformation />} />
 
-                <Route path="/manage-address">
-                    <ManageAddress />
-                </Route>
+                <Route path="/manage-address" element={<ManageAddress />} />
 
-                <Route path="/change-password">
-                    <ChangePassword />
-                </Route>
+                <Route path="/change-password" element={<ChangePassword />} />
 
-                <Route path="/my-order-history">
-                    <MyOrderHistory />
-                </Route>
+                <Route path="/my-order-history" element={<MyOrderHistory />} />
 
-                <Route path="/discount">
-                    <DiscountPage />
-                </Route>
+                <Route path="/discount" element={<DiscountPage />} />
 
-                <Route path="/fish">
-                    <FishPage />
-                </Route>
+                <Route path="/fish" element={<FishPage />} />
 
-                <Route path="/sauce">
-                    <SaucePage />
-                </Route>
+                <Route path="/sauce" element={<SaucePage />} />
 
-                <Route path="/readytoeat">
-                    <ReadyToEatPage />
-                </Route>
+                <Route path="/readytoeat" element={<ReadyToEatPage />} />
 
-                <Route path="/salmon">
-                    <SalmonPage />
-                </Route>
+                <Route path="/salmon" element={<SalmonPage />} />
 
-                <Route path="/clam-oyster-snail">
-                    <ClamOysterSnailPage />
-                </Route>
+                <Route path="/clam-oyster-snail" element={<ClamOysterSnailPage />} />
 
-                <Route path="/crab">
-                    <CrabPage />
-                </Route>
+                <Route path="/crab" element={<CrabPage />} />
 
-                <Route path="/shrimp">
-                    <ShrimpPage />
-                </Route>
+                <Route path="/shrimp" element={<ShrimpPage />} />
 
-                <Route path="/squid">
-                    <SquidPage />
-                </Route>
+                <Route path="/squid" element={<SquidPage />} />
 
-                <Route path="/admin-page">
-                    <AdminPage />
-                </Route>
+                <Route path="/admin-page" element={<AdminPage />} />
 
                 {/* Admin */}
-                <Route path="/ad-manage-product">
-                    <ADManageProduct />
-                </Route>
+                <Route path="/ad-manage-product" element={<ADManageProduct />} />
 
-                <Route path="/ad-add-product">
-                    <ADAddProduct />
-                </Route>
+                <Route path="/ad-manage-product/search" element={<ADManageProductSearch />} />
 
-                <Route path="/ad-manage-order">
-                    <ADManageOrder />
-                </Route>
+                <Route path="/ad-add-product" element={<ADAddProduct />} />
 
-                <Route path="/ad-manage-customer">
-                    <ADManageCustomer />
-                </Route>
-                
-            </div>
-        </div>
+                <Route path="/ad-manage-order" element={<ADManageOrder />} />
+
+                <Route path="/ad-manage-customer" element={<ADManageCustomer />} />
+            </Routes>
+        </Router>
     )
 }
 
