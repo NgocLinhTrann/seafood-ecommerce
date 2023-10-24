@@ -1,9 +1,10 @@
+import React from "react";
 import Avatar from "../assets/images/avatar-photo.jpg";
 
-function Sidebar() {
+function Sidebar({activePage}) {
     return (
         <div>
-            <section className="hidden w-[300px] flex-shrink-0 px-4 lg:block">
+            <div className="hidden w-[300px] flex-shrink-0 px-4 lg:block">
                 <div className="border-b py-5">
                     <div className="flex items-center">
                         <img
@@ -19,13 +20,12 @@ function Sidebar() {
                         </div>
                     </div>
                 </div>
-
                 <div className="flex border-b py-5">
                     <div className="w-full">
                         <div className="flex w-full">
                             <div className="flex flex-col gap-2">
                                 <a
-                                    href="/account-page"
+                                    href="#"
                                     className="flex items-center gap-2 font-medium"
                                 >
                                     <svg
@@ -44,29 +44,27 @@ function Sidebar() {
                                     </svg>
                                     Quản lý tài khoản</a>
                                 <a
-                                    href="/profile-information"
-                                    className="text-gray-500 duration-100 hover:text-yellow-400"
+                                    href="/user-account"
+                                    className={`pl-3.5 ml-4 text-gray-500 duration-100 hover:text-amber-600 ${activePage === "profile" ? "bg-yellow-200": ""}`}
                                 >Thông tin cá nhân</a>
                                 <a
                                     href="/manage-address"
-                                    // className="text-violet-900 duration-100"
-                                    className="text-gray-500 duration-100 hover:text-yellow-400"
+                                    className={`pl-3.5 ml-4 text-gray-500 duration-100 hover:text-amber-600 ${activePage === "address" ? "bg-yellow-200" : ""}`}
                                 >Địa chỉ</a>
                                 <a
                                     href="/change-password"
-                                    className="text-gray-500 duration-100 hover:text-yellow-400"
+                                    className={`pl-3.5 ml-4 text-gray-500 duration-100 hover:text-amber-600 ${activePage === "password" ? "bg-yellow-200" : ""}`}
                                 >Đổi mật khẩu</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="flex border-b py-5">
                     <div className="flex w-full">
                         <div className="flex flex-col gap-2">
                             <a
                                 href="/my-order-history"
-                                className="flex items-center gap-2 font-medium active:text-violet-900"
+                                className="flex items-center gap-2 font-medium hover:text-amber-600 active:text-violet-900"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -83,12 +81,10 @@ function Sidebar() {
                                         clip-rule="evenodd"
                                     />
                                 </svg>
-
                                 Lịch sử đơn hàng</a>
                         </div>
                     </div>
                 </div>
-
                 {/* <div className="flex border-b py-5">
                     <div className="flex w-full">
                         <div className="flex flex-col gap-2">
@@ -115,13 +111,12 @@ function Sidebar() {
                         </div>
                     </div>
                 </div> */}
-
                 <div className="flex py-5">
                     <div className="flex w-full">
                         <div className="flex flex-col gap-2">
                             <a
                                 href="#"
-                                className="flex items-center gap-2 font-medium active:text-violet-900"
+                                className="flex items-center gap-2 font-medium hover:text-amber-600 active:text-violet-900"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -137,12 +132,11 @@ function Sidebar() {
                                         d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
                                     />
                                 </svg>
-
                                 Đăng xuất</a>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
     )
 

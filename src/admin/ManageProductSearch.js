@@ -1,32 +1,35 @@
 import { RxDashboard } from "react-icons/rx";
 import { GoTasklist, GoPeople, GoPackage, GoSignOut } from "react-icons/go";
-import ProductShow from "../../components/Product/ProductShow"
-import ProductsContext from "../../context/product";
+import ProductShow from "../components/Product/ProductShow"
+import ProductsContext from "../context/product";
 import React, { useState, useContext, useEffect } from 'react';
-import Avatar from "../../assets/images/avatar-photo.jpg"
+import Avatar from "../../src/assets/images/avatar-photo.jpg";
+import useKeyPress from "../hooks/use-key-press";
 
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
-function ADManageProductSearch() {
-    const navigate = useNavigate ("");
-    const {searchProduct} = useContext(ProductsContext);
+function ManageProductSearch() {
+    const navigate = useNavigate("");
+    const { searchProduct } = useContext(ProductsContext);
 
     const [searchParams] = useSearchParams();
     const searchQuery = searchParams.get('keyword') || '';
     const [searchString, setSearchString] = useState(searchQuery);
 
     useEffect(() => {
-        searchProduct(searchString);
-    }, [searchString]);
+        searchProduct(searchQuery);
+    }, [searchQuery]);
 
     const handleSearch = async () => {
-        // event.preventDefault();
-        const encodedQuery = encodeURIComponent(searchString);
-        console.log("searchString: " + searchString)
-        console.log("encodedQuery: " + encodedQuery)
-        navigate(`/ad-manage-product/search?keyword=${encodedQuery}`);
-        searchProduct(searchString);
+        if(searchString !== ''){
+            const encodedQuery = encodeURIComponent(searchString);
+            navigate(`/ad-manage-product/search?keyword=${encodedQuery}`);
+        } else {
+            navigate("/ad-manage-product");
+        }
     };
+
+    useKeyPress(handleSearch)
 
     // useEffect(() => {
     //     console.log("searchQuery in useEffect: " + searchQuery);
@@ -36,7 +39,6 @@ function ADManageProductSearch() {
     return (
         <div className="flex justify-start">
             <div className="text-white bg-cyan-500 w-2/12 absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0">
-                {/* <!-- SIDEBAR HEADER --> */}
                 <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
                     <a href="/admin-page">
                         {/* <img src="./images/logo/logo.svg" alt="Logo" /> */}
@@ -65,20 +67,13 @@ function ADManageProductSearch() {
                         </svg>
                     </button>
                 </div>
-                {/* <!-- SIDEBAR HEADER --> */}
-
                 <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
-                    {/* <!-- Sidebar Menu --> */}
-
                     <nav
                         className="mt-5 py-4 px-4 lg:mt-9 lg:px-6"
                         x-data="{selected: $persist('Dashboard')}"
                     >
-                        {/* <!-- Menu Group --> */}
                         <div>
-                            {/* <h3 className="mb-4 ml-4 text-sm font-medium ">MENU</h3> */}
                             <ul className="mb-6 flex flex-col gap-1.5">
-                                {/* <!-- Menu Item Dashboard --> */}
                                 <li>
                                     <a
                                         className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -88,8 +83,6 @@ function ADManageProductSearch() {
                                         Thống kê/Báo cáo
                                     </a>
                                 </li>
-
-                                {/* <!-- Menu Item Forms --> */}
                                 <li>
                                     <a
                                         className="bg-teal-600 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -98,8 +91,6 @@ function ADManageProductSearch() {
                                         <GoTasklist size={23} />
                                         Sản phẩm
                                     </a>
-
-                                    {/* <!-- Dropdown Menu Start --> */}
                                     <div className="overflow-hidden">
                                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-5 ml-1">
                                             <li>
@@ -116,11 +107,7 @@ function ADManageProductSearch() {
                                             </li>
                                         </ul>
                                     </div>
-                                    {/* <!-- Dropdown Menu End --> */}
                                 </li>
-                                {/* <!-- Menu Item Forms --> */}
-
-                                {/* <!-- Menu Item Tables --> */}
                                 <li li >
                                     <a
                                         className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -130,9 +117,6 @@ function ADManageProductSearch() {
                                         Đơn hàng
                                     </a>
                                 </li >
-                                {/* <!-- Menu Item Tables --> */}
-
-                                {/* <!-- Menu Item Settings --> */}
                                 <li>
                                     <a
                                         className=" group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -151,16 +135,16 @@ function ADManageProductSearch() {
                                         Đăng xuất
                                     </a>
                                 </li>
-                                {/* <!-- Menu Item Settings --> */}
                             </ul >
                         </div >
                     </nav >
                 </div >
             </div >
+
             <div className="w-full">
                 <div className="bg-stone-100 py-2">
                     <header className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5">
-                        <form className="hidden h-9 w-2/5 items-center border md:flex bg-white rounded-lg">
+                        <div className="hidden h-9 w-2/5 items-center border md:flex bg-white rounded-lg">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -190,7 +174,7 @@ function ADManageProductSearch() {
                             >
                                 Tìm
                             </button>
-                        </form>
+                        </div>
 
                         <div class="flex items-center">
                             <div class="relative">
@@ -216,4 +200,4 @@ function ADManageProductSearch() {
     )
 }
 
-export default ADManageProductSearch;
+export default ManageProductSearch;

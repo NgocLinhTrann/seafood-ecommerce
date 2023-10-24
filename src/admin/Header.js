@@ -1,6 +1,6 @@
-import Avatar from "../../assets/images/avatar-photo.jpg";
+import Avatar from "../../src/assets/images/avatar-photo.jpg";
 
-function ADHeader() {
+function Header() {
     return (
         <div>
             <div className="bg-stone-100 py-2">
@@ -52,4 +52,4 @@ function ADHeader() {
         </div>
     )
 }
-export default ADHeader;
+export default Header;

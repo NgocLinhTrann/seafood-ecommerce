@@ -41,9 +41,7 @@ function ManageAddress() {
             <section
                 className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10"
             >
-                {/* <!-- sidebar  --> */}
-                <Sidebar/>
-                {/* <!-- /sidebar  --> */}
+                <Sidebar activePage="address"/>
 
                 {/* <!-- form  --> */}
                 <section

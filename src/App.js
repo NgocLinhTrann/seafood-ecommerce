@@ -15,16 +15,18 @@ import LogInPage from '../src/pages/LogInPage';
 // import Route from '../src/components/Route';
 import AccountPage from './pages/AccountPage';
 import ManageAddress from './pages/ManageAddress';
-import ProfileInformation from './pages/ProfileInformation';
+import UserAccount from './pages/UserAccount';
 import ChangePassword from './pages/ChangePassword';
 import MyOrderHistory from './pages/MyOrderHistory';
 
+import Cart from './user/Cart';
+
 import AdminPage from './pages/AdminPage';
-import ADManageProduct from './pages/AdminPages/ADManageProduct';
-import ADManageProductSearch from './pages/AdminPages/ADManageProductSearch';
-import ADAddProduct from './pages/AdminPages/ADAddProduct';
-import ADManageOrder from './pages/AdminPages/ADManageOrder';
-import ADManageCustomer from './pages/AdminPages/ADManageCustomer';
+import ManageProduct from "./admin/ManageProduct";
+import ManageProductSearch from './admin/ManageProductSearch';
+import AddProduct from './admin/AddProduct';
+import ManageOrder from './admin/ManageOrder';
+import ManageCustomer from './admin/ManageCustomer';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -117,7 +119,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //             </Route>
 
 //             <Route path="/ad-manage-customer">
-//                 <ADManageCustomer />
+//                 <ManageCustomer />
 //             </Route>
 
 //         </div>
@@ -134,15 +136,18 @@ const App = () => {
 
                 <Route path="/login" element={<LogInPage />} />
 
-                <Route path="/account-page" element={<AccountPage />} />
+                {/* <Route path="/account-page" element={<AccountPage />} /> */}
 
-                <Route path="/profile-information" element={<ProfileInformation />} />
+                {/* My Account */}
+                <Route path="/user-account" element={<UserAccount />} />
 
                 <Route path="/manage-address" element={<ManageAddress />} />
 
                 <Route path="/change-password" element={<ChangePassword />} />
 
                 <Route path="/my-order-history" element={<MyOrderHistory />} />
+
+                {/* Product Page */}
 
                 <Route path="/discount" element={<DiscountPage />} />
 
@@ -162,18 +167,22 @@ const App = () => {
 
                 <Route path="/squid" element={<SquidPage />} />
 
+                <Route path='/cart' element={<Cart/>}/>
+
+
+
                 <Route path="/admin-page" element={<AdminPage />} />
 
                 {/* Admin */}
-                <Route path="/ad-manage-product" element={<ADManageProduct />} />
+                <Route path="/ad-manage-product" element={<ManageProduct />} />
 
-                <Route path="/ad-manage-product/search" element={<ADManageProductSearch />} />
+                <Route path="/ad-manage-product/search" element={<ManageProductSearch />} />
 
-                <Route path="/ad-add-product" element={<ADAddProduct />} />
+                <Route path="/ad-add-product" element={<AddProduct />} />
 
-                <Route path="/ad-manage-order" element={<ADManageOrder />} />
+                <Route path="/ad-manage-order" element={<ManageOrder />} />
 
-                <Route path="/ad-manage-customer" element={<ADManageCustomer />} />
+                <Route path="/ad-manage-customer" element={<ManageCustomer />} />
             </Routes>
         </Router>
     )

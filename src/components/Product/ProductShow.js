@@ -13,21 +13,21 @@ function ProductShow() {
 
     const confirmDelete = () => {
         if (productToDelete) {
-          deleteProductById(productToDelete.id);
-          setIsDeleteConfirmationVisible(false);
-          setProductToDelete(null); // Reset productToDelete after deletion
+            deleteProductById(productToDelete.id);
+            setIsDeleteConfirmationVisible(false);
+            setProductToDelete(null); // Reset productToDelete after deletion
         }
-      };
-    
-      const cancelDelete = () => {
+    };
+
+    const cancelDelete = () => {
         setIsDeleteConfirmationVisible(false);
         setProductToDelete(null); // Reset productToDelete if cancel is clicked
-      };
-    
-      const handleDeleteClick = (product) => {
+    };
+
+    const handleDeleteClick = (product) => {
         setProductToDelete(product); // Set the product to be deleted
         setIsDeleteConfirmationVisible(true);
-      };
+    };
 
     const handleEditClick = () => {
         setShowEdit(!showEdit);
@@ -55,30 +55,30 @@ function ProductShow() {
 
     return (
         <div>
-            <div class="flex flex-col">
-                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                        <div class="overflow-hidden">
-                            <table class="min-w-full text-left text-sm font-light">
-                                <thead class="border-b font-medium dark:border-neutral-500">
+            <div className="flex flex-col">
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div className="overflow-hidden">
+                            <table className="min-w-full text-left text-sm font-light">
+                                <thead className="border-b font-medium dark:border-neutral-500">
                                     {displayColumns.map((col, index) => (
-                                        <th scope="col" class="px-6 py-4" key={index}>
+                                        <th scope="col" className="px-6 py-4" key={index}>
                                             {col}
                                         </th>
                                     ))}
                                 </thead>
                                 <tbody>
                                     {products.map((product, index) => (
-                                        <tr class="border-b dark:border-neutral-500" key={index}>
+                                        <tr className="border-b dark:border-neutral-500" key={index}>
                                             {displayColumns.map((col, colIndex) => (
-                                                <td class="whitespace-nowrap px-6 py-4 font-medium" key={colIndex}>
+                                                <td className="whitespace-nowrap px-6 py-4 font-medium" key={colIndex}>
                                                     <h3>{product[columnNameMapping[col]]}</h3>
                                                 </td>
                                             ))}
-                                            <td class="whitespace-nowrap  py-4">
+                                            <td className="whitespace-nowrap  py-4">
                                                 <a href="#" className="text-emerald-500 font-normal underline">Xem chi tiết</a>
                                             </td>
-                                            <td class="whitespace-nowrap py-4">
+                                            <td className="whitespace-nowrap py-4">
                                                 <div className="text-rose-600 underline ml-6 cursor-pointer hover:text-rose-500" onClick={() => handleDeleteClick(product)}><PiTrashLight size={24} /></div>
                                             </td>
                                         </tr>

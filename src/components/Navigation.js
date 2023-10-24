@@ -21,7 +21,7 @@ function Navigation() {
                     </div>
                 </a>
 
-                <form className="hidden h-9 w-2/5 items-center border md:flex bg-white rounded-lg">
+                <div className="hidden h-9 w-2/5 items-center border md:flex bg-white rounded-lg">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -48,7 +48,7 @@ function Navigation() {
                     >
                         Tìm
                     </button>
-                </form>
+                </div>
 
                 <div className="hidden gap-3 md:!flex">
                     {/* <a
@@ -60,7 +60,7 @@ function Navigation() {
                     </a> */}
 
                     <a
-                        href="cart.html"
+                        href="/cart"
                         className="flex cursor-pointer flex-col items-center justify-center"
                     >
                         <BsCart3 size={24} className='text-white hover:text-yellow-400'/>
@@ -68,7 +68,7 @@ function Navigation() {
                     </a>
 
                     <a
-                        href="/account-page"
+                        href="/user-account"
                         className="relative flex cursor-pointer flex-col items-center justify-center"
                     >
                         <VscAccount size={24} className='text-white hover:text-yellow-400'/>

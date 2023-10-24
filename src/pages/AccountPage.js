@@ -32,6 +32,7 @@ function AccountPage() {
                                         <label className="block">
                                             <span className="sr-only">Choose profile photo</span>
                                             <input
+                                                id="file_input"
                                                 type="file"
                                                 className="mx-auto ml-5 flex w-full justify-center border-yellow-400 text-sm outline-none file:mr-4 file:bg-amber-400 file:py-2 file:px-4 file:text-sm file:font-semibold"
                                             />

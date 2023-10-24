@@ -1,13 +1,12 @@
 import { RxDashboard } from "react-icons/rx";
 import { GoTasklist, GoPeople, GoPackage, GoSignOut } from "react-icons/go";
-import { useContext, useEffect } from "react";
-import ProductsContext from "../../context/product";
-import ProductCreate from "../../components/Product/ProductCreate";
-import ADHeader from "./ADHeader";
+import ProductCreate from "../components/Product/ProductCreate";
+import ProductsContext from "../context/product";
+import { useEffect, useContext } from "react";
 
+function ADAddProduct() {
+    const {fetchProducts} = useContext(ProductsContext);
 
-function ADManageCustomer() {
-    const { fetchProducts } = useContext(ProductsContext);
     useEffect(() => {
         fetchProducts();
     }, []);
@@ -45,10 +44,8 @@ function ADManageCustomer() {
                     </button>
                 </div>
                 {/* <!-- SIDEBAR HEADER --> */}
-
                 <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
                     {/* <!-- Sidebar Menu --> */}
-
                     <nav
                         className="mt-5 py-4 px-4 lg:mt-9 lg:px-6"
                         x-data="{selected: $persist('Dashboard')}"
@@ -67,17 +64,15 @@ function ADManageCustomer() {
                                         Thống kê/Báo cáo
                                     </a>
                                 </li>
-
                                 {/* <!-- Menu Item Forms --> */}
                                 <li>
                                     <a
-                                        className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                                        className="bg-teal-600 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
                                         href="ad-manage-product"
                                     >
                                         <GoTasklist size={23} />
                                         Sản phẩm
                                     </a>
-
                                     {/* <!-- Dropdown Menu Start --> */}
                                     <div className="overflow-hidden">
                                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-5 ml-1">
@@ -89,7 +84,7 @@ function ADManageCustomer() {
                                             </li>
                                             <li>
                                                 <a
-                                                    className="group relative flex items-center gap-2.5 rounded-md px-4 font-light duration-300 ease-in-out"
+                                                    className="bg-teal-400 group relative flex items-center gap-2.5 rounded-md px-4 font-light duration-300 ease-in-out"
                                                     href="/ad-add-product"
                                                 >Thêm sản phẩm</a>
                                             </li>
@@ -98,7 +93,6 @@ function ADManageCustomer() {
                                     {/* <!-- Dropdown Menu End --> */}
                                 </li>
                                 {/* <!-- Menu Item Forms --> */}
-
                                 {/* <!-- Menu Item Tables --> */}
                                 <li li >
                                     <a
@@ -111,19 +105,16 @@ function ADManageCustomer() {
                                     </a>
                                 </li >
                                 {/* <!-- Menu Item Tables --> */}
-
-
                                 {/* <!-- Menu Item Settings --> */}
                                 <li>
                                     <a
-                                        className="bg-teal-600 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                                        className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
                                         href="/ad-manage-customer"
                                     >
                                         <GoPeople size={19} />
                                         Khách hàng
                                     </a>
                                 </li>
-
                                 <li>
                                     <a
                                         className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -139,43 +130,9 @@ function ADManageCustomer() {
                     </nav >
                 </div >
             </div >
-            <div className="w-full">
-                <ADHeader />
-                <div className="text-2xl ml-12">Danh sách sản phẩm</div>
-                <div className="w-11/12">
-                    
-                    <div>
-                        <div class="flex flex-col">
-                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                                    <div class="overflow-hidden">
-                                        <table class="min-w-full text-left text-sm font-light">
-                                            <thead class="border-b font-medium dark:border-neutral-500">
-                                                {/* <tr>
-                                                    <th scope="col" class="px-6 py-4">Mã sản phẩm</th>
-                                                    <th scope="col" class="px-6 py-4">Tên sản phẩm</th>
-                                                    <th scope="col" class="px-6 py-4">Phân loại</th>
-                                                    <th scope="col" class="px-6 py-4">Trọng lượng <span>&#40;</span>gram<span>&#41;</span></th>
-                                                    <th scope="col" class="px-6 py-4">Giá</th>
-                                                    <th scope="col" class="px-6 py-4">SL tồn</th>
-                                                </tr> */}
-                                            </thead>
-                                            <tbody>
-                                                {/* <ProductList /> */}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            {/* <ProductList /> */}
+            <ProductCreate/>
         </div>
     )
 }
 
-export default ADManageCustomer;
+export default ADAddProduct;
