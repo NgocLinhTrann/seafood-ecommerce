@@ -3,12 +3,10 @@ import Footer from "../components/Footer";
 import Avatar from "../assets/images/avatar-photo.jpg";
 import Sidebar from "../components/Sidebar";
 
-
 function ManageAddress() {
     return (
         <div>
             <Navigation />
-
             {/* breadcrumbs */}
             <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
                 <ul className="flex items-center">
@@ -37,14 +35,13 @@ function ManageAddress() {
                 </ul>
             </nav>
             {/* breadcrumbs */}
-
-            <section
+            <div
                 className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10"
             >
                 <Sidebar activePage="address"/>
 
                 {/* <!-- form  --> */}
-                <section
+                <div
                     className="grid w-full max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10"
                 >
                     <div className="py-5">
@@ -123,9 +120,9 @@ function ManageAddress() {
                             </button>
                         </form>
                     </div>
-                </section>
+                </div>
                 {/* /form */}
-            </section>
+            </div>
             <Footer />
         </div>
     )

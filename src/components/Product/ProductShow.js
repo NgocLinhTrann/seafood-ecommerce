@@ -52,7 +52,6 @@ function ProductShow() {
     // if (showEdit) {
     //     content = <ProductEdit onSubmit={handleSubmit} product={product} />
     // }
-
     return (
         <div>
             <div className="flex flex-col">
@@ -104,7 +103,6 @@ function ProductShow() {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

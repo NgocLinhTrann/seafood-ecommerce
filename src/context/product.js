@@ -6,10 +6,18 @@ function ProductsProvider({ children }) {
     const [products, setProducts] = useState([]);
 
     const fetchProducts = async () => {
-        const response = await axios.get('https://daohaisan.azurewebsites.net/api/products');
-        setProducts(response.data['data']['products']);
+        // const response = await axios.get('https://daohaisan.azurewebsites.net/api/products');
+        // setProducts(response.data['data']['products']);
+        try {
+            const response = await axios.get('https://daohaisan.azurewebsites.net/api/products');
+            setProducts(response.data['data']['products']);
+        } catch (error) {
+            // Handle the error
+            console.error('Error fetching products:', error);
+            // You can also set an error state or show an error message to the user
+        }
     };
-
+      
     const editProductById = async (id, newProductname, newCategory, newWeight, newPrice, newStock) => {
         const response = await axios.put(`http://localhost:3001/seafood/${id}`, {
             productname: newProductname,
@@ -55,51 +63,6 @@ function ProductsProvider({ children }) {
         }
     }
 
-    // const createProduct = async (name, category, description, weight,
-    //     price, available, imageUrl = "will update,not yet") => {
-    //     // const response = await axios.post('http://localhost:3001/seafood', {
-    //     //     productname,
-    //     //     category, 
-    //     //     weight,
-    //     //     price,
-    //     //     stock
-    //     // });
-
-    //     // console.log(response);
-
-    //     // const updateProducts = [
-    //     //     ...products,
-    //     //     response.data
-    //     // ];
-    //     // setProducts(updateProducts);
-
-    //     var data = JSON.stringify({
-    //         "name": name,
-    //         "category": category,
-    //         "description": description,
-    //         "imageUrl": imageUrl,
-    //         "weight": weight,
-    //         "price": price,
-    //         "available": available
-    //     });
-
-    //     var config = {
-    //         method: 'post',
-    //         url: 'https://daohaisan.azurewebsites.net/api/product',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         data: data
-    //     };
-
-    //     axios(config)
-    //         .then(function (response) {
-    //             console.log(JSON.stringify(response.data));
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });
-    // }
     const createProduct = async (name, category, description, imageUrl, weight,
         price, available) => {
         var data = JSON.stringify({
