@@ -4,7 +4,7 @@ import ProductCreate from "../components/Product/ProductCreate";
 import ProductsContext from "../context/product";
 import { useEffect, useContext } from "react";
 
-function ADAddProduct() {
+function AddProduct() {
     const {fetchProducts} = useContext(ProductsContext);
 
     useEffect(() => {
@@ -135,4 +135,4 @@ function ADAddProduct() {
     )
 }
 
-export default ADAddProduct;
+export default AddProduct;

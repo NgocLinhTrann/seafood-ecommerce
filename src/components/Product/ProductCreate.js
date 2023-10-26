@@ -46,52 +46,7 @@ function ProductCreate() {
     };
 
     return <div className="w-2/4 ml-60">
-        {/* <h1>Thêm sản phẩm</h1> */}
-        {/* <form className="w-1/2" onSubmit={handleSubmit}>
-            <label className="font-medium">Tên sản phẩm</label>
-            <input className="input" value={name} onChange={(e) => setName(e.target.value)}></input>
-            <label>Loại sản phẩm</label>
-            <input className="input" value={category} onChange={(e) => setCategory(e.target.value)}></input>
-            <div className="field">
-                <label className="label mt-3 font-medium">Loại sản phẩm</label>
-                <div className="select">
-                    <select className="input select" value={category} onChange={(e) => setCategory(e.target.value)}>
-                        <option>Chọn phân loại</option>
-                        <option value="option 1">Cá Hồi</option>
-                        <option value="option 2">Cua, Ghẹ</option>
-                        <option value="option 3">Cá Các Loại</option>
-                        <option value="option 4">Ngao, Sò, Ốc</option>
-                        <option value="option 5">Tôm Các Loại</option>
-                        <option value="option 6">Mực Các Loại</option>
-                        <option value="option 7">Chế Biến Sẵn</option>
-                        <option value="option 8">Gia Vị - Sôt</option>
-                    </select>
-                </div>
-            </div>
-            <label className="font-medium">Mô tả sản phẩm</label>
-            <input className="input" value={description} onChange={(e) => setDescription(e.target.value)}></input>
-            <label className="font-medium">Đường dẫn hình ảnh</label>
-            <input className="input" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}></input>
-            <label>Hình ảnh sản phẩm</label>
-            <label className="block">                
-                <input
-                    id="file_input"
-                    type="file"
-                    onChange={handleImageChange}
-                    className="mx-auto ml-5 flex w-full justify-center border-yellow-400 text-sm outline-none file:mr-4 file:bg-amber-400 file:py-2 file:px-4 file:text-sm file:font-semibold"
-                />
-            </label>
-            {image && <img src={image} alt="Selected Product" style={{width: "200px", height: "200px"}}/>}
-            <label className="font-medium">Trọng lượng</label>
-            <input className="input" value={weight} onChange={(e) => setWeight(e.target.value)}></input>
-            <label className="font-medium">Giá</label>
-            <input className="input" value={price} onChange={(e) => setPrice(e.target.value)}></input>
-            <label className="font-medium">SL Tồn</label>
-            <input className="input" value={available} onChange={(e) => setAvailable(e.target.value)}></input>
-            <button className="button">Create</button>
-        </form> */}
-
-        <form className="mt-2 w-full flex-grow mb-10 px-5"
+        <div className="mt-2 w-full flex-grow mb-10 px-5"
             onSubmit={handleSubmit}
         >
             <div className="container border px-5 py-5 shadow-sm">
@@ -151,7 +106,7 @@ function ProductCreate() {
                     THÊM SẢN PHẨM
                 </button>
             </div>
-        </form>
+        </div>
     </div>;
 }
 

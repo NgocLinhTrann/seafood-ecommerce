@@ -26,6 +26,8 @@ import ManageProduct from "./admin/ManageProduct";
 import ManageProductSearch from './admin/ManageProductSearch';
 import AddProduct from './admin/AddProduct';
 import ManageOrder from './admin/ManageOrder';
+import ProductDetail from './admin/ProductDetail';
+
 import ManageCustomer from './admin/ManageCustomer';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -111,7 +113,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //             </Route>
 
 //             <Route path="/ad-add-product">
-//                 <ADAddProduct />
+//                 <AddProduct />
 //             </Route>
 
 //             <Route path="/ad-manage-order">
@@ -183,6 +185,9 @@ const App = () => {
                 <Route path="/ad-manage-order" element={<ManageOrder />} />
 
                 <Route path="/ad-manage-customer" element={<ManageCustomer />} />
+
+                {/* <Route path="/ad-product-detail" element={<ProductDetail />} /> */}
+                <Route path="/ad-product-detail/:productId" element={<ProductDetail />} />
             </Routes>
         </Router>
     )

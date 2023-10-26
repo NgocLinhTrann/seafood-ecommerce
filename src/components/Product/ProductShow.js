@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import ProductsContext from "../../context/product";
 import ProductEdit from './ProductEdit';
 import { PiTrashLight } from "react-icons/pi";
@@ -10,6 +11,8 @@ function ProductShow() {
     const [isDeleteConfirmationVisible, setIsDeleteConfirmationVisible] = useState(false);
     const { deleteProductById } = useContext(ProductsContext);
     const [productToDelete, setProductToDelete] = useState(null);
+
+    const navigate = useNavigate();
 
     const confirmDelete = () => {
         if (productToDelete) {
@@ -35,6 +38,12 @@ function ProductShow() {
 
     const handleSubmit = () => {
         setShowEdit(false);
+    };
+
+    const handleViewDetailClick = (productId) => {
+        navigate(`/ad-product-detail/${productId}`);
+        // const modifiedProductId = `custom-prefix-${productId}`;
+        // navigate(`/ad-product-detail/${modifiedProductId}`);
     };
 
     // Define a mapping object for column name transformation
@@ -75,7 +84,14 @@ function ProductShow() {
                                                 </td>
                                             ))}
                                             <td className="whitespace-nowrap  py-4">
-                                                <a href="#" className="text-emerald-500 font-normal underline">Xem chi tiết</a>
+                                                {/* <a href="/ad-product-detail"
+                                                    className="text-emerald-500 font-normal underline"
+                                                    onClick={() => handleViewDetailClick(product.id)}
+                                                >Xem chi tiết</a> */}
+                                                <button
+                                                    className="text-emerald-500 font-normal underline"
+                                                    onClick={() => handleViewDetailClick(product.id)}
+                                                >Xem chi tiết</button>
                                             </td>
                                             <td className="whitespace-nowrap py-4">
                                                 <div className="text-rose-600 underline ml-6 cursor-pointer hover:text-rose-500" onClick={() => handleDeleteClick(product)}><PiTrashLight size={24} /></div>

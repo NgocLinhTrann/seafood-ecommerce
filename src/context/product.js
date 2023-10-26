@@ -93,13 +93,30 @@ function ProductsProvider({ children }) {
             });
     }
 
+    const viewProductDetail = async (productId) => {
+        try {
+            const response = await axios.get(`https://daohaisan.azurewebsites.net/api/product/${productId}`);
+            // Extract product information from the API response
+            const productInfo = response.data.data.productInfo;
+
+            // You can use productInfo in your application logic or render it on the screen as needed
+            console.log(productInfo);
+
+            // Handle displaying product details on the screen, e.g., set state, update context, etc.
+        } catch (error) {
+            console.error('Error fetching product details:', error);
+            // Handle the error, set an error state, or show an error message to the user
+        }
+    };
+
     const valueToshare = {
         products,
         deleteProductById,
         editProductById,
         createProduct,
         fetchProducts,
-        searchProduct
+        searchProduct,
+        viewProductDetail,
     };
 
     return (
