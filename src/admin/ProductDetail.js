@@ -4,15 +4,16 @@ import axios from "axios";
 import { GoTasklist, GoPeople, GoPackage, GoSignOut } from "react-icons/go";
 import { RxDashboard } from "react-icons/rx";
 import { BsArrowLeft, BsPencilFill } from "react-icons/bs";
-import { IconName } from "react-icons/ai";
-
+import { useNavigate } from "react-router-dom";
 
 function ProductDetail() {
+    const navigate = useNavigate("");
     const { productId } = useParams();
     const [product, setProduct] = useState(null);
 
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
+    const [image, setImage] = useState(null);
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [weight, setWeight] = useState('');
@@ -20,6 +21,8 @@ function ProductDetail() {
     const [available, setAvailable] = useState('');
 
     console.log(productId);
+
+    const [isEditMode, setIsEditMode] = useState(false);
 
     useEffect(() => {
         const fetchProductDetail = async () => {
@@ -40,6 +43,53 @@ function ProductDetail() {
         };
         fetchProductDetail();
     }, [productId]);
+
+    const handleEditModeToggle = () => {
+        setIsEditMode(!isEditMode);
+    };
+
+    const handleSaveChanges = async (event) => {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('category', category);
+        formData.append('description', description);
+        formData.append('weight', weight);
+        formData.append('price', price);
+        formData.append('available', available);
+        formData.append('image', image); // Assuming image is a file object, not a URL
+
+        var config = {
+            method: 'put',
+            url: 'https://daohaisan.azurewebsites.net/api/product',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            data: formData
+        };
+
+        console.log(name);
+        console.log(category);
+        console.log(description);
+        console.log(weight);
+        console.log(price);
+        console.log(available);
+
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        // After saving changes, toggle back to view mode
+        setIsEditMode(false);
+    };
+
+    const handleBack = () => {
+        navigate("/ad-manage-product")
+    };
 
     if (!product) {
         return <div>Loading...</div>
@@ -161,54 +211,58 @@ function ProductDetail() {
                 </div >
             </div >
             <div className="w-2/6 container p-4">
-                <div className="text-2xl mb-4 flex items-center">
+                <div className="text-2xl mb-4 flex items-center cursor-pointer"
+                    onClick={handleBack}
+                >
                     <BsArrowLeft className="mr-2" />
                     Chi tiết sản phẩm
                 </div>
-                <button class="flex items-center px-4 my-5 h-10 bg-amber-500 text-white rounded">
-                    <BsPencilFill className="mr-2"/>
-                    Sửa
-                </button>
-                {/* <p><strong className="text-gray-800">Mã sản phẩm:</strong> {product.id}</p>
-                <h1 className="text-3xl font-bold mb-2">Tên sản phẩm: {product.name}</h1>
-                <p><strong className="text-gray-800">Weight:</strong> {product.weight}</p>
-                <p><strong className="text-gray-800">Price:</strong> {product.price}</p>
-                <p><strong className="text-gray-800">Category:</strong> {product.category}</p>
-                <p><strong className="text-gray-800">Available:</strong> {product.available}</p>
-                <img className="mt-4 h-40 w-40" src={product.imageUrl} alt={product.name} />
-                <p><strong className="text-gray-800">Description:</strong> {product.description}</p> */}
-
+                <div className="ml-auto mr-80 flex items-center my-5 ml-2">
+                    {isEditMode ? (
+                        <button
+                            className="px-4 h-10 bg-green-500 text-white rounded mr-2"
+                            onClick={handleSaveChanges}
+                        >
+                            Lưu
+                        </button>
+                    ) : (
+                        <button
+                            className="px-4 h-10 bg-amber-500 text-white rounded mr-2"
+                            onClick={handleEditModeToggle}
+                        >
+                            Chỉnh sửa
+                        </button>
+                    )}
+                </div>
                 <div className="flex justify-center">
                     <div className="label w-2/12 mt-3 font-medium">Mã sản phẩm:</div>
-                    <div className="input w-2/6">{product.id}</div>
+                    <div className="input w-2/6 bg-gray-100 border-gray-400 text-gray-600">{product.id}</div>
                 </div>
-
-                {/* <div className="flex items-center">
-                    <div className="label w-2/12 mt-3 font-medium">Tên sản phẩm:</div>
-                    <input className="input w-2/3" value={name} onChange={(e) => setName(e.target.value)}></input>
-                </div> */}
-
                 <div className="flex justify-center">
                     <div className="label w-2/12 mt-3 font-medium">Tên sản phẩm:</div>
-                    <input className="input w-2/6" value={name} onChange={(e) => setName(e.target.value)}></input>
+                    <input className={`input w-2/6 ${isEditMode ? 'bg-white border-green-500 text-black' : 'bg-gray-100 border-gray-400 text-gray-600 cursor-auto'}`} value={name} onChange={(e) => setName(e.target.value)} readOnly={!isEditMode}></input>
                 </div>
-
-
-
                 <div className="flex justify-center">
                     <div className="label w-2/12 mt-3 font-medium">Trọng lượng:</div>
-                    <input className="input w-2/6" value={weight} onChange={(e) => setWeight(e.target.value)}></input>
+                    <input className={`input w-2/6 ${isEditMode ? 'bg-white border-green-500 text-black' : 'bg-gray-100 border-gray-400 text-gray-600 cursor-auto'}`} value={weight} onChange={(e) => setWeight(e.target.value)} readOnly={!isEditMode}></input>
                 </div>
-
                 <div className="flex justify-center">
                     <div className="label w-2/12 mt-3 font-medium">Giá:</div>
-                    <input className="input w-2/6" value={price} onChange={(e) => setPrice(e.target.value)}></input>
+                    <input className={`input w-2/6 ${isEditMode ? 'bg-white border-green-500 text-black' : 'bg-gray-100 border-gray-400 text-gray-600 cursor-auto'}`} value={price} onChange={(e) => setPrice(e.target.value)} readOnly={!isEditMode}></input>
                 </div>
-
                 <div className="field flex justify-center">
                     <div className="label w-4/12 mr-4 mt-3 font-medium">Phân loại:</div>
-                    <div className="select ml-10">
-                        <select className="input select" value={category} onChange={(e) => setCategory(e.target.value)}>
+                    <div className={`select ml-10
+                        ${isEditMode ? 'border-green-500' : 'border-gray-400'} 
+                        ${!isEditMode ? 'pointer-events-none' : ''}`}
+                    >
+                        <select className={`input select 
+                            ${isEditMode ? 'text-black' : 'text-gray-600'}
+                            ${!isEditMode ? 'cursor-not-allowed' : ''}`}
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                            disabled={!isEditMode}
+                        >
                             <option value="">{product.category}</option>
                             {categories.map((categoryOption) => (
                                 <option key={categoryOption} value={categoryOption}>
@@ -218,24 +272,18 @@ function ProductDetail() {
                         </select>
                     </div>
                 </div>
-
                 <div className="flex justify-center">
                     <label className="label w-2/12 mt-3 font-medium">Số lượng tồn:</label>
-                    <input className="input w-2/6" value={available} onChange={(e) => setAvailable(e.target.value)}></input>
+                    <input className={`input w-2/6 ${isEditMode ? 'bg-white border-green-500 text-black' : 'bg-gray-100 border-gray-400 text-gray-600 cursor-auto'}`} value={available} onChange={(e) => setAvailable(e.target.value)} readOnly={!isEditMode}></input>
                 </div>
-
                 <div className="flex justify-center">
                     <label className="label w-3/12 mr-5 mt-3 font-medium">Hình ảnh sản phẩm: </label>
-                    <img className="mt-4 h-60 w-60 ml-10" src={product.imageUrl} alt={product.name} />
+                    <img className="mt-4 h-60 w-60 ml-10" src={imageUrl} alt={product.name} />
                 </div>
-
                 <div className="flex justify-center">
                     <label className="label w-2/12 mt-3 font-medium">Mô tả sản phẩm:</label>
-                    <input className="input w-2/6 mt-3" value={description} onChange={(e) => setDescription(e.target.value)}></input>
+                    <textarea rows="5" className={`mt-3 w-2/6 px-4 rounded-md focus:outline-none border ${isEditMode ? 'bg-white border-green-500 text-black' : 'bg-gray-100 border-gray-400 text-gray-600 cursor-auto'}`} value={description} onChange={(e) => setDescription(e.target.value)} readOnly={!isEditMode}></textarea>
                 </div>
-                <button class="px-4 my-5 h-10 bg-amber-500 text-white rounded">
-                    LƯU THAY ĐỔI
-                </button>
             </div>
         </div>
     )

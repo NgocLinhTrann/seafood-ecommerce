@@ -17,8 +17,6 @@ function ProductSearch({searchQuery}) {
     useEffect(() => {
         searchProduct(searchQuery);
     }, []);
-    // console.log("Hai")
-    // console.log(products);
 
     const confirmDelete = () => {
         if (productToDelete) {
@@ -37,15 +35,6 @@ function ProductSearch({searchQuery}) {
         setProductToDelete(product); // Set the product to be deleted
         setIsDeleteConfirmationVisible(true);
       };
-
-    // const handleEditClick = () => {
-    //     setShowEdit(!showEdit);
-    // };
-
-    // const handleSubmit = () => {
-    //     setShowEdit(false);
-    // };
-
     // Define a mapping object for column name transformation
     const columnNameMapping = {
         'Mã sản phẩm': 'id',
@@ -57,10 +46,6 @@ function ProductSearch({searchQuery}) {
     };
 
     const displayColumns = Object.keys(columnNameMapping)  // ['Mã sản phẩm', 'Tên sản phẩm', 'Phân loại', 'Trọng lượng', 'Giá', 'SL tồn'];
-
-    // if (showEdit) {
-    //     content = <ProductEdit onSubmit={handleSubmit} product={product} />
-    // }
 
     return (
         <div>

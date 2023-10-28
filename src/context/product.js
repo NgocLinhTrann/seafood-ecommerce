@@ -6,18 +6,14 @@ function ProductsProvider({ children }) {
     const [products, setProducts] = useState([]);
 
     const fetchProducts = async () => {
-        // const response = await axios.get('https://daohaisan.azurewebsites.net/api/products');
-        // setProducts(response.data['data']['products']);
         try {
             const response = await axios.get('https://daohaisan.azurewebsites.net/api/products');
             setProducts(response.data['data']['products']);
         } catch (error) {
-            // Handle the error
             console.error('Error fetching products:', error);
-            // You can also set an error state or show an error message to the user
         }
     };
-      
+
     const editProductById = async (id, newProductname, newCategory, newWeight, newPrice, newStock) => {
         const response = await axios.put(`http://localhost:3001/seafood/${id}`, {
             productname: newProductname,
@@ -53,59 +49,83 @@ function ProductsProvider({ children }) {
         try {
             console.log("searchQuery in searchProduct function: " + searchQuery)
             const encodedQuery = encodeURIComponent(searchQuery);
-            // const decodeSearchTerm = decodeURIComponent(searchQuery)
-            // console.log(decodeSearchTerm)
             const response = await axios.get(`https://daohaisan.azurewebsites.net/api/products/${encodedQuery}`);
             setProducts(response.data.data.data.products);
-            // Update products state or handle the response data as needed
         } catch (error) {
             console.error("Error searching for products:", error);
         }
     }
 
-    const createProduct = async (name, category, description, imageUrl, weight,
-        price, available) => {
-        var data = JSON.stringify({
-            "name": name,
-            "category": category,
-            "description": description,
-            "imageUrl": imageUrl,
-            "weight": weight,
-            "price": price,
-            "available": available
-        });
+    // const createProduct = async (name, category, description, imageUrl, weight,
+    //     price, available) => {
+    //     var data = JSON.stringify({
+    //         "name": name,
+    //         "category": category,
+    //         "description": description,
+    //         "imageUrl": imageUrl,
+    //         "weight": weight,
+    //         "price": price,
+    //         "available": available
+    //     });
 
-        var config = {
-            method: 'post',
-            url: 'https://daohaisan.azurewebsites.net/api/product',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: data
-        };
+    //     var config = {
+    //         method: 'post',
+    //         url: 'https://daohaisan.azurewebsites.net/api/product',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         data: data
+    //     };
 
-        axios(config)
-            .then(function (response) {
-                console.log(JSON.stringify(response.data));
-            })
-            .catch(function (error) {
-                console.log(error);
+    //     axios(config)
+    //         .then(function (response) {
+    //             console.log(JSON.stringify(response.data));
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         });
+    // }
+
+    const createProduct = async (formData) => {
+        console.log("linh product.js")
+        try {
+            const response = await axios.post('https://daohaisan.azurewebsites.net/api/product', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+                
             });
+            console.log("linh product.js 2 ")
+            console.log("response" + response.data);
+            // Handle the response as needed (e.g., update state or show a success message)
+        } catch (error) {
+            console.error('Error creating product:', error);
+            console.log("linh product.js 3 ")
+            // Handle errors (e.g., show an error message)
+        }
     }
+
+    // const createProduct = async (formData) => {
+    //     console.log(formData);
+    //     try {
+    //         const response = await axios.post('https://daohaisan.azurewebsites.net/api/product', formData, {
+    //             headers: {
+    //                 'Content-Type': 'multipart/form-data',
+    //             },
+    //         });
+    //         console.log(response.data);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
 
     const viewProductDetail = async (productId) => {
         try {
             const response = await axios.get(`https://daohaisan.azurewebsites.net/api/product/${productId}`);
-            // Extract product information from the API response
             const productInfo = response.data.data.productInfo;
-
-            // You can use productInfo in your application logic or render it on the screen as needed
             console.log(productInfo);
-
-            // Handle displaying product details on the screen, e.g., set state, update context, etc.
         } catch (error) {
             console.error('Error fetching product details:', error);
-            // Handle the error, set an error state, or show an error message to the user
         }
     };
 

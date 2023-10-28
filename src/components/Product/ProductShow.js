@@ -1,13 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import ProductsContext from "../../context/product";
-import ProductEdit from './ProductEdit';
 import { PiTrashLight } from "react-icons/pi";
 
 
 function ProductShow() {
     const { products } = useContext(ProductsContext);
-    const [showEdit, setShowEdit] = useState(false);
     const [isDeleteConfirmationVisible, setIsDeleteConfirmationVisible] = useState(false);
     const { deleteProductById } = useContext(ProductsContext);
     const [productToDelete, setProductToDelete] = useState(null);
@@ -32,21 +30,12 @@ function ProductShow() {
         setIsDeleteConfirmationVisible(true);
     };
 
-    const handleEditClick = () => {
-        setShowEdit(!showEdit);
-    };
-
-    const handleSubmit = () => {
-        setShowEdit(false);
-    };
-
     const handleViewDetailClick = (productId) => {
         navigate(`/ad-product-detail/${productId}`);
         // const modifiedProductId = `custom-prefix-${productId}`;
         // navigate(`/ad-product-detail/${modifiedProductId}`);
     };
 
-    // Define a mapping object for column name transformation
     const columnNameMapping = {
         'Mã sản phẩm': 'id',
         'Tên sản phẩm': 'name',
@@ -57,10 +46,6 @@ function ProductShow() {
     };
 
     const displayColumns = Object.keys(columnNameMapping)  // ['Mã sản phẩm', 'Tên sản phẩm', 'Phân loại', 'Trọng lượng', 'Giá', 'SL tồn'];
-
-    // if (showEdit) {
-    //     content = <ProductEdit onSubmit={handleSubmit} product={product} />
-    // }
     return (
         <div>
             <div className="flex flex-col">
