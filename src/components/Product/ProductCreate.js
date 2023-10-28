@@ -25,7 +25,13 @@ function ProductCreate() {
 
     const handleSubmit = async (event) => {
         event.preventDefault(); // Prevent the form from submitting the traditional way
-        console.log(image)
+        console.log(name);
+        console.log(category);
+        console.log(description);
+        console.log(weight);
+        console.log(price);
+        console.log(available);
+        console.log(image);
 
         // Create a FormData object to send the data as form data
         const formData = new FormData();

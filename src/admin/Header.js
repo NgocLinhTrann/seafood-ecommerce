@@ -38,7 +38,7 @@ function Header() {
                      <div class="relative">
                          <a class="flex items-center" href="#">
                              <span class="hidden text-right lg:block">
-                                 <span class="block text-sm font-medium text-black dark:text-white">Quản trị viên</span>
+                                 <span class="block text-sm font-medium text-black dark:text-white">Ngọc Linh</span>
                              </span>
 
                              <span class="h-12 w-12 rounded-full ml-2">

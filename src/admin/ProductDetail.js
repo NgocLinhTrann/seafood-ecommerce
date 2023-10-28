@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { GoTasklist, GoPeople, GoPackage, GoSignOut } from "react-icons/go";
 import { RxDashboard } from "react-icons/rx";
-import { BsArrowLeft, BsPencilFill } from "react-icons/bs";
+import { BsArrowLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 function ProductDetail() {
@@ -19,16 +19,15 @@ function ProductDetail() {
     const [weight, setWeight] = useState('');
     const [price, setPrice] = useState('');
     const [available, setAvailable] = useState('');
-
-    console.log(productId);
-
     const [isEditMode, setIsEditMode] = useState(false);
+
 
     useEffect(() => {
         const fetchProductDetail = async () => {
             try {
                 const response = await axios.get(`https://daohaisan.azurewebsites.net/api/product/${productId}`);
                 const productInfo = response.data.data.productInfo;
+                console.log(productInfo.imageUrl);
                 setProduct(productInfo);
                 setName(productInfo.name);
                 setCategory(productInfo.category);
@@ -48,16 +47,42 @@ function ProductDetail() {
         setIsEditMode(!isEditMode);
     };
 
+    const handleImageChange = (event) => {
+        const selectedImage = event.target.files && event.target.files[0];
+        setImageUrl(URL.createObjectURL(selectedImage));
+        setImage(selectedImage);
+        // if (selectedImage) {
+        //     setImage(selectedImage);
+        // }
+        //image là file
+        console.log("image:" + image);
+        //image url la url của sp (firebase hoac local)
+        //Minh se gui file cho BE, BE nhan dc, gui link lai thi minh moi show len duoc
+        console.log("imageUrl:" + imageUrl);
+
+    };
+
     const handleSaveChanges = async (event) => {
-        event.preventDefault(); // Prevent the form from submitting the traditional way
+        event.preventDefault();
+        console.log(productId);
+        console.log(name);
+        console.log(category);
+        console.log(description);
+        console.log(weight);
+        console.log(price);
+        console.log(available);
+
+        console.log("image"+image);
+
         const formData = new FormData();
+        formData.append('id', productId);
         formData.append('name', name);
         formData.append('category', category);
         formData.append('description', description);
         formData.append('weight', weight);
         formData.append('price', price);
         formData.append('available', available);
-        formData.append('image', image); // Assuming image is a file object, not a URL
+        formData.append('image', image);
 
         var config = {
             method: 'put',
@@ -68,14 +93,6 @@ function ProductDetail() {
             data: formData
         };
 
-        console.log(name);
-        console.log(category);
-        console.log(description);
-        console.log(weight);
-        console.log(price);
-        console.log(available);
-
-
         axios(config)
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
@@ -83,7 +100,6 @@ function ProductDetail() {
             .catch(function (error) {
                 console.log(error);
             });
-        // After saving changes, toggle back to view mode
         setIsEditMode(false);
     };
 
@@ -278,8 +294,36 @@ function ProductDetail() {
                 </div>
                 <div className="flex justify-center">
                     <label className="label w-3/12 mr-5 mt-3 font-medium">Hình ảnh sản phẩm: </label>
-                    <img className="mt-4 h-60 w-60 ml-10" src={imageUrl} alt={product.name} />
+                    {!isEditMode && (
+                        <div className="mt-3 w-2/6 px-4 rounded-md border">
+                            {/* {product.imageUrl && <img src={product.imageUrl} alt="Product" style={{ width: "100%", height: "auto" }} />} */}
+                            {product.imageUrl && <img src={product.imageUrl} alt="Product" style={{ width: "100%", height: "auto" }} />}
+                            {/* {image && <img src={product.imageUrl} alt="Product" style={{ width: "100%", height: "auto" }} />} */}
+                        </div>
+                    )}
+                    {isEditMode && ( // Render file input only when edit mode is on
+                        <div className="mt-3 w-2/6 px-4 rounded-md border">
+                            {<img src={imageUrl} alt="Selected Product" style={{ width: "400px", height: "400px" }} />}
+                            <label className="block">
+                                <input
+                                    id="file_input"
+                                    type="file"
+                                    onChange={handleImageChange}
+                                    className="mx-auto ml-5 flex w-full justify-center border-yellow-400 text-sm outline-none file:mr-4 file:bg-amber-400 file:py-2 file:px-4 file:text-sm file:font-semibold"
+                                />
+                            </label>
+                        </div>
+                    )}
                 </div>
+                {/* <img className="mt-4 h-60 w-60 ml-10" src={imageUrl} alt={product.name} />
+                    {/* <label className="label w-3/12 mr-5 mt-3 font-medium">Hình ảnh sản phẩm 2: </label> */}
+                {/* <input
+                        type="file"
+                        onChange={handleImageChange}
+                        className={`${isEditMode ? 'bg-white border-green-500 text-black' : 'bg-gray-100 border-gray-400 text-gray-600 cursor-auto'}`}
+                        // disabled={!isEditMode}
+                    />
+                    {image && <img src={URL.createObjectURL(image)} alt="Selected Product" style={{ width: "200px", height: "200px" }} />}  */}
                 <div className="flex justify-center">
                     <label className="label w-2/12 mt-3 font-medium">Mô tả sản phẩm:</label>
                     <textarea rows="5" className={`mt-3 w-2/6 px-4 rounded-md focus:outline-none border ${isEditMode ? 'bg-white border-green-500 text-black' : 'bg-gray-100 border-gray-400 text-gray-600 cursor-auto'}`} value={description} onChange={(e) => setDescription(e.target.value)} readOnly={!isEditMode}></textarea>

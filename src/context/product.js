@@ -34,7 +34,6 @@ function ProductsProvider({ children }) {
     }
 
     const deleteProductById = async (id) => {
-        // await axios.delete(`http://localhost:3001/seafood/${id}`);
         console.log(id);
         await axios.delete(`https://daohaisan.azurewebsites.net/api/product/${id}`);
 
@@ -119,16 +118,6 @@ function ProductsProvider({ children }) {
     //     }
     // }
 
-    const viewProductDetail = async (productId) => {
-        try {
-            const response = await axios.get(`https://daohaisan.azurewebsites.net/api/product/${productId}`);
-            const productInfo = response.data.data.productInfo;
-            console.log(productInfo);
-        } catch (error) {
-            console.error('Error fetching product details:', error);
-        }
-    };
-
     const valueToshare = {
         products,
         deleteProductById,
@@ -136,7 +125,6 @@ function ProductsProvider({ children }) {
         createProduct,
         fetchProducts,
         searchProduct,
-        viewProductDetail,
     };
 
     return (
