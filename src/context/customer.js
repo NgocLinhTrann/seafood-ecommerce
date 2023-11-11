@@ -5,14 +5,14 @@ const CustomersContext = createContext();
 function CustomersProvider({children}) {
     const [customers, setCustomers] = useState([]);
 
-    const fetchCutomers = async () => {
-        const response = await axios.get('https://daohaisan.azurewebsites.net/api/products');
-        setCustomers(response.data['data']['products']);
+    const fetchCustomers = async () => {
+        const response = await axios.get('https://daohaisan.azurewebsites.net/api/customers');
+        setCustomers(response.data['data']['customers']);
     };
 
     const valueToshare = {
         customers,
-        fetchCutomers
+        fetchCustomers
     };
 
     return (

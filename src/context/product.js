@@ -55,36 +55,6 @@ function ProductsProvider({ children }) {
         }
     }
 
-    // const createProduct = async (name, category, description, imageUrl, weight,
-    //     price, available) => {
-    //     var data = JSON.stringify({
-    //         "name": name,
-    //         "category": category,
-    //         "description": description,
-    //         "imageUrl": imageUrl,
-    //         "weight": weight,
-    //         "price": price,
-    //         "available": available
-    //     });
-
-    //     var config = {
-    //         method: 'post',
-    //         url: 'https://daohaisan.azurewebsites.net/api/product',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         data: data
-    //     };
-
-    //     axios(config)
-    //         .then(function (response) {
-    //             console.log(JSON.stringify(response.data));
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });
-    // }
-
     const createProduct = async (formData) => {
         console.log("linh product.js")
         try {
@@ -103,20 +73,6 @@ function ProductsProvider({ children }) {
             // Handle errors (e.g., show an error message)
         }
     }
-
-    // const createProduct = async (formData) => {
-    //     console.log(formData);
-    //     try {
-    //         const response = await axios.post('https://daohaisan.azurewebsites.net/api/product', formData, {
-    //             headers: {
-    //                 'Content-Type': 'multipart/form-data',
-    //             },
-    //         });
-    //         console.log(response.data);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
 
     const valueToshare = {
         products,

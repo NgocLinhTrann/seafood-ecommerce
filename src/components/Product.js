@@ -39,7 +39,6 @@ function Product({cart}) {
                 <Cart srcImg={CuaCaMau} altImg="CuaCaMau image" ProductName="Cua Cà Mau Sống" Price="186,500đ" Unit="350g" Num="28"/>
 
                 {/* <!-- 8 --> */}
-
                 <Cart srcImg={ChanCuaTuyet} altImg="ChanCuaTuyet image" ProductName="Chân Cua Tuyết" Price="375,000đ" Unit="500g" Num="27"/>
 
                 

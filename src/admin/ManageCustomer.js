@@ -1,16 +1,26 @@
 import { RxDashboard } from "react-icons/rx";
 import { GoTasklist, GoPeople, GoPackage, GoSignOut } from "react-icons/go";
 import React, { useState, useContext, useEffect } from "react";
-import CustomerShow from "../components/Customer/CustomerShow";
 import CustomersContext from "../context/customer";
 import Avatar from '../assets/images/avatar-photo.jpg';
 
 
 function ManageCustomer() {
-    // const { fetchCustomers } = useContext(CustomersContext);
-    // useEffect(() => {
-    //     fetchCustomers();
-    // }, []);
+    const { customers, fetchCustomers } = useContext(CustomersContext);
+    useEffect(() => {
+        fetchCustomers();
+    }, []);
+
+    const columnNameMapping = {
+        'Mã khách hàng': 'id',
+        'Tên khách hàng': 'fullname',
+        'Email': 'email',
+        'Số điện thoại': 'phone',
+        'Giới tính' : 'gender',
+        'Địa chỉ' : 'address'
+    };
+
+    const displayColumns = Object.keys(columnNameMapping);
 
     return (
         <div className="flex justify-start">
@@ -116,64 +126,42 @@ function ManageCustomer() {
                         </div >
                     </nav >
                 </div >
-            </div > 
+            </div >
 
-            {/* <div className="w-full">
-                <div className="bg-stone-100 py-2">
-                    <header className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5">
-                        <form className="hidden h-9 w-2/5 items-center border md:flex bg-white rounded-lg">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="mx-3 h-4 w-4"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                                />
-                            </svg>
-
-                            <input
-                                className="hidden w-11/12 outline-none md:block"
-                                type="search"
-                                placeholder="Tìm kiếm..."
-                                value={searchString}
-                                onChange={(e) => setSearchString(e.target.value)}
-                            />
-
-                            <button
-                                className="ml-auto h-full bg-amber-400 px-4 hover:bg-yellow-300 rounded-r-lg text-white"
-                                onClick={handleSearch}
-                            >
-                                Tìm
-                            </button>
-                        </form>
-
-                        <div className="flex items-center">
-                            <div className="relative">
-                                <a className="flex items-center" href="#">
-                                    <span className="hidden text-right lg:block">
-                                        <span className="block text-sm font-medium text-black dark:text-white">Quản trị viên</span>
-                                    </span>
-
-                                    <span className="h-12 w-12 rounded-full ml-2">
-                                        <img src={Avatar} alt="User" />
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </header>
-                </div>
-
+            <div className="w-full">
                 <div className="text-2xl ml-12">Danh sách khách hàng</div>
                 <div className="w-11/12">
-                    <CustomerShow/>
+                    <div className="flex flex-col">
+                        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                <div className="overflow-hidden">
+                                    <table className="min-w-full text-left text-sm font-light">
+                                        <thead className="border-b font-medium dark:border-neutral-500">
+                                            {displayColumns.map((col, index) => (
+                                                <th scope="col" className="px-6 py-4" key={index}>
+                                                    {col}
+                                                </th>
+                                            ))}
+                                        </thead>
+                                        <tbody>
+                                            {customers.map((order, index) => (
+                                                <tr className="border-b dark:border-neutral-500" key={index}>
+                                                    {displayColumns.map((col, colIndex) => (
+                                                        <td className="whitespace-nowrap px-6 py-4 font-medium" key={colIndex}>
+                                                            <h3>{order[columnNameMapping[col]]}</h3>
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div> */}
+
+            </div>
         </div>
     )
 }

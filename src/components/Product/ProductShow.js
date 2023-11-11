@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import ProductsContext from "../../context/product";
 import { PiTrashLight } from "react-icons/pi";
@@ -69,10 +69,6 @@ function ProductShow() {
                                                 </td>
                                             ))}
                                             <td className="whitespace-nowrap  py-4">
-                                                {/* <a href="/ad-product-detail"
-                                                    className="text-emerald-500 font-normal underline"
-                                                    onClick={() => handleViewDetailClick(product.id)}
-                                                >Xem chi tiết</a> */}
                                                 <button
                                                     className="text-emerald-500 font-normal underline"
                                                     onClick={() => handleViewDetailClick(product.id)}
