@@ -1,21 +1,24 @@
-import Navigation from "../components/Navigation";
-import BackgroundgImg from "../components/BackgroundgImg";
-import CategoryContent from "../components/CategoryContent";
-import Product from "../components/Product";
-import ConsBages from "../components/ConsBages";
-import Footer from "../components/Footer";
+import Navigation from '../components/Navigation'
+import BackgroundgImg from '../components/BackgroundgImg'
+import CategoryContent from '../components/CategoryContent'
+import Product from '../components/Product'
+import ConsBages from '../components/ConsBages'
+import Footer from '../components/Footer'
 
 function HomePage() {
     return (
         <div>
-            <Navigation/>
+            {/* <Navigation/>
             <BackgroundgImg/>
             <CategoryContent content="BÁN CHẠY NHẤT"/>
             <Product/>
             <ConsBages/>
-            <Footer/>
+            <Footer/> */}
+            <Navigation />
+            it's homepage
+            <Footer />
         </div>
     )
 }
 
-export default HomePage;
+export default HomePage
