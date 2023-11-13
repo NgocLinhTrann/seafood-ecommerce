@@ -1,36 +1,36 @@
-import 'bulma/css/bulma.css';
-import CrabPage from "../src/pages/CrabPage";
-import SalmonPage from "./pages/SalmonPage";
-import DiscountPage from "../src/pages/DiscountPage";
-import FishPage from "./pages/FishPage";
-import SaucePage from "./pages/SaucePage";
-import HomePage from "./pages/HomePage";
-import ReadyToEatPage from "./pages/ReadyToEatPage"
-import ClamOysterSnailPage from "../src/pages/ClamOysterSnailPage"
-import ShrimpPage from "../src/pages/ShrimpPage"
-import SquidPage from "../src/pages/SquidPage";
-import SignUpPage from "../src/pages/SignUpPage";
-import LogInPage from '../src/pages/LogInPage';
+import 'bulma/css/bulma.css'
+import CrabPage from '../src/pages/CrabPage'
+import SalmonPage from './pages/SalmonPage'
+import DiscountPage from '../src/pages/DiscountPage'
+import FishPage from './pages/FishPage'
+import SaucePage from './pages/SaucePage'
+import ReadyToEatPage from './pages/ReadyToEatPage'
+import ClamOysterSnailPage from '../src/pages/ClamOysterSnailPage'
+import ShrimpPage from '../src/pages/ShrimpPage'
+import SquidPage from '../src/pages/SquidPage'
+import SignUpPage from '../src/pages/SignUpPage'
+import LogInPage from '../src/pages/LogInPage'
 
 // import Route from '../src/components/Route';
-import AccountPage from './pages/AccountPage';
-import ManageAddress from './pages/ManageAddress';
-import UserAccount from './pages/UserAccount';
-import ChangePassword from './pages/ChangePassword';
-import MyOrderHistory from './pages/MyOrderHistory';
+import AccountPage from './pages/AccountPage'
+import ManageAddress from './pages/ManageAddress'
+import UserAccount from './pages/UserAccount'
+import ChangePassword from './pages/ChangePassword'
+import MyOrderHistory from './pages/MyOrderHistory'
 
-import Cart from './user/Cart';
+import Cart from './user/Cart'
 
-import AdminPage from './pages/AdminPage';
-import ManageProduct from "./admin/ManageProduct";
-import ManageProductSearch from './admin/ManageProductSearch';
-import AddProduct from './admin/AddProduct';
-import ManageOrder from './admin/ManageOrder';
-import ProductDetail from './admin/ProductDetail';
+import AdminPage from './pages/AdminPage'
+import ManageProduct from './admin/ManageProduct'
+import ManageProductSearch from './admin/ManageProductSearch'
+import AddProduct from './admin/AddProduct'
+import ManageOrder from './admin/ManageOrder'
+import ProductDetail from './admin/ProductDetail'
 
-import ManageCustomer from './admin/ManageCustomer';
+import ManageCustomer from './admin/ManageCustomer'
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import HomePage from './components/HomePage/HomePage'
 
 const App = () => {
     return (
@@ -73,9 +73,7 @@ const App = () => {
 
                 <Route path="/squid" element={<SquidPage />} />
 
-                <Route path='/cart' element={<Cart/>}/>
-
-
+                <Route path="/cart" element={<Cart />} />
 
                 <Route path="/admin-page" element={<AdminPage />} />
 
@@ -97,4 +95,4 @@ const App = () => {
     )
 }
 
-export default App;
+export default App
