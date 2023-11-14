@@ -30,7 +30,7 @@ import ProductDetail from './admin/ProductDetail'
 import ManageCustomer from './admin/ManageCustomer'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import HomePage from './components/HomePage/HomePage'
+import HomePage from './components/HomePage'
 
 const App = () => {
     return (
