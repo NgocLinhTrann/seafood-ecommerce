@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import HeaderBg from '../../assets/images/header-bg.jpg'
 import Menu from './Menu'
+import Category from './Category'
 
 class Slider extends Component {
     render() {
         return (
             <div className="flex mt-2">
-                <div className="w-1/4 border-r border-gray-300 pr-4">
-                    <Menu />
+                <div className="w-1/6 border-r border-gray-300 pr-4">
+                    <Category />
                 </div>
 
-                <div className="relative w-3/4">
+                <div className="relative w-5/6">
                     <img className="w-full brightness-75" src={HeaderBg} alt="header background" />
 
                     <div className="absolute top-1/2 left-1/2 mx-auto flex w-11/12 max-w-[1200px] -translate-x-1/2 -translate-y-1/2 flex-col text-center text-white lg:ml-5">

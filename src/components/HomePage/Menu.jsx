@@ -9,30 +9,42 @@ export default class Menu extends Component {
                     <VscMenu className="mx-3" />
                     DANH MỤC
                 </div>
-                <ul className="menu-list menu-item-hover-color">
-                    <li>
-                        <a href="/fish">Cá Các Loại</a>
+                <ul className="menu-list">
+                    <li className="menu-item transition duration-300 ease-in-out hover:bg-red-500">
+                        <p className="menu-link">Cá Các Loạiiii</p>
                     </li>
-                    <li>
-                        <a href="/salmon">Cá Hồi</a>
+                    <li className="menu-item">
+                        <p className="menu-link">Cá Hồi</p>
                     </li>
-                    <li>
-                        <a href="/crab">Cua, Ghẹ</a>
+                    <li className="menu-item">
+                        <a href="/crab" className="menu-link">
+                            Cua, Ghẹ
+                        </a>
                     </li>
-                    <li>
-                        <a href="/clam-oyster-snail">Ngao, Sò, Ốc</a>
+                    <li className="menu-item">
+                        <a href="/clam-oyster-snail" className="menu-link">
+                            Ngao, Sò, Ốc
+                        </a>
                     </li>
-                    <li>
-                        <a href="/shrimp">Tôm Các Loại</a>
+                    <li className="menu-item">
+                        <a href="/shrimp" className="menu-link">
+                            Tôm Các Loại
+                        </a>
                     </li>
-                    <li>
-                        <a href="/squid">Mực Các Loại</a>
+                    <li className="menu-item">
+                        <a href="/squid" className="menu-link">
+                            Mực Các Loại
+                        </a>
                     </li>
-                    <li>
-                        <a href="/readytoeat">Chế Biến Sẵn</a>
+                    <li className="menu-item">
+                        <a href="/readytoeat" className="menu-link">
+                            Chế Biến Sẵn
+                        </a>
                     </li>
-                    <li>
-                        <a href="/sauce">Gia Vị - Sốt</a>
+                    <li className="menu-item">
+                        <a href="/sauce" className="menu-link">
+                            Gia Vị - Sốt
+                        </a>
                     </li>
                 </ul>
             </aside>
