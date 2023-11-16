@@ -39,12 +39,12 @@ class ProductList extends Component {
                     marginPagesDisplayed={1}
                     onPageChange={this.handlePageChange}
                     containerClassName="pagination flex justify-center"
-                    activeClassName="bg-blue-700 text-white"
-                    pageClassName="mx-2 px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 cursor-pointer"
+                    activeClassName=" bg-blue-600 text-white"
+                    pageClassName="mx-2 px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 cursor-pointer active:bg-red-300"
                     previousLabel="Previous"
                     nextLabel="Next"
-                    previousClassName="mx-2 px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 cursor-pointer"
-                    nextClassName="mx-2 px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 cursor-pointer"
+                    previousClassName="mx-2 px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 cursor-pointer active:bg-red-300"
+                    nextClassName="mx-2 px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 cursor-pointer active:bg-red-300"
                 />
             </>
         )

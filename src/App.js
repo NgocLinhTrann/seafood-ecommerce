@@ -31,12 +31,14 @@ import ManageCustomer from './admin/ManageCustomer'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './components/HomePage'
+import SearchPage from './components/SearchPage'
 
 const App = () => {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/search" element={<SearchPage />} />
 
                 <Route path="/signup" element={<SignUpPage />} />
 

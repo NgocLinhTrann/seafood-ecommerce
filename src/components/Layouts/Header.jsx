@@ -3,6 +3,34 @@ import { VscAccount } from 'react-icons/vsc'
 import { BsCart3 } from 'react-icons/bs'
 
 class Header extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            inputValue: '',
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState(
+            {
+                inputValue: event.target.value,
+            },
+            () => {
+                console.log(this.state.inputValue)
+            }
+        )
+    }
+    handleSearch = () => {
+        const { inputValue } = this.state
+        window.location.href = `/search?query=${inputValue}`
+    }
+
+    handleKeyPress = (event) => {
+        // Kiểm tra nếu phím được nhấn là Enter (keyCode 13)
+        if (event.key === 'Enter') {
+            this.handleSearch()
+        }
+    }
     render() {
         return (
             <div className="bg-cyan-500 max-w-[1200px] mx-auto ">
@@ -31,9 +59,19 @@ class Header extends Component {
                             />
                         </svg>
 
-                        <input className="hidden w-11/12 outline-none md:block" type="search" placeholder="Tìm kiếm trong Harbor" />
+                        <input
+                            className="hidden w-11/12 outline-none md:block"
+                            type="search"
+                            placeholder="Tìm kiếm trong Harbor"
+                            onChange={this.handleChange}
+                            value={this.inputValue}
+                            id="searchText"
+                            onKeyDown={this.handleKeyPress}
+                        />
 
-                        <button className="ml-auto h-full bg-amber-400 px-4 hover:bg-yellow-300 rounded-r-lg text-white">Tìm</button>
+                        <button className="ml-auto h-full bg-amber-400 px-4 hover:bg-yellow-300 rounded-r-lg text-white" onClick={this.handleSearch}>
+                            Tìm
+                        </button>
                     </div>
 
                     <div className="hidden gap-3 md:flex">

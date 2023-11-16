@@ -68,7 +68,11 @@ class HomePage extends Component {
                     <LoadingProduct />
                 ) : (
                     <>
-                        <ProductList products={filteredProducts} />
+                        {filteredProducts.length === 0 ? (
+                            <div className="bg-red-100 p-4 text-gray-500 font-bold text-base">Danh mục này chưa có sản phẩm.</div>
+                        ) : (
+                            <ProductList products={filteredProducts} />
+                        )}
                     </>
                 )}
                 <ConsBages />
