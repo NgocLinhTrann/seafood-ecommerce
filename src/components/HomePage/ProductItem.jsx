@@ -25,8 +25,8 @@ class ProductItem extends Component {
         const { product } = this.props
 
         return (
-            <div className="product-item shadow-md rounded-lg overflow-hidden text-center ">
-                <img className="product-image w-full h-70 object-cover" src={product.imageUrl} alt={product.name} />
+            <div className="product-item shadow-md rounded-lg overflow-hidden text-center h-[500px]">
+                <img className="product-image w-full h-[320px] object-cover" src={product.imageUrl} alt={product.name} />
                 <h2 className="product-name text-lg font-semibold my-2">{product.name}</h2>
                 <div className="product-rating text-yellow-500 mb-2">{this.renderStars(4)}</div>
                 <p className="product-price text-gray-700 font-medium">

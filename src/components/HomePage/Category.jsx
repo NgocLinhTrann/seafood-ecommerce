@@ -2,32 +2,14 @@ import React, { Component } from 'react'
 import { VscMenu } from 'react-icons/vsc'
 
 class Category extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            selectedCategory: null,
-        }
-    }
-
     handleCategoryClick = (category) => {
-        this.setState({ selectedCategory: category })
-        // Thực hiện logic lọc sản phẩm theo category tại đây
+        this.props.onCategoryChange(category)
     }
 
     render() {
-        const { selectedCategory } = this.state
+        const { selectedCategory } = this.props
 
-        const categories = [
-            'Tất cả',
-            'Cá Các Loại',
-            'Tôm Các Loại',
-            'Mực Các Loại',
-            'Ngao, Sò, Ốc',
-            'Cá Hồi',
-            'Cua, Ghẹ',
-            'Gia Vị - Sốt',
-            'Chế Biến Sẵn',
-        ]
+        const categories = ['Tất cả', 'Cá Các Loại', 'Tôm Các Loại', 'Mực Các Loại', 'Ngao, Sò, Ốc', 'Cua, Ghẹ', 'Gia Vị - Sốt', 'Chế Biến Sẵn']
 
         return (
             <aside className="menu create-menu border-r border-gray-300 pr-4">

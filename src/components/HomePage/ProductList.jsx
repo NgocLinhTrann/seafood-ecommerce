@@ -9,7 +9,7 @@ class ProductList extends Component {
         super(props)
         this.state = {
             currentPage: 0,
-            productsPerPage: 12, // Số lượng sản phẩm trên mỗi trang
+            productsPerPage: 8, // Số lượng sản phẩm trên mỗi trang
         }
     }
 
@@ -28,7 +28,6 @@ class ProductList extends Component {
 
         return (
             <>
-                <h3 className="my-5 text-2xl font-semibold text-gray-700 text-shadow-md">Danh sách sản phẩm</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 item items-center mt-5 mb-10">
                     {currentProducts.map((product) => (
                         <ProductItem key={product.id} product={product} />
@@ -40,7 +39,7 @@ class ProductList extends Component {
                     marginPagesDisplayed={1}
                     onPageChange={this.handlePageChange}
                     containerClassName="pagination flex justify-center"
-                    activeClassName="bg-blue-800 text-white"
+                    activeClassName="bg-blue-900 text-white"
                     pageClassName="mx-2 px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 cursor-pointer"
                     previousLabel="Previous"
                     nextLabel="Next"
