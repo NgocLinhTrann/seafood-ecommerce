@@ -54,8 +54,7 @@ const SearchPage = () => {
     }, [location, queryValue])
 
     return (
-        <div className="max-w-[1200px] mx-auto">
-            <Header />
+        <>
             <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
                 <ul className="flex items-center">
                     <li className="cursor-pointer">
@@ -85,7 +84,7 @@ const SearchPage = () => {
                     )}
                 </>
             )}
-        </div>
+        </>
     )
 }
 

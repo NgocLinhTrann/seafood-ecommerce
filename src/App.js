@@ -32,6 +32,7 @@ import ManageCustomer from './admin/ManageCustomer'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './components/HomePage'
 import SearchPage from './components/SearchPage'
+import DetailProduct from './components/DetailProduct'
 
 const App = () => {
     return (
@@ -39,6 +40,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/search" element={<SearchPage />} />
+                <Route path="/product/:id" element={<DetailProduct />} />
 
                 <Route path="/signup" element={<SignUpPage />} />
 

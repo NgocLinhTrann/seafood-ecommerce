@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ReactPaginate from 'react-paginate'
 
 import ProductItem from './ProductItem'
+import { Link } from 'react-router-dom' // Import Link từ react-router-dom
 
 class ProductList extends Component {
     constructor(props) {
@@ -39,7 +40,10 @@ class ProductList extends Component {
             return (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 item items-center mt-5 mb-10">
                     {products.map((product) => (
-                        <ProductItem key={product.id} product={product} />
+                        // Sử dụng Link để điều hướng đến trang chi tiết khi click vào mỗi item
+                        <Link to={`/product/${product.id}`} key={product.id} className="hover:shadow-md transition duration-300">
+                            <ProductItem product={product} />
+                        </Link>
                     ))}
                 </div>
             )
@@ -53,7 +57,9 @@ class ProductList extends Component {
             <>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 item items-center mt-5 mb-10">
                     {currentProducts.map((product) => (
-                        <ProductItem key={product.id} product={product} />
+                        <Link to={`/product/${product.id}`} key={product.id} className="hover:shadow-md transition duration-300">
+                            <ProductItem product={product} />
+                        </Link>
                     ))}
                 </div>
                 <ReactPaginate

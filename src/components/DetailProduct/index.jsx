@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SearchPage from './SearchPage'
+import ProductDetail from './ProductDetail'
 import Header from '../Layouts/Header'
 import Footer from '../Layouts/Footer'
 
@@ -8,7 +8,8 @@ export default class index extends Component {
         return (
             <div className="max-w-[1200px] mx-auto">
                 <Header />
-                <SearchPage />
+
+                <ProductDetail />
                 <Footer />
             </div>
         )
