@@ -5,6 +5,7 @@ import ProductList from './ProductList'
 import ConsBages from '../ConsBages'
 import Category from './Category'
 import Slider from './Slider'
+import LoadingProduct from './LoadingProduct'
 
 class HomePage extends Component {
     constructor(props) {
@@ -64,9 +65,7 @@ class HomePage extends Component {
                 </div>
                 <h3 className="my-5 text-2xl font-semibold text-gray-700 text-shadow-md">{selectedCategory}</h3>
                 {isLoading ? (
-                    <div className="flex items-center justify-center h-screen">
-                        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
-                    </div>
+                    <LoadingProduct />
                 ) : (
                     <>
                         <ProductList products={filteredProducts} />
