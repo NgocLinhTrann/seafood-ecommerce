@@ -18,9 +18,32 @@ class ProductList extends Component {
             currentPage: selected,
         })
     }
+
+    componentDidUpdate(prevProps) {
+        // Kiểm tra xem danh sách sản phẩm có thay đổi không
+        if (prevProps.products !== this.props.products) {
+            // Nếu có thay đổi, cập nhật trang hiện tại về trang 0
+            this.setState({
+                currentPage: 0,
+            })
+        }
+    }
+
     render() {
         const { products } = this.props
         const { currentPage, productsPerPage } = this.state
+
+        const pageCount = Math.ceil(products.length / productsPerPage)
+
+        if (pageCount <= 1) {
+            return (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 item items-center mt-5 mb-10">
+                    {products.map((product) => (
+                        <ProductItem key={product.id} product={product} />
+                    ))}
+                </div>
+            )
+        }
 
         const indexOfLastProduct = (currentPage + 1) * productsPerPage
         const indexOfFirstProduct = indexOfLastProduct - productsPerPage
@@ -34,12 +57,12 @@ class ProductList extends Component {
                     ))}
                 </div>
                 <ReactPaginate
-                    pageCount={Math.ceil(products.length / productsPerPage)}
+                    pageCount={pageCount}
                     pageRangeDisplayed={2}
                     marginPagesDisplayed={1}
                     onPageChange={this.handlePageChange}
                     containerClassName="pagination flex justify-center"
-                    activeClassName=" bg-blue-600 text-white"
+                    activeClassName={`bg-blue-700 text-white`}
                     pageClassName="mx-2 px-3 py-2 bg-gray-200 rounded-md hover:bg-gray-300 cursor-pointer active:bg-red-300"
                     previousLabel="Previous"
                     nextLabel="Next"
