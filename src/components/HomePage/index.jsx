@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Header from '../Layouts/Header'
 import Footer from '../Layouts/Footer'
-import Slider from './Slider'
 import ProductList from './ProductList'
 import ConsBages from '../ConsBages'
+import Category from './Category'
+import Slider from './Slider'
 
 class HomePage extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class HomePage extends Component {
         this.state = {
             products: [],
             isLoading: true,
+            selectedCategory: 'Tất cả',
         }
     }
 
@@ -31,7 +33,17 @@ class HomePage extends Component {
         return (
             <div className="max-w-[1200px] mx-auto">
                 <Header />
-                <Slider />
+                <div className="flex mt-2">
+                    <div className="w-1/6 border-r border-gray-300 pr-4 h-1">
+                        <Category />
+                    </div>
+
+                    <div className="relative w-5/6 overflow-hidden h-[23rem]">
+                        <div className="flex flex-col h-full">
+                            <Slider className="h-full" />
+                        </div>
+                    </div>
+                </div>
 
                 {isLoading ? (
                     <div className="flex items-center justify-center h-screen">
@@ -42,7 +54,6 @@ class HomePage extends Component {
                         <ProductList products={products} />
                     </>
                 )}
-
                 <ConsBages />
                 <Footer />
             </div>

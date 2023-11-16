@@ -17,7 +17,17 @@ class Category extends Component {
     render() {
         const { selectedCategory } = this.state
 
-        const categories = ['Cá Các Loại', 'Cá Hồi', 'Cua, Ghẹ', 'Ngao, Sò, Ốc', 'Tôm Các Loại', 'Mực Các Loại', 'Chế Biến Sẵn', 'Gia Vị - Sốt']
+        const categories = [
+            'Tất cả',
+            'Cá Các Loại',
+            'Tôm Các Loại',
+            'Mực Các Loại',
+            'Ngao, Sò, Ốc',
+            'Cá Hồi',
+            'Cua, Ghẹ',
+            'Gia Vị - Sốt',
+            'Chế Biến Sẵn',
+        ]
 
         return (
             <aside className="menu create-menu border-r border-gray-300 pr-4">
@@ -32,7 +42,7 @@ class Category extends Component {
                                 onClick={() => this.handleCategoryClick(category)}
                                 className={`relative text-left w-full menu-link text-base px-5 py-1 rounded-sm focus:outline-none ${
                                     selectedCategory === category
-                                        ? 'text-white bg-blue-500 font-bold  duration-500'
+                                        ? 'text-white bg-blue-500 font-bold w-full duration-500'
                                         : 'text-gray-500 hover:text-gray-800 hover:bg-gray-300'
                                 }`}
                             >
