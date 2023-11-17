@@ -1,36 +1,22 @@
 // ProductDetail.jsx
 import React from 'react'
-import { useParams } from 'react-router-dom'
+
 import advise from '../../assets/images/tuvandathang.png'
+import SkeletonItem from '../HomePage/SkeletonItem'
 
-const ProductDetail = () => {
-    const { id } = useParams()
+const ProductDetail = (props) => {
+    const { product } = props
 
-    // Giả sử bạn có một danh sách sản phẩm
-    const products = [
-        {
-            _id: '65368774acd9108bd4072bd9',
-            id: 'SP0001',
-            name: 'Sò điệp tươi ngon',
-            category: 'Sò điệp',
-            description: 'Sò điệp tươi ngon với hương vị tuyệt vời',
-            imageUrl: 'https://product.hstatic.net/1000030244/product/so_huyet_co_587441283cea427cb4c8ca78ab79c02f_grande.jpg',
-            weight: '200g',
-            price: '75000',
-            available: '20',
-            createdAt: '2023-10-23T14:47:16.034Z',
-            updatedAt: '2023-10-23T14:56:02.781Z',
-            __v: 0,
-        },
-        // Các sản phẩm khác
-    ]
+    if (Object.keys(product).length === 0) {
+        return (
+            <div>
+                <SkeletonItem />
+            </div>
+        )
+    }
 
-    // Tìm sản phẩm dựa trên productId
-    const product = products.find((item) => item.id === id)
-
-    // Kiểm tra xem sản phẩm có tồn tại hay không
-    if (!product) {
-        return <div>Product not found</div>
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price)
     }
 
     return (
@@ -49,44 +35,62 @@ const ProductDetail = () => {
                         <span className="mx-2 text-gray-500">&gt;</span>
                     </li>
 
-                    <li className="text-gray-500">{id}</li>
+                    <li className="text-gray-500">{product.id}</li>
                 </ul>
             </nav>
-            <div className="flex items-center content-center my-5">
-                <div className="flex-3">
-                    <img className="" src={product.imageUrl} alt={product.name} />
-                </div>
-                <div className="flex-2">
-                    <h3>{product.name}</h3>
-                    <p>
-                        Mã sản phẩm: <span>{product.id}</span>
-                    </p>
-                    <p>{product.price}</p>
-                    <p>
-                        Khối lượng: <span>{product.weight}</span>
-                    </p>
-                    <div className="flex items-center space-x-1">
-                        <button className="text-gray-600 focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
-                            </svg>
-                        </button>
-
-                        <input
-                            className="border border-gray-300 rounded-md py-1 px-2 w-10 text-center focus:outline-none"
-                            value="1" // Số lượng mặc định, bạn có thể thay đổi tùy vào logic của bạn
+            <div className="flex my-5">
+                <div className="basis-2/5 p-10 border rounded-md overflow-hidden">
+                    <div className="relative group">
+                        <img
+                            className="w-full h-auto transform transition-transform duration-300 group-hover:scale-110 cursor-zoom-in"
+                            src={product.imageUrl}
+                            alt={product.name}
                         />
-
-                        <button className="text-gray-600 focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                        </button>
                     </div>
-                    <button>Thêm vào giỏ</button>
                 </div>
-                <div className="flex-5">
-                    <img src={advise} alt="Tư vấn đặt hàng" className="flex-1 w-full h-auto rounded-md" />
+                <div className="basis-2/5 p-10">
+                    <h3 className="text-gray-700 font-bold text-4xl py-2">{product.name}</h3>
+                    <p className="text-gray-700 font-bold text-xl py-2">
+                        Mã sản phẩm: <span className="font-normal">{product.id}</span>
+                    </p>
+
+                    <p className="text-gray-700 font-bold text-xl py-2">
+                        Hạn sử dụng: <span className="font-normal">24 tháng kể từ ngày sản xuất, bảo quản nơi khô ráo thoáng mát</span>
+                    </p>
+
+                    <p className="text-red-400 text-xl font-semibold py-3">{formatPrice(product.price)}</p>
+                    <p className="text-gray-700 font-bold text-xl py-2">
+                        Trọng lượng: <span className="font-normal ">{product.weight}</span>
+                    </p>
+
+                    <div className="flex items-center py-2">
+                        <p className="text-gray-700 font-bold text-xl py-2">Số lượng: </p>
+
+                        <div className="flex items-center space-x-1 ml-5 border border-gray-300 rounded-full overflow-hidden my-2">
+                            <button className="text-gray-600 focus:outline-none p-2 hover:bg-gray-200 transition duration-300 active:bg-red-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
+                                </svg>
+                            </button>
+
+                            <input
+                                className="border-none rounded-full p-1 w-10 text-center focus:outline-none bg-gray-100"
+                                value="1" // Số lượng mặc định, bạn có thể thay đổi tùy vào logic của bạn
+                            />
+
+                            <button className="text-gray-600 focus:outline-none p-2 hover:bg-gray-200 transition duration-300 active:bg-red-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button className="buy-button bg-amber-400 text-white px-4 py-2 w-full rounded-md hover:bg-yellow-300 transition duration-300 my-3 mx-auto">
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+                <div className="basis-1/5">
+                    <img src={advise} alt="Tư vấn đặt hàng" className="flex-1 w-full h-auto rounded-md cursor-pointer" />
                 </div>
             </div>
         </>
