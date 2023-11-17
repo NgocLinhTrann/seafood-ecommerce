@@ -59,16 +59,18 @@ export default function Index() {
     }, [id])
 
     return (
-        <div className="max-w-[1200px] mx-auto">
+        <>
             <Header />
-            <ProductDetail product={product} />
+            <div className="max-w-[1200px] mx-auto">
+                <ProductDetail product={product} />
 
-            <div className="mb-10">
-                <h1 className="font-bold text-gray-700 text-2xl my-5">Các sản phẩm khác</h1>
-                {moreProducts.length === 0 ? <LoadingProduct /> : <ProductList products={moreProducts} productsPerPage={4} />}
+                <div className="mb-10">
+                    <h1 className="font-bold text-gray-700 text-2xl my-5">Các sản phẩm khác</h1>
+                    {moreProducts.length === 0 ? <LoadingProduct /> : <ProductList products={moreProducts} productsPerPage={4} />}
+                </div>
+                <ConsBages />
             </div>
-            <ConsBages />
             <Footer />
-        </div>
+        </>
     )
 }

@@ -50,34 +50,36 @@ class HomePage extends Component {
         const { filteredProducts, isLoading, selectedCategory } = this.state
 
         return (
-            <div className="max-w-[1200px] mx-auto">
+            <>
                 <Header />
-                <div className="flex mt-2">
-                    <div className="w-1/6 border-r border-gray-300 pr-4 h-1">
-                        <Category selectedCategory={selectedCategory} onCategoryChange={this.handleCategoryChange} />
-                    </div>
+                <div className="max-w-[1200px] mx-auto">
+                    <div className="flex mt-2">
+                        <div className="w-1/6 border-r border-gray-300 pr-4 h-1">
+                            <Category selectedCategory={selectedCategory} onCategoryChange={this.handleCategoryChange} />
+                        </div>
 
-                    <div className="relative w-5/6 overflow-hidden h-[23rem]">
-                        <div className="flex flex-col h-full">
-                            <Slider className="h-full" />
+                        <div className="relative w-5/6 overflow-hidden h-[23rem]">
+                            <div className="flex flex-col h-full">
+                                <Slider className="h-full" />
+                            </div>
                         </div>
                     </div>
+                    <h3 className="my-5 text-2xl font-semibold text-gray-700 text-shadow-md">{selectedCategory}</h3>
+                    {isLoading ? (
+                        <LoadingProduct />
+                    ) : (
+                        <>
+                            {filteredProducts.length === 0 ? (
+                                <div className="bg-red-100 p-4 text-gray-500 font-bold text-base">Danh mục này chưa có sản phẩm.</div>
+                            ) : (
+                                <ProductList products={filteredProducts} productsPerPage={8} />
+                            )}
+                        </>
+                    )}
+                    <ConsBages />
                 </div>
-                <h3 className="my-5 text-2xl font-semibold text-gray-700 text-shadow-md">{selectedCategory}</h3>
-                {isLoading ? (
-                    <LoadingProduct />
-                ) : (
-                    <>
-                        {filteredProducts.length === 0 ? (
-                            <div className="bg-red-100 p-4 text-gray-500 font-bold text-base">Danh mục này chưa có sản phẩm.</div>
-                        ) : (
-                            <ProductList products={filteredProducts} productsPerPage={8} />
-                        )}
-                    </>
-                )}
-                <ConsBages />
                 <Footer />
-            </div>
+            </>
         )
     }
 }

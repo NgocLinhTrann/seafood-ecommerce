@@ -65,7 +65,9 @@ const SearchPage = () => {
             ) : (
                 <>
                     {filteredProducts.length === 0 ? (
-                        <div className="bg-red-100 p-4 text-gray-500 font-bold text-base">Không tìm thấy sản phẩm phù hợp.</div>
+                        <div className="h-screen">
+                            <p className="bg-red-100 p-4 text-gray-500 font-bold text-base">Không tìm thấy sản phẩm phù hợp.</p>
+                        </div>
                     ) : (
                         <ProductList products={filteredProducts} productsPerPage={4} />
                     )}
