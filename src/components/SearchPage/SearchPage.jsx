@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import Header from '../Layouts/Header'
 import LoadingProduct from '../HomePage/LoadingProduct'
 import ProductList from '../HomePage/ProductList'
 
@@ -9,18 +8,6 @@ const SearchPage = () => {
     const [queryValue, setQueryValue] = useState('')
     const [filteredProducts, setFilteredProducts] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-
-    // useEffect(() => {
-    //     // Check if location exists before using it
-    //     if (location) {
-    //         const searchParams = new URLSearchParams(location.search)
-    //         const query = searchParams.get('query')
-
-    //         setQueryValue(query || '') // Set queryValue to the value or an empty string if null
-
-    //         // You can use the value of `query` for other processing here
-    //     }
-    // }, [location])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -80,7 +67,7 @@ const SearchPage = () => {
                     {filteredProducts.length === 0 ? (
                         <div className="bg-red-100 p-4 text-gray-500 font-bold text-base">Không tìm thấy sản phẩm phù hợp.</div>
                     ) : (
-                        <ProductList products={filteredProducts} />
+                        <ProductList products={filteredProducts} productsPerPage={4} />
                     )}
                 </>
             )}
