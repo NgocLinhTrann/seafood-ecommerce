@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 
 import advise from '../../assets/images/tuvandathang.png'
 import SkeletonItem from '../HomePage/SkeletonItem'
+import { useEffect } from 'react'
 
 const ProductDetail = (props) => {
     const { product } = props
@@ -14,6 +15,14 @@ const ProductDetail = (props) => {
     const handleDecreaseCount = () => {
         if (count > 1) setCount((prev) => prev - 1)
     }
+
+    const resetCount = () => {
+        setCount(0)
+    }
+
+    useEffect(() => {
+        resetCount()
+    }, [product])
 
     if (Object.keys(product).length === 0) {
         return (
