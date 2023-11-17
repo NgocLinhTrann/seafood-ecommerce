@@ -10,7 +10,6 @@ class ProductList extends Component {
         super(props)
         this.state = {
             currentPage: 0,
-            productsPerPage: 8, // Số lượng sản phẩm trên mỗi trang
         }
     }
 
@@ -31,8 +30,8 @@ class ProductList extends Component {
     }
 
     render() {
-        const { products } = this.props
-        const { currentPage, productsPerPage } = this.state
+        const { products, productsPerPage } = this.props
+        const { currentPage } = this.state
 
         const pageCount = Math.ceil(products.length / productsPerPage)
 
