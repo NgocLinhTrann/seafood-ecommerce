@@ -7,7 +7,6 @@ function ChangePassword() {
     return (
         <div>
             <Navigation />
-            {/* breadcrumbs */}
             <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
                 <ul className="flex items-center">
                     <li className="cursor-pointer">
@@ -34,11 +33,8 @@ function ChangePassword() {
                     <li className="text-gray-500">Đổi mật khẩu</li>
                 </ul>
             </nav>
-            {/* breadcrumbs */}
-
             <section className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10">
                 <Sidebar activePage="password"/>
-                {/* <!-- form  --> */}
                 <section
                     className="grid w-full max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10"
                 >
@@ -80,18 +76,14 @@ function ChangePassword() {
                                     placeholder=""
                                 />
                             </div>
-
                             <button className="mt-4 w-40 bg-amber-500 px-4 py-2 text-white">
                                 Lưu thay đổi
                             </button>
                         </form>
                     </div>
                 </section>
-                {/* <!-- /form  --> */}
-
             </section>
             <Footer />
-
         </div>
     )
 }

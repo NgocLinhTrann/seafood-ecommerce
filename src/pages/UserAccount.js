@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import Sidebar from "../components/Sidebar";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
 import Avatar from "../assets/images/avatar-photo.jpg";
+import Layout from "../components/Layout/Layout";
 
 function UserAccount() {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -16,11 +15,8 @@ function UserAccount() {
             reader.readAsDataURL(file);
         }
     };
-    
     return (
-        <div>
-            <Navigation />
-            {/* breadcrumbs */}
+        <Layout title={"Thông tin cá nhân"}>
             <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
                 <ul className="flex items-center">
                     <li className="cursor-pointer">
@@ -47,7 +43,6 @@ function UserAccount() {
                     <li className="text-gray-500">Thông tin cá nhân</li>
                 </ul>
             </nav>
-            {/* breadcrumbs */}
             <section className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10">
                 <Sidebar activePage="profile"/>
                 <section
@@ -90,11 +85,11 @@ function UserAccount() {
                                 <label className="flex mt-5">Giới tính</label>
                                 <div className="control mt-3 flex justify-normalh">
                                     <label className="radio">
-                                        <input classNameName="mr-1" type="radio" name="gender" />
+                                        <input className="mr-1" type="radio" name="gender" />
                                         Nam
                                     </label>
                                     <label className="radio ml-5">
-                                        <input classNameName="mr-1" type="radio" name="gender" />
+                                        <input className="mr-1" type="radio" name="gender" />
                                         Nữ
                                     </label>
                                 </div>
@@ -114,8 +109,7 @@ function UserAccount() {
                     </div>
                 </section>
             </section>
-            <Footer />
-        </div>
+        </Layout>
     )
 }
 
