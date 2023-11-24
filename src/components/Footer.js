@@ -14,14 +14,13 @@ function Footer() {
                         src={Logo}
                         alt="company logo"
                     />
-                    {/* <div className=' text-white text-3xl font-extrabold'>OCEANS</div> */}
-
                     <p className="pl-0 text-white">
                         Uy tín tạo nên thương hiệu.<br />
                     </p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    
                     <div className="mx-5 mt-10">
                         <p className="font-medium text-white">CHĂM SÓC KHÁCH HÀNG</p>
                         <ul className="text-sm leading-8">
@@ -73,7 +72,6 @@ function Footer() {
                     </div>
                 </div>
             </footer>
-
             <div className='grid justify-items-center text-slate-500'>
                 <div>
                     <TextLineCenter text="@ Bản quyền thuộc về Oceans | 2023" />

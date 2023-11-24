@@ -1,13 +1,11 @@
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import Avatar from "../assets/images/avatar-photo.jpg";
 import Sidebar from "../components/Sidebar";
 
 function ManageAddress() {
     return (
         <div>
             <Navigation />
-            {/* breadcrumbs */}
             <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
                 <ul className="flex items-center">
                     <li className="cursor-pointer">
@@ -34,52 +32,16 @@ function ManageAddress() {
                     <li className="text-gray-500">Địa chỉ</li>
                 </ul>
             </nav>
-            {/* breadcrumbs */}
             <div
                 className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10"
             >
                 <Sidebar activePage="address"/>
-
-                {/* <!-- form  --> */}
                 <div
                     className="grid w-full max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10"
                 >
                     <div className="py-5">
                         <div className="w-full"></div>
                         <form className="flex w-full flex-col gap-3" action="">
-                            {/* <div className="flex w-full flex-col">
-                                <label className="flex" for="name"
-                                >Country<span
-                                    className="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"
-                                ></span></label>
-                                <input
-                                    className="w-full border px-4 py-2 lg:w-1/2"
-                                    type="text"
-                                    placeholder="Serbia"
-                                />
-                            </div>
-
-                            <div className="flex w-full flex-col">
-                                <label className="flex" for="name"
-                                >City<span
-                                    className="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"
-                                ></span></label>
-                                <input
-                                    className="w-full border px-4 py-2 lg:w-1/2"
-                                    type="text"
-                                    placeholder="Belgrade"
-                                />
-                            </div>
-
-                            <div className="flex flex-col">
-                                <label for="">Zip Code</label>
-                                <input
-                                    x-mask="999999"
-                                    className="w-full border px-4 py-2 lg:w-1/2"
-                                    placeholder="240116"
-                                />
-                            </div> */}
-
                             <div className="flex flex-col">
                                 <label className="mt-5">Địa chỉ</label>
                                 <div className="control flex justify-between w-full  py-2 lg:w-1/2">
@@ -110,18 +72,15 @@ function ManageAddress() {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="control mt-3 font-medium">
                                 <input className="input w-full border px-4 py-2 lg:w-1/2" type="text" placeholder="Số nhà/tên đường" />
                             </div>
-
                             <button className="mt-4 w-40 bg-amber-500 px-4 py-2 text-white">
                                 Lưu thay đổi
                             </button>
                         </form>
                     </div>
                 </div>
-                {/* /form */}
             </div>
             <Footer />
         </div>
