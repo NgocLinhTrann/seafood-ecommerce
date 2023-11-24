@@ -7,7 +7,6 @@ function MyOrderHistory() {
     return (
         <div>
             <Navigation />
-            {/* breadcrumbs */}
             <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
                 <ul className="flex items-center">
                     <li className="cursor-pointer">
@@ -34,15 +33,10 @@ function MyOrderHistory() {
                     <li className="text-gray-500">Lịch sử đơn hàng</li>
                 </ul>
             </nav>
-            {/* breadcrumbs */}
-
             <section className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10">
                 <Sidebar/>
-
             </section>
-
             <Footer/>
-
         </div>
 
     )

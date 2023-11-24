@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { VscAccount } from 'react-icons/vsc'
-import { BsCart3 } from 'react-icons/bs'
+import React, { Component } from 'react';
+import { NavLink, Link } from "react-router-dom";
+import { VscAccount } from 'react-icons/vsc';
+import { BsCart3 } from 'react-icons/bs';
 
 class Header extends Component {
     constructor(props) {
@@ -36,13 +37,13 @@ class Header extends Component {
             <div className="bg-cyan-500">
                 <div className="bg-cyan-500 max-w-[1200px] mx-auto ">
                     <header className="mx-auto flex h-16  items-center justify-between px-5">
-                        <a href="/">
+                        <Link to="/">
                             <div className="text-white text-3xl font-extrabold place-items-centerr">
                                 <span className="text-base">SEAFOOD</span>
                                 <br />
                                 <div>HARBOR</div>
                             </div>
-                        </a>
+                        </Link>
 
                         <div className="hidden h-9 w-2/5 items-center border md:flex bg-white rounded-lg">
                             <svg
@@ -79,46 +80,57 @@ class Header extends Component {
                         </div>
 
                         <div className="hidden gap-3 md:flex">
-                            <a href="/cart" className="flex cursor-pointer flex-col items-center justify-center">
+                            <NavLink to="/cart" className="flex cursor-pointer flex-col items-center justify-center">
                                 <BsCart3 size={24} className="text-white hover:text-yellow-400" />
-                            </a>
+                            </NavLink>
 
-                            <a href="/user-account" className="relative flex cursor-pointer flex-col items-center justify-center">
+                            <NavLink to="/user-account" className="relative flex cursor-pointer flex-col items-center justify-center">
                                 <VscAccount size={24} className="text-white hover:text-yellow-400" />
-                            </a>
+                            </NavLink>
                         </div>
                     </header>
                     <nav className="relative bg-cyan-500">
                         <div className="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
                             <div className="mx-7 flex gap-8">
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="/">
+                                <NavLink 
+                                    className="font-light text-white duration-100 hover:text-yellow-400" 
+                                    to="/"
+                                    >
                                     Trang chủ
-                                </a>
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="catalog.html">
+                                </NavLink>
+                                <NavLink 
+                                    className="font-light text-white duration-100 hover:text-yellow-400" 
+                                    to="/instruction"
+                                    >
                                     Hướng dẫn mua hàng
-                                </a>
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="about-us.html">
+                                </NavLink>
+                                <NavLink 
+                                    className="font-light text-white duration-100 hover:text-yellow-400" 
+                                    to="/about"
+                                    >
                                     Về chúng tôi
-                                </a>
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="contact-us.html">
+                                </NavLink>
+                                <NavLink 
+                                    className="font-light text-white duration-100 hover:text-yellow-400" 
+                                    to="/support">
                                     Hỗ trợ
-                                </a>
+                                </NavLink>
                             </div>
 
                             <div className="ml-auto flex gap-4 px-5">
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="/login">
+                                <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/login">
                                     Đăng nhập
-                                </a>
+                                </NavLink>
 
                                 <span className="text-white">&#124;</span>
 
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="/signup">
+                                <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/register">
                                     Đăng ký
-                                </a>
+                                </NavLink>
 
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="/admin-page">
+                                <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/admin-page">
                                     Admin
-                                </a>
+                                </NavLink>
                             </div>
                         </div>
                     </nav>

@@ -1,10 +1,9 @@
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import Layout from "../../components/Layouts/Layout";
+import { Link } from "react-router-dom";
 
-function SignUpPage() {
+function Register() {
     return (
-        <div>
-            <Navigation />
+        <Layout title={"Đăng ký tài khoản"}>
             <section className="mx-auto mt-10 w-full flex-grow mb-10 max-w-[1200px] px-5">
                 <div className="container mx-auto border px-5 py-5 shadow-sm md:w-1/2">
                     <div className="flex justify-center">
@@ -29,14 +28,12 @@ function SignUpPage() {
                                     Nữ
                                 </label>
                             </div>
-
                             <div className="field">
                                 <label className="label mt-5 font-medium">Email</label>
                                 <div className="control">
                                     <input className="input" type="email" placeholder="nguyenvana@gmail.com" />
                                 </div>
                             </div>
-
                             <div className="field">
                                 <label className="label mt-5 font-medium">Địa chỉ</label>
                                 <div className="control flex justify-between">
@@ -48,7 +45,6 @@ function SignUpPage() {
                                             <option>Hải Phòng</option>
                                         </select>
                                     </div>
-
                                     <div className="select ml-2">
                                         <select>
                                             <option>Quận/Huyện</option>
@@ -57,7 +53,6 @@ function SignUpPage() {
                                             <option>Bình Thạnh</option>
                                         </select>
                                     </div>
-
                                     <div className="select ml-2">
                                         <select>
                                             <option>Phường/Xã</option>
@@ -66,41 +61,35 @@ function SignUpPage() {
                                         </select>
                                     </div>
                                 </div>
-
                                 <div className="control mt-3 font-medium">
                                     <input className="input" type="text" placeholder="Số nhà/tên đường" />
                                 </div>
                             </div>
-
                             <div className="field">
                                 <label className="label mt-5 font-medium">Số điện thoại</label>
                                 <div className="control">
                                     <input className="input" type="tel" placeholder="0391222927" />
                                 </div>
                             </div>
-
                             <div className="field">
                                 <label className="label mt-5 font-medium">Mật khẩu</label>
                                 <div className="control">
                                     <input className="input" type="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
                                 </div>
                             </div>
-
                             <button className="my-5 w-full py-2 text-white bg-amber-500 rounded">
                                 TẠO TÀI KHOẢN
                             </button>
-
                             <p className="text-center">
                                 Bạn đã có tài khoản?
-                                <a href="login.html" className="text-violet-900 ml-1.5 font-normal">Đăng nhập</a>
+                                <Link to="/login" className="text-violet-900 ml-1.5 font-normal">Đăng nhập</Link>
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
-            <Footer />
-        </div>
+        </Layout>
     )
 }
 
-export default SignUpPage;
+export default Register;

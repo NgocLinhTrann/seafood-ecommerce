@@ -1,23 +1,18 @@
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
 import { PiTrashLight } from "react-icons/pi";
-import PaymentModal from "../components/PaymentModal";
+import PaymentModal from "../../components/PaymentModal";
 import { useState } from "react";
+import Layout from "../../components/Layouts/Layout";
 
 function Cart() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const handleOpenModal = () => {
         setIsModalOpen(true);
     };
-
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
-
     return (
-        <div>
-            <Navigation />
+        <Layout title={"Giỏ hàng của bạn"}>
             {/* breadcrumbs */}
             <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
                 <ul className="flex items-center">
@@ -41,12 +36,10 @@ function Cart() {
                     <li>
                         <span className="mx-2 text-gray-500">&gt;</span>
                     </li>
-
                     <li className="text-gray-500">Giỏ hàng</li>
                 </ul>
             </nav>
             {/* breadcrumbs */}
-
             <div className="flex flex-col h-screen justify-between">
                 <div
                     className="container mx-auto flex-grow max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10"
@@ -67,13 +60,11 @@ function Cart() {
                             </thead>
                             <tbody>
                                 {/* <!-- 1 --> */}
-
                                 <tr className="h-[100px] border-b">
                                     <td className="align-middle">
                                         <div className="flex">
                                             <img
                                                 className="w-[90px]"
-                                                // src="./assets/images/bedroom.png"
                                                 src="https://product.hstatic.net/1000030244/product/cua_gach-01_a76583ad7f5740f6a0e6747e3c045395_1024x1024.png"
                                                 alt="bedroom image"
                                             />
@@ -83,7 +74,6 @@ function Cart() {
                                             </div>
                                         </div>
                                     </td>
-                                    {/* flex justify-start */}
                                     <td className="mx-auto text-center align-middle">200,000</td>
                                     <td className="align-middle">
                                         <div className="flex items-center justify-center">
@@ -109,15 +99,12 @@ function Cart() {
                                         <div className="text-rose-600 cursor-pointer hover:text-rose-500"><PiTrashLight size={24} /></div>
                                     </td>
                                 </tr>
-
                                 {/* <!-- 2 --> */}
-
                                 <tr className="h-[100px] border-b">
                                     <td className="align-middle">
                                         <div className="flex">
                                             <img
                                                 className="w-[90px]"
-                                                // src="./assets/images/product-chair.png"
                                                 src="https://product.hstatic.net/1000030244/product/_600___600_px___1080___1080_px___1800___1206_px___1080___1080_px___24__0400981543944694ba9697e04bb68414_1024x1024.png"
                                                 alt="Chair Image"
                                             />
@@ -152,13 +139,11 @@ function Cart() {
                                         <div className="text-rose-600 cursor-pointer hover:text-rose-500"><PiTrashLight size={24} /></div>
                                     </td>
                                 </tr>
-
                                 <tr className="h-[100px] border-b">
                                     <td className="align-middle">
                                         <div className="flex">
                                             <img
                                                 className="w-[90px]"
-                                                // src="./assets/images/product-chair.png"
                                                 src="https://product.hstatic.net/1000030244/product/bn_31c802667db84419a4411ea7aab79302_1024x1024.jpg"
                                                 alt="Chair Image"
                                             />
@@ -193,13 +178,11 @@ function Cart() {
                                         <div className="text-rose-600 cursor-pointer hover:text-rose-500"><PiTrashLight size={24} /></div>
                                     </td>
                                 </tr>
-
                                 <tr className="h-[100px] border-b">
                                     <td className="align-middle">
                                         <div className="flex">
                                             <img
                                                 className="w-[90px]"
-                                                // src="./assets/images/product-chair.png"
                                                 src="https://product.hstatic.net/1000030244/product/z2634271839169_ff77f96dc244dab90ba3b344aaa8a895_f23bcd0bf1e44a9eb7cd0cd6493e43ef_1024x1024.jpg"
                                                 alt="Chair Image"
                                             />
@@ -237,10 +220,7 @@ function Cart() {
                             </tbody>
                         </table>
                     </div>
-                    {/* <!-- /Desktop cart table  --> */}
-
                     {/* <!-- Summary  --> */}
-
                     <div className="mx-auto w-full px-4 md:max-w-[400px]">
                         <div className="">
                             <div className="border py-5 px-4 shadow-md">
@@ -278,10 +258,8 @@ function Cart() {
                         </div>
                     </div>
                 </div>
-                {/* <!-- /Summary --> */}
             </div>
-            <Footer />
-        </div>
+        </Layout>
     )
 }
 
