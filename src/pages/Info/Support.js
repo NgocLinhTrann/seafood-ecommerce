@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/Layouts/Layout";
+import Layout from "../../components/Layouts/Layout";
 
 const Support = () => {
     return (
@@ -8,6 +8,5 @@ const Support = () => {
         </Layout>
     )
 };
-
 
 export default Support;

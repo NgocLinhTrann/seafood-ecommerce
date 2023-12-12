@@ -61,7 +61,7 @@ function AddProduct() {
                                 <li>
                                     <a
                                         className="bg-teal-600 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                                        href="ad-manage-product"
+                                        href="/ad-manage-product"
                                     >
                                         <GoTasklist size={23} />
                                         Sản phẩm

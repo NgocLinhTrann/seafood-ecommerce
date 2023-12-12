@@ -8,15 +8,12 @@ function ManageOrder() {
     useEffect(() => {
         fetchOrders();
     }, []);
-
-
     const columnNameMapping = {
         'Mã đơn hàng': 'id',
         'Mã khách hàng': 'userId',
         'Tổng tiền': 'totalPrice',
         'Trạng thái': 'status'
     };
-
     const displayColumns = Object.keys(columnNameMapping);
     return (
         <div className="flex justify-start">

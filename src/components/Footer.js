@@ -1,6 +1,5 @@
 import Logo from '../assets/images/logo_seafood.png';
 import { BiLogoFacebookCircle, BiLogoLinkedinSquare, BiLogoInstagramAlt } from "react-icons/bi";
-import TextLineCenter from './TextLineCenter';
 
 function Footer() {
     return (
@@ -72,11 +71,6 @@ function Footer() {
                     </div>
                 </div>
             </footer>
-            <div className='grid justify-items-center text-slate-500'>
-                <div>
-                    <TextLineCenter text="@ Bản quyền thuộc về Oceans | 2023" />
-                </div>
-            </div>
         </div>
     )
 }

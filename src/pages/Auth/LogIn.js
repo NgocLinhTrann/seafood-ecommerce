@@ -4,30 +4,39 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth";
 
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://daohaisan.azurewebsites.net/api/user/login", {
+            const res = await axios.post("https://seafoodharbor.azurewebsites.net/api/user/login", {
                 email,
                 password
             });
             if (res && res.data.message === "Successfully") {
                 toast.success("Đăng nhập thành công!");
+                setAuth({
+                    ...auth, 
+                    user: res.data.data.userInfo,
+                    token: res.data.data.token,
+                });
+                localStorage.setItem("auth", JSON.stringify(res.data.data));
                 setTimeout(() => navigate("/"), 200);
                 // Store the token (res.data.data.token) and other user information as needed
                 // You can use local storage or state management for this
+
             } else {
-                toast.error("Đăng nhập không thành công, hãy kiểm tra lại!");
+                toast.error("Email hoặc mật khẩu không đúng, hãy kiểm tra lại!");
             }
         } catch (error) {
             console.log(error);
-            toast.error("Something went wrong");
+            toast.error("Email hoặc mật khẩu không đúng, hãy kiểm tra lại!");
         }
     };
     return (

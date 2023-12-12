@@ -5,8 +5,6 @@ const NavigationContext = createContext();
 
 function NavigationProvider({children}){
     const [currentPath, setCurrentPath] = useState(window.location.pathname);
-
-    //handling user clicking forward and back
     useEffect(()=> {
         const handler = () => {
             setCurrentPath(window.location.pathname);
