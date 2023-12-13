@@ -4,7 +4,8 @@ import { useAuth } from "../../context/auth";
 import Layout from '../../components/Layouts/Layout';
 import toast from "react-hot-toast";
 import axios from "axios";
-import { FaEye, FaEyeSlash  } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { RxEyeClosed } from "react-icons/rx";
 
 function ChangePassword() {
   const [auth, setAuth] = useAuth();
@@ -13,9 +14,19 @@ function ChangePassword() {
   const [retypePassword, setRetypePassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showRetypePassword, setShowRetypePassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const toggleNewPasswordVisibility = () => {
+    setShowNewPassword((prevShowNewPassword) => !prevShowNewPassword);
+  };
+
+  const toggleRetypePasswordVisibility = () => {
+    setShowRetypePassword((prevShowRetypePassword) => !prevShowRetypePassword);
   };
 
   useEffect(() => {
@@ -88,47 +99,49 @@ function ChangePassword() {
                           <div class="form__input-wrapper relative pl-8 w-4/6">
                             <input
                               required
-                              type="text"
+                              type={showPassword ? 'text' : 'password'}
                               id="current_password"
                               class="form-control outline-none border rounded border-gray-300 px-4 py-2 w-full"
                               size="40"
-                              value={password}
                               onChange={(e) => setPassword(e.target.value)}
                             />
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                              <FaEye />
-                            </div>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                              <FaEyeSlash />
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3" onClick={togglePasswordVisibility}>
+                              {showPassword ? <FaEye /> : <RxEyeClosed />}
                             </div>
                           </div>
                         </div>
                         <div class="form__line-wrapper flex items-center mb-4 border-gray-300 pb-2">
-                          <label class='w-2/6 text-right text-gray-600'>Mật khẩu <span class="text-red-500">*</span></label>
-                          <div class="form__input-wrapper pl-8 w-4/6">
+                          <label class='w-2/6 text-right text-gray-600'>Mật khẩu mới: <span class="text-red-500">*</span></label>
+                          <div class="form__input-wrapper relative pl-8 w-4/6">
                             <input
                               required
-                              type="text"
+                              type={showNewPassword ? 'text' : 'password'}
                               id="new_password"
                               class="form-control outline-none border rounded border-gray-300 px-4 py-2 w-full"
                               size="40"
                               value={newpassword}
                               onChange={(e) => setNewPassword(e.target.value)}
                             />
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3" onClick={toggleNewPasswordVisibility}>
+                              {showNewPassword ? <FaEye /> : <RxEyeClosed />}
+                            </div>
                           </div>
                         </div>
                         <div class="form__line-wrapper flex items-center mb-4 border-gray-300 pb-2">
-                          <label class='w-2/6 text-right text-gray-600'>Mật khẩu hiện tại:<span class="text-red-500">*</span></label>
-                          <div class="form__input-wrapper pl-8 w-4/6">
+                          <label class='w-2/6 text-right text-gray-600'>Nhập lại mật khẩu:<span class="text-red-500">*</span></label>
+                          <div class="form__input-wrapper relative pl-8 w-4/6">
                             <input
                               required
-                              type="text"
+                              type={showRetypePassword ? 'text' : 'password'}
                               id="new_password"
                               class="form-control outline-none border rounded border-gray-300 px-4 py-2 w-full"
                               size="40"
                               value={retypePassword}
                               onChange={(e) => setRetypePassword(e.target.value)}
                             />
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3" onClick={toggleRetypePasswordVisibility}>
+                              {showRetypePassword ? <FaEye /> : <RxEyeClosed />}
+                            </div>
                           </div>
                         </div>
                         <div className="flex justify-start place-items-center">
