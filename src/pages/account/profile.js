@@ -242,7 +242,6 @@ function Profile() {
                             <div className="form__input-wrapper grow-0 shrink-0 w-3/4 mb-0 pl-8 flex items-center box-border">
                                 <button
                                     onClick={handleSubmit}
-                                    type="submit"
                                     className="text-sm font-medium text-white rounded bgcolor-app-primary relative inline-block py-2.5 px-7"
                                 >
                                     {loading ? (

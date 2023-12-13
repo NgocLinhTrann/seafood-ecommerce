@@ -2,13 +2,70 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../../components/MyAccount/Sidebar';
 import { useAuth } from "../../context/auth";
 import Layout from '../../components/Layouts/Layout';
+import toast from "react-hot-toast";
+import axios from "axios";
+import { FaEye, FaEyeSlash  } from "react-icons/fa";
 
 function ChangePassword() {
   const [auth, setAuth] = useAuth();
   const [password, setPassword] = useState();
   const [newpassword, setNewPassword] = useState();
+  const [retypePassword, setRetypePassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  useEffect(() => {
+    if (auth?.user) {
+      const { password } = auth.user;
+      setPassword(password);
+    }
+  }, [auth?.user]);
+
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      if (newpassword !== retypePassword) {
+        console.error("New password and retype password do not match");
+        toast.error("Mật khẩu nhập lại không trùng với mật khẩu mới");
+        return;
+      }
+      const data = {
+        password: newpassword
+      }
+      const response = await axios.put('https://seafoodharbor.azurewebsites.net/api/user/changePass', data, {
+        headers: {
+          'Authorization': `Bearer ${auth.token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log("99-response.data: ");
+      console.log(response.data);
+      const newData = response.data.data.newUser;
+      const updatedPassword = newData.password;
+      setPassword(updatedPassword);
+      setAuth({ token: auth.token, user: newData });
+
+      console.log("99-newData.password: ");
+      console.log(newData.password);
+
+      let ls = localStorage.getItem("auth");
+      ls = JSON.parse(ls);
+      console.log("Before updating local storage:", ls);
+      ls.user = newData;
+      localStorage.setItem("auth", JSON.stringify(ls));
+      console.log("After updating local storage:", localStorage.getItem("auth"));
+      toast.success(response.data.message);
+    } catch (error) {
+      console.error("Error updating password:", error);
+      toast.error("Error updating password");
+    } finally {
+      setLoading(false);
+    }
+  }
   return (
     <Layout title="Thay đổi mật khẩu">
       <div className='bgcolor-app-gray'>
@@ -26,22 +83,28 @@ function ChangePassword() {
                     </div>
                     <div className='box-info-account py-4 px-6 box-border block'>
                       <div class="form-update max-w-xl m-0 p-0 block box-border font-medium" id="customer_update_form">
-                        <div class="form__line-wrapper flex items-center mb-4 text-base text-left box-border">
-                          {/* <label className='grow-0 shrink-0 w-1/4 text-right mb-0 inline-block box-border'>Mật khẩu hiện tại</label> */}
-                          <label className='grow-0 shrink-0 w-2/6 text-right mb-0 inline-block box-border'>Mật khẩu hiện tại <span class="text-red-500">*</span></label>
-                          <div class="form__input-wrapper pl-8 w-4/6">
+                        <div class="form__line-wrapper flex items-center mb-4 border-gray-300 pb-2">
+                          <label class='w-2/6 text-right text-gray-600'>Mật khẩu hiện tại: <span class="text-red-500">*</span></label>
+                          <div class="form__input-wrapper relative pl-8 w-4/6">
                             <input
                               required
                               type="text"
                               id="current_password"
                               class="form-control outline-none border rounded border-gray-300 px-4 py-2 w-full"
                               size="40"
-                            // onChange={(e) => setName(e.target.value)}
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
                             />
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                              <FaEye />
+                            </div>
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                              <FaEyeSlash />
+                            </div>
                           </div>
                         </div>
                         <div class="form__line-wrapper flex items-center mb-4 border-gray-300 pb-2">
-                          <label class='w-2/6 text-right text-gray-600'>Mật khẩu mới <span class="text-red-500">*</span></label>
+                          <label class='w-2/6 text-right text-gray-600'>Mật khẩu <span class="text-red-500">*</span></label>
                           <div class="form__input-wrapper pl-8 w-4/6">
                             <input
                               required
@@ -49,30 +112,28 @@ function ChangePassword() {
                               id="new_password"
                               class="form-control outline-none border rounded border-gray-300 px-4 py-2 w-full"
                               size="40"
-                            // value={phone}
-                            // onChange={(e) => setPhone(e.target.value)}
+                              value={newpassword}
+                              onChange={(e) => setNewPassword(e.target.value)}
                             />
                           </div>
                         </div>
-                        <div class="form__line-wrapper flex items-center mb-4 box-border">
-                          <label className='grow-0 shrink-0 w-2/6 text-right mb-0 box-border'>Nhập lại mật khẩu <span class="text-red-500">*</span></label>
-                          {/* <label class='grow-0 shrink-0 w-2/6 text-right mb-0 box-border'>
-                            <span>Nhập lại mật </span><span class="text-red-500">*</span>
-                          </label> */}
+                        <div class="form__line-wrapper flex items-center mb-4 border-gray-300 pb-2">
+                          <label class='w-2/6 text-right text-gray-600'>Mật khẩu hiện tại:<span class="text-red-500">*</span></label>
                           <div class="form__input-wrapper pl-8 w-4/6">
                             <input
                               required
                               type="text"
-                              id="retype_password"
+                              id="new_password"
                               class="form-control outline-none border rounded border-gray-300 px-4 py-2 w-full"
                               size="40"
-                            // onChange={(e) => setEmail(e.target.value)}
+                              value={retypePassword}
+                              onChange={(e) => setRetypePassword(e.target.value)}
                             />
                           </div>
                         </div>
                         <div className="flex justify-start place-items-center">
                           <button
-                            // onClick={handleSubmit}
+                            onClick={handleSubmit}
                             type="submit"
                             className="bg-blue-500 text-white p-2 rounded-md"
                           >
