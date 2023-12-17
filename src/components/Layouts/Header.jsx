@@ -1,14 +1,48 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from "react-router-dom";
-import { VscAccount } from 'react-icons/vsc';
 import { BsCart3 } from 'react-icons/bs';
+import { Link, Navigate } from 'react-router-dom';
+import { Badge } from '@mui/material';
+
+import { styled } from '@mui/material/styles';
+import Avatar from '@mui/material/Avatar';
+import avatarPicture from './../../assets/dnh_assets/userAvatar.jpg';
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+        backgroundColor: '#44b700',
+        color: '#44b700',
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        '&::after': {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            borderRadius: '50%',
+            animation: 'ripple 1.2s infinite ease-in-out',
+            border: '1px solid currentColor',
+            content: '""',
+        },
+    },
+    '@keyframes ripple': {
+        '0%': {
+            transform: 'scale(.8)',
+            opacity: 1,
+        },
+        '100%': {
+            transform: 'scale(2.4)',
+            opacity: 0,
+        },
+    },
+}));
 
 class Header extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             inputValue: '',
-        }
+            renderSearchPage: false,
+        };
     }
 
     handleChange = (event) => {
@@ -17,22 +51,24 @@ class Header extends Component {
                 inputValue: event.target.value,
             },
             () => {
-                console.log(this.state.inputValue)
+                console.log(this.state.inputValue);
             }
-        )
-    }
+        );
+    };
     handleSearch = () => {
-        const { inputValue } = this.state
-        window.location.href = `/search?query=${inputValue}`
-    }
+        this.setState({ renderSearchPage: true });
+    };
 
     handleKeyPress = (event) => {
-        // Kiểm tra nếu phím được nhấn là Enter (keyCode 13)
         if (event.key === 'Enter') {
-            this.handleSearch()
+            this.handleSearch();
         }
-    }
+    };
     render() {
+        console.log('check header props', this.props.userInfo);
+        if (this.state.renderSearchPage) {
+            return <Navigate to={`/search?query=${this.state.inputValue}`} />;
+        }
         return (
             <div className="bg-cyan-500">
                 <div className="bg-cyan-500 max-w-[1200px] mx-auto ">
@@ -79,65 +115,73 @@ class Header extends Component {
                             </button>
                         </div>
 
-                        <div className="hidden gap-3 md:flex">
-                            <NavLink to="/cart" className="flex cursor-pointer flex-col items-center justify-center">
-                                <BsCart3 size={24} className="text-white hover:text-yellow-400" />
-                            </NavLink>
+                        <div className="hidden gap-5 md:flex">
+                            <Link
+                                to="/cart"
+                                className="flex cursor-pointer flex-col items-center justify-center"
+                            >
+                                <Badge badgeContent={999} color="error">
+                                    <BsCart3
+                                        size={24}
+                                        className="text-white hover:text-yellow-400"
+                                    />
+                                </Badge>
+                            </Link>
 
-                            <NavLink to="/user-account" className="relative flex cursor-pointer flex-col items-center justify-center">
-                                <VscAccount size={24} className="text-white hover:text-yellow-400" />
-                            </NavLink>
+                            <Link
+                                to="/account"
+                                className="relative flex cursor-pointer flex-col items-center justify-center"
+                            >
+                                <StyledBadge
+                                    overlap="circular"
+                                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                    variant="dot"
+                                >
+                                    <Avatar alt="User Avatar" src={avatarPicture} />
+                                </StyledBadge>
+                            </Link>
                         </div>
                     </header>
                     <nav className="relative bg-cyan-500">
                         <div className="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
                             <div className="mx-7 flex gap-8">
-                                <NavLink 
-                                    className="font-light text-white duration-100 hover:text-yellow-400" 
+                                <Link
+                                    className="font-light text-white duration-100 hover:text-yellow-400"
                                     to="/"
-                                    >
+                                >
                                     Trang chủ
-                                </NavLink>
-                                <NavLink 
-                                    className="font-light text-white duration-100 hover:text-yellow-400" 
-                                    to="/instruction"
-                                    >
+                                </Link>
+                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="catalog.html">
                                     Hướng dẫn mua hàng
-                                </NavLink>
-                                <NavLink 
-                                    className="font-light text-white duration-100 hover:text-yellow-400" 
-                                    to="/about"
-                                    >
+                                </a>
+                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="about-us.html">
                                     Về chúng tôi
-                                </NavLink>
-                                <NavLink 
-                                    className="font-light text-white duration-100 hover:text-yellow-400" 
-                                    to="/support">
+                                </a>
+                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="contact-us.html">
                                     Hỗ trợ
-                                </NavLink>
+                                </a>
                             </div>
-
                             <div className="ml-auto flex gap-4 px-5">
-                                <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/login">
+                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="/login">
                                     Đăng nhập
-                                </NavLink>
+                                </a>
 
                                 <span className="text-white">&#124;</span>
 
-                                <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/register">
+                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="/signup">
                                     Đăng ký
-                                </NavLink>
+                                </a>
 
-                                <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/admin-page">
+                                <Link className="font-light text-white duration-100 hover:text-yellow-400" href="/admin-page">
                                     Admin
-                                </NavLink>
+                                </Link>
                             </div>
                         </div>
                     </nav>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default Header
+export default Header;

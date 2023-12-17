@@ -16,6 +16,8 @@ import DetailProduct from './components/DetailProduct';
 import LogIn from './pages/Auth/LogIn';
 import Register from './pages/Auth/Register';
 import HomePageLinhTest from './pages/HomePageLinhTest';
+import HomePage from './components/HomePage';
+
 // Account pages
 import Account from "./pages/account";
 import OrdersHistory from "./pages/account/orders_history";
@@ -53,7 +55,7 @@ const App = () => {
                 <Route path="/account/orders-history" element={<OrdersHistory />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
                 <Route path="/account/change-avatar" element={<ChangeAvatar />} />
-                <Route path="/" element={<HomePageLinhTest />} />
+                <Route path="/" element={<HomePage />} />
 
                 {/* More pages */}
                 <Route path="/instruction" element={<Instruction />} />
