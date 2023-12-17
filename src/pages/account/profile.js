@@ -11,30 +11,17 @@ function Profile() {
     const [phone, setPhone] = useState("");
     const [gender, setGender] = useState("");
     const [address, setAddress] = useState("");
-    const [avatar, setAvatar] = useState(null);
-    const [avatarUrl, setAvatarUrl] = useState("");
-    const [avatarPreview, setAvatarPreview] = useState("");
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (auth?.user) {
-            const { email, fullname, phone, gender, avatar, avatarUrl, address } = auth.user;
+            const { email, fullname, phone, gender, address } = auth.user;
             setName(fullname);
             setPhone(phone);
             setEmail(email);
             setGender(gender);
             setAddress(address);
-            setAvatarUrl(avatarUrl);
-            setAvatar(avatar);
-            setAvatarPreview(avatar);
         }
     }, [auth?.user]);
-
-    const handleAvatarChange = (e) => {
-        const file = e.target.files[0];
-        setAvatar(file);
-        setAvatarPreview(URL.createObjectURL(file));
-    };
-
     const handleSubmit = async () => {
         try {
             setLoading(true);
@@ -44,39 +31,32 @@ function Profile() {
                     email: email,
                     phone: phone,
                     gender: gender,
-                    avatar: avatar ? "file selected" : null,
                 }) !==
                 JSON.stringify({
                     fullname: auth.user.fullname,
                     email: auth.user.email,
                     phone: auth.user.phone,
                     gender: auth.user.gender,
-                    avatar: auth.user.avatar ? "file selected" : null,
                 });
 
             if (!hasChanged) {
                 toast.error("Không có gì để cập nhật");
                 return;
             }
-            const formData = new FormData();
-            const fields = ["fullname", "email", "phone", "gender", "address"];
-            fields.forEach((field) => {
-                if (auth.user[field] !== eval(field)) {
-                    formData.append(field, eval(field));
-                } else {
-                    formData.append(field, auth.user[field]);
-                }
-            });
-            if (avatar) {
-                formData.append("avatar", avatar);
+            const data = {
+                fullname: fullname,
+                email: email,
+                phone: phone,
+                gender: gender,
+                address: address,
             }
             const response = await axios.put(
                 "https://seafoodharbor.azurewebsites.net/api/user/info",
-                formData,
+                data,
                 {
                     headers: {
                         Authorization: `Bearer ${auth.token}`,
-                        "Content-Type": "multipart/form-data",
+                        'Content-Type': 'application/json',
                     },
                 }
             );
@@ -86,10 +66,6 @@ function Profile() {
             setEmail(newData.email);
             setGender(newData.gender);
             setAddress(newData.address);
-            setAvatarPreview(newData.avatar);
-            if (newData.avatarUrl) {
-                setAvatarUrl(newData.avatarUrl);
-            }
             setAuth({ token: auth.token, user: newData });
             let ls = localStorage.getItem("auth");
             ls = JSON.parse(ls);
@@ -184,42 +160,6 @@ function Profile() {
                                     onChange={(e) => setEmail(e.target.value)}
                                     disabled
                                 />
-                            </div>
-                        </div>
-                        <div className="form__line-wrapper flex items-center mb-4 box-border">
-                            <label className='grow-0 shrink-0 w-1/4 text-right mb-0 inline-block box-border'>Ảnh đại diện hiện tại</label>
-                            <div className="form__input-wrapper pl-8 w-3/4">
-                                <img
-                                    src={avatarUrl}
-                                    style={{ maxWidth: "100px", maxHeight: "100px" }}
-                                    alt="Current Avatar"
-                                    className="form-control outline-none border border-gray-300 px-4 py-2 w-full"
-                                />
-                            </div>
-                        </div>
-                        <div className="form__line-wrapper flex items-center mb-4 box-border">
-                            <label className='grow-0 shrink-0 w-1/4 text-right mb-0 inline-block box-border'>Thay đổi ảnh đại diện</label>
-                            <div className="form__input-wrapper pl-8 w-3/4">
-                                <input
-                                    type="file"
-                                    onChange={handleAvatarChange}
-                                    src={avatarUrl}
-                                    className="form-control outline-none border border-gray-300 px-4 py-2 w-full"
-                                    accept="image/*"
-                                />
-                            </div>
-                        </div>
-                        <div className="form__line-wrapper flex items-center mb-4 box-border">
-                            <label className='grow-0 shrink-0 w-1/4 text-right mb-0 inline-block box-border'></label>
-                            <div className="form__input-wrapper pl-8 w-3/4">
-                                {avatarPreview && (
-                                    <img
-                                        src={avatarPreview}
-                                        alt="Avatar Preview"
-                                        className="form-control outline-none border border-gray-300 px-4 py-2 w-full"
-                                        style={{ maxWidth: "100px", maxHeight: "100px" }}
-                                    />
-                                )}
                             </div>
                         </div>
                         <div className="form__line-wrapper flex items-center mb-4 text-base text-left box-border">

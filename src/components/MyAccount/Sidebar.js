@@ -1,12 +1,9 @@
 import '../../styles/account.css';
 import { NavLink } from "react-router-dom";
-import { FaUser, FaLocationDot, FaBagShopping, FaEye } from "react-icons/fa6";
-
+import { FaUser, FaBagShopping, FaEye } from "react-icons/fa6";
 import React, { useState, useEffect } from "react";
 import '../../styles/account.css';
 import { useAuth } from "../../context/auth";
-import toast from "react-hot-toast";
-import axios from "axios";
 
 function Sidebar({ activePage }) {
   const [auth, setAuth] = useAuth();
@@ -32,8 +29,14 @@ function Sidebar({ activePage }) {
             >
             </img>
           </div>
-          <div class="info pl-6 grow shrink basis-auto box-border block">
-            <div class="customer-name font-semibold text-lg leading-6 box-border block text-left">{fullname}</div>
+          <div className="info pl-6 grow shrink basis-auto box-border block">
+            <div className="customer-name font-semibold text-lg leading-6 box-border block text-left" style={{ marginBottom: 8 + 'px' }}>{fullname}</div>
+            <NavLink
+              to="/account/change-avatar"
+              className={`text-sm box-border block text-left rounded bg-slate-100 py-1 px-1 border border-2 ${activePage === "changeavatar" ? "text-red-600" : ""
+                }`}
+            >Cập nhật ảnh đại diện
+            </NavLink>
           </div>
         </div>
         <ul class="left-sidebar__list tabbed-nav list-none pb-5 box-border block my-4 mx-0 text-sm font-normal">

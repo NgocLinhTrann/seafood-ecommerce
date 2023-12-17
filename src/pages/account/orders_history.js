@@ -40,7 +40,6 @@ function OrdersHistory() {
                           </a>
                         </div>
                       </div>
-                      {/* absolute m-auto left-5 align-middle block m-auto */}
                       <div class="history-search py-2 bgcolor-app-gray block">
                         <div class="box-history-search relative flex justify-between box-border bg-white rounded border">
                           <svg className='absolute inset-y-0 left-4 m-auto' width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -20,6 +20,8 @@ import HomePageLinhTest from './pages/HomePageLinhTest';
 import Account from "./pages/account";
 import OrdersHistory from "./pages/account/orders_history";
 import ChangePassword from './pages/account/change_password';
+import ChangeAvatar from './pages/account/change_avatar';
+
 // Infomation and more pages
 import Instruction from './pages/Info/Instruction';
 import Support from './pages/Info/Support';
@@ -50,6 +52,7 @@ const App = () => {
                 <Route path="/account" element={<Account />} />
                 <Route path="/account/orders-history" element={<OrdersHistory />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
+                <Route path="/account/change-avatar" element={<ChangeAvatar />} />
                 <Route path="/" element={<HomePageLinhTest />} />
 
                 {/* More pages */}

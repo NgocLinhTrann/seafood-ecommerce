@@ -1,10 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../../components/MyAccount/Sidebar';
 import { useAuth } from "../../context/auth";
 import Layout from '../../components/Layouts/Layout';
 import toast from "react-hot-toast";
 import axios from "axios";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { RxEyeClosed } from "react-icons/rx";
 
 function ChangePassword() {
@@ -83,13 +84,13 @@ function ChangePassword() {
         <div className='wrapbox-content-account'>
           <div className='container-fluid max-w-screen-xl mx-auto px-2.5 pt-4 pb-2.5 pt-0 w-full block'>
             <div className='row -mr-2 -ml-2 flex flex-wrap border-box text-left'>
-              <Sidebar activePage="changepassword" />
+              <Sidebar activePage="changepassword"/>
               <div className='order-2 mb-6 px-2 grow-0 shrink-0 w-4/6 relative p-0 box-border block text-left colright'>
                 <div className='right-main tab-content-container h-full m-0 p-0 text-left bg-white rounded box-border block'>
                   <div class="right-main-box tab-content customers-changepassword" id="changepassword">
                     <div class="box-heading py-4 px-6 box-border block">
                       <div class="line-title">
-                        <h2 className='text-2xl font-semibold mb-0'>THAY ĐỔI MẬT KHẨU</h2>
+                        <h2 className='text-2xl font-semibold mb-0'>Thay đổi mật khẩu</h2>
                       </div>
                     </div>
                     <div className='box-info-account py-4 px-6 box-border block'>
