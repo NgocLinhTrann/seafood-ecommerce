@@ -15,7 +15,6 @@ function Profile() {
     const [avatarUrl, setAvatarUrl] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("");
     const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         if (auth?.user) {
             const { email, fullname, phone, gender, avatar, avatarUrl, address } = auth.user;

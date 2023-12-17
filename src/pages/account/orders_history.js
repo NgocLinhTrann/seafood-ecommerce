@@ -18,6 +18,28 @@ function OrdersHistory() {
                       <h2 className='text-2xl font-semibold'>Quản lý đơn hàng</h2>
                     </div>
                     <div class="box-info-account pt-4 block">
+                      <div class="history-status block">
+                        <div class="status-list items-center justify-between flex">
+                          <a href="javascript:void(0);" class="status-item px-1 pt-2 w-auto text-center relative active" data-stt="all">
+                            <span class="text font-semibold inline-block text-center ml-8 pb-2">TẤT CẢ</span><span class="count"></span>
+                          </a>
+                          <a href="javascript:void(0);" class="status-item status-item px-1 pt-2 w-auto text-center relative pb-2" data-stt="new">
+                            <span class="text font-semibold inline-block text-center">MỚI</span><span class="count d-none"></span>
+                          </a>
+                          <a href="javascript:void(0);" class="status-item status-item px-1 pt-2 w-auto text-center relative pb-2" data-stt="processing">
+                            <span class="text font-semibold inline-block text-center">ĐANG XỬ LÝ</span><span class="count d-none"></span>
+                          </a>
+                          <a href="javascript:void(0);" class="status-item status-item px-1 pt-2 w-auto text-center relative pb-2" data-stt="delivering">
+                            <span class="text font-semibold inline-block text-center">ĐANG VẬN CHUYỂN</span><span class="count d-none"></span>
+                          </a>
+                          <a href="javascript:void(0);" class="status-item status-item px-1 pt-2 w-auto text-center relative pb-2" data-stt="complete">
+                            <span class="text font-semibold inline-block text-center">HOÀN THÀNH</span><span class="count d-none"></span>
+                          </a>
+                          <a href="javascript:void(0);" class="status-item status-item px-1 pt-2 w-auto text-center relative pb-2" data-stt="cancel">
+                            <span class="text font-semibold inline-block text-center mr-8">HUỶ</span><span class="count d-none"></span>
+                          </a>
+                        </div>
+                      </div>
                       {/* absolute m-auto left-5 align-middle block m-auto */}
                       <div class="history-search py-2 bgcolor-app-gray block">
                         <div class="box-history-search relative flex justify-between box-border bg-white rounded border">

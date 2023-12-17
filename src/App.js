@@ -18,7 +18,6 @@ import Register from './pages/Auth/Register';
 import HomePageLinhTest from './pages/HomePageLinhTest';
 // Account pages
 import Account from "./pages/account";
-import Addresses from "./pages/account/address";
 import OrdersHistory from "./pages/account/orders_history";
 import ChangePassword from './pages/account/change_password';
 // Infomation and more pages
@@ -49,7 +48,6 @@ const App = () => {
 
                 {/* Account pages */}
                 <Route path="/account" element={<Account />} />
-                <Route path="/account/addresses" element={<Addresses />} />
                 <Route path="/account/orders-history" element={<OrdersHistory />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
                 <Route path="/" element={<HomePageLinhTest />} />
