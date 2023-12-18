@@ -1,12 +1,8 @@
 import React from "react";
-import HeaderLinh from "./HeaderLinh";
-import Footer from "./Footer";
-import Header from "./Header";
+import Sidebar from "../../components/Admin/Sidebar";
 import { Helmet } from "react-helmet";
-import { Toaster } from 'react-hot-toast';
-import 'react-toastify/dist/ReactToastify.css';
 
-const Layout = ({ children, title, description, keywords, author }) => {
+const Layout = ({ children, title, description, keywords, author, activePage }) => {
     return (
         <div>
             <Helmet>
@@ -16,13 +12,14 @@ const Layout = ({ children, title, description, keywords, author }) => {
                 <meta name="author" content={author}></meta>
                 <title>{title}</title>
             </Helmet>
-            <HeaderLinh />
-            {/* <Header/> */}
-            <main>
-                <Toaster />
-                {children}
-            </main>
-            <Footer />
+            <div className="main-container min-h-screen text-black dark:text-white-dark navbar-floating">
+                <Sidebar activePage={activePage} />
+                <div className="main-content flex flex-col min-h-screen ml-72">
+                    <main>
+                        {children}
+                    </main>
+                </div>
+            </div>
         </div>
     );
 }
@@ -31,7 +28,8 @@ Layout.defaultProps = {
     title: "Seafood Harbor - mua ngay!",
     description: "Uy tín tạo nên thương hiệu",
     keywords: "Hải sản, tươi sống, thơm ngon, uy tín",
-    author: "Seafood Harbor"
+    author: "Seafood Harbor",
+    activePage: "dashboard"
 }
 
 export default Layout;

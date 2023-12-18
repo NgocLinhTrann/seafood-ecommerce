@@ -1,13 +1,15 @@
 import 'bulma/css/bulma.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Admin pages
-import AdminPage from './pages/AdminPage';
 import ManageProduct from './admin/ManageProduct';
 import ManageProductSearch from './admin/ManageProductSearch';
 import AddProduct from './admin/AddProduct';
-import ManageOrder from './admin/ManageOrder';
+import ManageOrder from './admin/pages/ManageOrder';
 import ProductDetail from './admin/ProductDetail';
-import ManageCustomer from './admin/ManageCustomer';
+import ManageCustomer from './admin/pages/ManageCustomer';
+import ManageDiscount from './admin/pages/ManageDiscount';
+import Dashboard from './admin/pages/Dashboard';
+
 // User pages
 import Cart from './pages/User/Cart';
 // import HomePage from './components/HomePage'
@@ -41,21 +43,23 @@ const App = () => {
                 <Route path="/cart" element={<Cart />} />
 
                 {/* Admin */}
-                <Route path="/admin-page" element={<AdminPage />} />
-                <Route path="/ad-manage-product" element={<ManageProduct />} />
-                <Route path="/ad-manage-product/search" element={<ManageProductSearch />} />
-                <Route path="/ad-add-product" element={<AddProduct />} />
-                <Route path="/ad-manage-order" element={<ManageOrder />} />
-                <Route path="/ad-manage-customer" element={<ManageCustomer />} />
+                <Route path="admin/dashboard" element={<Dashboard />} />
+                <Route path="admin/manage-product" element={<ManageProduct />} />
+                <Route path="admin/manage-product/search" element={<ManageProductSearch />} />
+                <Route path="admin/add-product" element={<AddProduct />} />
+                <Route path="admin/manage-order" element={<ManageOrder />} />
+                <Route path="admin/manage-customer" element={<ManageCustomer />} />
+                <Route path="admin/manage-discount" element={<ManageDiscount />} />
                 {/* <Route path="/ad-product-detail" element={<ProductDetail />} /> */}
-                <Route path="/ad-product-detail/:productId" element={<ProductDetail />} />
+                <Route path="admin/product-detail/:productId" element={<ProductDetail />} />
+
 
                 {/* Account pages */}
                 <Route path="/account" element={<Account />} />
                 <Route path="/account/orders-history" element={<OrdersHistory />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
                 <Route path="/account/change-avatar" element={<ChangeAvatar />} />
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<HomePageLinhTest />} />
 
                 {/* More pages */}
                 <Route path="/instruction" element={<Instruction />} />

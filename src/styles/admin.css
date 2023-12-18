@@ -1,0 +1,5 @@
+.sidebar .nav-item>a:hover, .sidebar .nav-item>button:hover {
+    background-color: #00000014;
+    --tw-text-opacity: 1;
+    color: rgb(14 23 38/var(--tw-text-opacity));
+}

@@ -20,20 +20,17 @@ function Header() {
                                 d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                             />
                         </svg>
-
                     <input
                         className="hidden w-11/12 outline-none md:block"
                         type="search"
                         placeholder="Tìm kiếm..."
                     />
-
                     <button
                         className="ml-auto h-full bg-amber-400 px-4 hover:bg-yellow-300 rounded-r-lg text-white"
                     >
                         Tìm
                     </button>
                 </form>
-
                 <div class="flex items-center">
                      <div class="relative">
                          <a class="flex items-center" href="#">

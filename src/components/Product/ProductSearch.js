@@ -6,18 +6,15 @@ function ProductSearch({searchQuery}) {
     console.log("searchQuery:" + searchQuery)
     // const encodedQuery = encodeURIComponent(searchQuery);
     // window.location.href = `http://localhost:3000/search?keyword=${encodedQuery}`;
-
     const { products } = useContext(ProductsContext);
     // const [showEdit, setShowEdit] = useState(false);
     const [isDeleteConfirmationVisible, setIsDeleteConfirmationVisible] = useState(false);
     const { deleteProductById } = useContext(ProductsContext);
     const [productToDelete, setProductToDelete] = useState(null);
-
     const {searchProduct} = useContext(ProductsContext);
     useEffect(() => {
         searchProduct(searchQuery);
     }, []);
-
     const confirmDelete = () => {
         if (productToDelete) {
           deleteProductById(productToDelete.id);
@@ -25,12 +22,10 @@ function ProductSearch({searchQuery}) {
           setProductToDelete(null); // Reset productToDelete after deletion
         }
       };
-    
       const cancelDelete = () => {
         setIsDeleteConfirmationVisible(false);
         setProductToDelete(null); // Reset productToDelete if cancel is clicked
       };
-    
       const handleDeleteClick = (product) => {
         setProductToDelete(product); // Set the product to be deleted
         setIsDeleteConfirmationVisible(true);
@@ -44,9 +39,7 @@ function ProductSearch({searchQuery}) {
         'Giá': 'price',
         'SL tồn': 'available',
     };
-
     const displayColumns = Object.keys(columnNameMapping)  // ['Mã sản phẩm', 'Tên sản phẩm', 'Phân loại', 'Trọng lượng', 'Giá', 'SL tồn'];
-
     return (
         <div>
             <div class="flex flex-col">

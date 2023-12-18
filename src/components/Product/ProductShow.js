@@ -3,15 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import ProductsContext from "../../context/product";
 import { PiTrashLight } from "react-icons/pi";
 
-
 function ProductShow() {
     const { products } = useContext(ProductsContext);
     const [isDeleteConfirmationVisible, setIsDeleteConfirmationVisible] = useState(false);
     const { deleteProductById } = useContext(ProductsContext);
     const [productToDelete, setProductToDelete] = useState(null);
-
     const navigate = useNavigate();
-
     const confirmDelete = () => {
         if (productToDelete) {
             deleteProductById(productToDelete.id);
@@ -19,23 +16,19 @@ function ProductShow() {
             setProductToDelete(null); // Reset productToDelete after deletion
         }
     };
-
     const cancelDelete = () => {
         setIsDeleteConfirmationVisible(false);
         setProductToDelete(null); // Reset productToDelete if cancel is clicked
     };
-
     const handleDeleteClick = (product) => {
         setProductToDelete(product); // Set the product to be deleted
         setIsDeleteConfirmationVisible(true);
     };
-
     const handleViewDetailClick = (productId) => {
-        navigate(`/ad-product-detail/${productId}`);
+        navigate(`/admin/product-detail/${productId}`);
         // const modifiedProductId = `custom-prefix-${productId}`;
         // navigate(`/ad-product-detail/${modifiedProductId}`);
     };
-
     const columnNameMapping = {
         'Mã sản phẩm': 'id',
         'Tên sản phẩm': 'name',
@@ -44,7 +37,6 @@ function ProductShow() {
         'Giá': 'price',
         'SL tồn': 'available',
     };
-
     const displayColumns = Object.keys(columnNameMapping)  // ['Mã sản phẩm', 'Tên sản phẩm', 'Phân loại', 'Trọng lượng', 'Giá', 'SL tồn'];
     return (
         <div>
