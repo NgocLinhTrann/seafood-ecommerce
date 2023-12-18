@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../../components/Admin/Sidebar";
+import Sidebar from "./Sidebar";
 import { Helmet } from "react-helmet";
 
 const Layout = ({ children, title, description, keywords, author, activePage }) => {

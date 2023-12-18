@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import ProductsContext from "../../context/product";
+import ProductsContext from "../../../context/product";
 import { PiTrashLight } from "react-icons/pi";
 
 function ProductShow() {

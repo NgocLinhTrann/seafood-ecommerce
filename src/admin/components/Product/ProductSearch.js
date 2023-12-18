@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import ProductsContext from "../../context/product";
+import ProductsContext from "../../../context/product";
 import { PiTrashLight } from "react-icons/pi";
 
 function ProductSearch({searchQuery}) {

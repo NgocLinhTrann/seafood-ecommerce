@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { BsArrowLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import Layout from "./components/Layout";
+import Layout from "../../components/Layout";
 
 function ProductDetail() {
     const navigate = useNavigate("");

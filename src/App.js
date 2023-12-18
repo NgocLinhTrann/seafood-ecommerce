@@ -1,11 +1,11 @@
 import 'bulma/css/bulma.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Admin pages
-import ManageProduct from './admin/ManageProduct';
-import ManageProductSearch from './admin/ManageProductSearch';
-import AddProduct from './admin/AddProduct';
+import ManageProduct from './admin/pages/Product/ManageProduct';
+import ManageProductSearch from './admin/pages/Product/ManageProductSearch';
+import AddProduct from './admin/pages/Product/AddProduct';
 import ManageOrder from './admin/pages/ManageOrder';
-import ProductDetail from './admin/ProductDetail';
+import ProductDetail from './admin/pages/Product/ProductDetail';
 import ManageCustomer from './admin/pages/ManageCustomer';
 import ManageDiscount from './admin/pages/ManageDiscount';
 import Dashboard from './admin/pages/Dashboard';

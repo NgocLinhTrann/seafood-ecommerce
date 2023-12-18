@@ -58,7 +58,6 @@ function ProductCreate() {
         setPrice("");
         setAvailable("");
     };
-
     return <div className="w-2/4 ml-60">
         <form className="mt-2 w-full flex-grow mb-10 px-5"
             onSubmit={handleSubmit}
@@ -69,7 +68,6 @@ function ProductCreate() {
                 </div>
                 <label className="label mt-3 font-medium">Tên sản phẩm</label>
                 <input className="input" value={name} onChange={(e) => setName(e.target.value)}></input>
-
                 <div className="field">
                     <label className="label mt-3 font-medium">Loại sản phẩm</label>
                     <div className="select">

@@ -1,37 +1,29 @@
-import ProductShow from "../components/Product/ProductShow"
-import ProductsContext from "../context/product";
 import React, { useState, useContext, useEffect } from 'react';
-import Avatar from "../../src/assets/images/avatar-photo.jpg";
-import useKeyPress from "../hooks/use-key-press";
+import ProductShow from "../../components/Product/ProductShow"
+import ProductsContext from "../../../context/product";
+import Avatar from "../../../assets/images/avatar-photo.jpg";
+import { useNavigate } from 'react-router-dom';
+import useKeyPress from "../../../hooks/use-key-press";
+import Layout from '../../components/Layout';
 
-import { useSearchParams, useNavigate } from 'react-router-dom';
-import Layout from "./components/Layout";
-
-function ManageProductSearch() {
+function ManageProduct() {
     const navigate = useNavigate("");
-    const { searchProduct } = useContext(ProductsContext);
-
-    const [searchParams] = useSearchParams();
-    const searchQuery = searchParams.get('keyword') || '';
-    const [searchString, setSearchString] = useState(searchQuery);
-
-    useEffect(() => {
-        searchProduct(searchQuery);
-    }, [searchQuery]);
-
+    const [searchString, setSearchString] = useState("");
     const handleSearch = async () => {
-        if(searchString !== ''){
+        if (searchString !== '') {
             const encodedQuery = encodeURIComponent(searchString);
+            console.log(encodedQuery)
             navigate(`/admin/manage-product/search?keyword=${encodedQuery}`);
-        } else {
-            navigate("admin/manage-product");
         }
     };
-
+    const { fetchProducts } = useContext(ProductsContext);
+    useEffect(() => {
+        fetchProducts();
+    }, []);
     useKeyPress(handleSearch)
     return (
-        <Layout activePage="product">
-            <div className="flex justify-start">
+        <Layout title="Quản lý sản phẩm" activePage="product">
+            <div className="flex justify-start">    
                 <div className="w-full">
                     <div className="bg-stone-100 py-2">
                         <header className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5">
@@ -67,14 +59,14 @@ function ManageProductSearch() {
                                 </button>
                             </div>
 
-                            <div class="flex items-center">
-                                <div class="relative">
-                                    <a class="flex items-center" href="#">
-                                        <span class="hidden text-right lg:block">
-                                            <span class="block text-sm font-medium text-black dark:text-white">Quản trị viên</span>
+                            <div className="flex items-center">
+                                <div className="relative">
+                                    <a className="flex items-center" href="#">
+                                        <span className="hidden text-right lg:block">
+                                            <span className="block text-sm font-medium text-black dark:text-white">Quản trị viên</span>
                                         </span>
 
-                                        <span class="h-12 w-12 rounded-full ml-2">
+                                        <span className="h-12 w-12 rounded-full ml-2">
                                             <img src={Avatar} alt="User" />
                                         </span>
                                     </a>
@@ -92,4 +84,4 @@ function ManageProductSearch() {
     )
 }
 
-export default ManageProductSearch;
+export default ManageProduct;

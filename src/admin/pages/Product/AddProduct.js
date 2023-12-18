@@ -1,7 +1,7 @@
-import ProductCreate from "../components/Product/ProductCreate";
-import ProductsContext from "../context/product";
+import ProductCreate from "../../components/Product/ProductCreate";
+import ProductsContext from "../../../context/product";
 import { useEffect, useContext } from "react";
-import Layout from "./components/Layout";
+import Layout from "../../components/Layout";
 
 function AddProduct() {
     const { fetchProducts } = useContext(ProductsContext);
@@ -11,7 +11,7 @@ function AddProduct() {
     }, []);
 
     return (
-        <Layout activePage="product add">
+        <Layout title="Thêm sản phẩm" activePage="product add">
             <div className="flex justify-start">
                 <ProductCreate />
             </div>
