@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import { Helmet } from "react-helmet";
+import "../../styles/admin.css";
 
 const Layout = ({ children, title, description, keywords, author, activePage }) => {
     return (
