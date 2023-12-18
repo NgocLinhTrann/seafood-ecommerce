@@ -162,7 +162,7 @@ const HeaderLinh = () => {
                                     </>
                                 )
                             }
-                            <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/admin-page">
+                            <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/admin/dashboard">
                                 Admin
                             </NavLink>
                         </div>

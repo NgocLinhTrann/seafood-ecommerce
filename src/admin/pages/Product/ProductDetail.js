@@ -86,7 +86,7 @@ function ProductDetail() {
         setIsEditMode(false);
     };
     const handleBack = () => {
-        navigate("/ad-manage-product")
+        navigate("/admin/manage-product")
     };
     if (!product) {
         return <div>Loading...</div>

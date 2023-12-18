@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Logo from '../../assets/images/logo_seafood.png'
+import Logo from '../../assets/images/logo_seafoodharbor.png'
 import { BiLogoFacebookCircle, BiLogoLinkedinSquare, BiLogoInstagramAlt } from 'react-icons/bi'
 
 class Footer extends Component {

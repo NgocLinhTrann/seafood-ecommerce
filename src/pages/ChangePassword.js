@@ -1,6 +1,5 @@
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import Avatar from "../assets/images/avatar-photo.jpg";
 import Sidebar from "../components/Sidebar";
 
 function ChangePassword() {
