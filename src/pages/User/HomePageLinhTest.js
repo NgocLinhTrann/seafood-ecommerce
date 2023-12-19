@@ -1,5 +1,5 @@
-import Layout from "../components/Layouts/Layout";
-import {useAuth} from "../context/auth";
+import Layout from "../../components/Layouts/Layout";
+import {useAuth} from "../../context/auth";
 
 const HomePageLinhTest = () => {
     const [auth, setAuth] = useAuth();

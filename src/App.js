@@ -17,7 +17,7 @@ import SearchPage from './components/SearchPage';
 import DetailProduct from './components/DetailProduct';
 import LogIn from './pages/Auth/LogIn';
 import Register from './pages/Auth/Register';
-import HomePageLinhTest from './pages/HomePageLinhTest';
+import HomePageLinhTest from './pages/User/HomePageLinhTest';
 import HomePage from './components/HomePage';
 
 // Account pages
@@ -27,10 +27,10 @@ import ChangePassword from './pages/account/change_password';
 import ChangeAvatar from './pages/account/change_avatar';
 
 // Infomation and more pages
-import Instruction from './pages/Info/Instruction';
-import Support from './pages/Info/Support';
-import About from './pages/Info/About';
-import PageNotFound from './pages/PageNotFound';
+import Instruction from './pages/User/Instruction';
+import Support from './pages/User/Support';
+import About from './pages/User/About';
+import PageNotFound from './pages/User/PageNotFound';
 
 const App = () => {
     return (

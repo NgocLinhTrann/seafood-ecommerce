@@ -80,7 +80,7 @@ function ChangeAvatar() {
                 <div className='container-fluid max-w-screen-xl mx-auto px-2.5 pt-4 pb-2.5 pt-0 w-full block'>
                     <div className='row -mr-2 -ml-2 flex flex-wrap border-box text-left'>
                         <Sidebar activePage="changeavatar"/>
-                        <div className='order-2 mb-6 px-2 grow-0 shrink-0 w-3/4 relative p-0 box-border block text-left colright'>
+                        <div className='mb-6 px-2 grow-0 shrink-0 w-3/4 relative p-0 box-border block text-left colright'>
                             <div className='right-main-box tab-content box-border bg-white current' id="profile">
                                 <div className="box-heading py-4 px-6 m-0 box-border block">
                                     <div className="line-title m-0 p-0 box-border block">

@@ -73,7 +73,6 @@ function ProductsProvider({ children }) {
             // Handle errors (e.g., show an error message)
         }
     }
-
     const valueToshare = {
         products,
         deleteProductById,
@@ -82,7 +81,6 @@ function ProductsProvider({ children }) {
         fetchProducts,
         searchProduct,
     };
-
     return (
         <ProductsContext.Provider value={valueToshare}>
             {children}
