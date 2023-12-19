@@ -6,6 +6,7 @@ import { useAuth } from "../../context/auth";
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
+
 const HeaderLinh = () => {
     const [auth, setAuth] = useAuth();
     const [inputValue, setInputValue] = useState('');
@@ -90,7 +91,8 @@ const HeaderLinh = () => {
                             </NavLink>
                         </div>
                         <div className="flex cursor-pointer flex-col items-center justify-center group">
-                            <VscAccount size={24} className="z-10 text-white hover:text-yellow-400" />
+                            {/* <VscAccount size={24} className="z-10 text-white hover:text-yellow-400" /> */}
+                            <img className='z-10 h-8 w-8 rounded-full' src={auth.user.avatarUrl}/>
                             <div className='z-0 absolute top-0 mr-4 text-cyan-500 h-8 w-6 pt-0 right-0 mt-2 bg-cyan-500'>__________</div>
                             <div
                                 id="dropdown"
