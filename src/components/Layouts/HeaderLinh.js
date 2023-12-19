@@ -107,6 +107,27 @@ const HeaderLinh = () => {
                                             to="#">
                                             Đăng xuất
                                         </NavLink>
+                                        {showLogoutModal && (
+                                            <div className="z-30 fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+                                                <div className="bg-white p-5 rounded-md">
+                                                    <p className="mb-3">Bạn có chắc muốn đăng xuất?</p>
+                                                    <div className="flex justify-end">
+                                                        <button
+                                                            onClick={handleCloseLogoutModal}
+                                                            className="mr-2 px-4 py-2 bg-gray-400 text-white rounded-md"
+                                                        >
+                                                            Hủy
+                                                        </button>
+                                                        <button
+                                                            onClick={handleLogout}
+                                                            className="px-4 py-2 bg-red-500 text-white rounded-md"
+                                                        >
+                                                            Đăng xuất
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </>
                                 ) : (
                                     <>
@@ -156,6 +177,83 @@ const HeaderLinh = () => {
                         </div>
                     </div>
                 </nav>
+                {/* <nav className="relative bg-cyan-500">
+                    <div className="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
+                        <div className="mx-7 flex gap-8">
+                            <NavLink
+                                className="font-light text-white duration-100 hover:text-yellow-400"
+                                to="/"
+                            >
+                                Trang chủ
+                            </NavLink>
+                            <NavLink
+                                className="font-light text-white duration-100 hover:text-yellow-400"
+                                to="/instruction"
+                            >
+                                Hướng dẫn mua hàng
+                            </NavLink>
+                            <NavLink
+                                className="font-light text-white duration-100 hover:text-yellow-400"
+                                to="/about"
+                            >
+                                Về chúng tôi
+                            </NavLink>
+                            <NavLink
+                                className="font-light text-white duration-100 hover:text-yellow-400"
+                                to="/support">
+                                Hỗ trợ
+                            </NavLink>
+                        </div>
+                        <div className="ml-auto flex gap-4 px-5">
+                            {
+                                !auth.user ? (
+                                    <>
+                                        <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/login">
+                                            Đăng nhập
+                                        </NavLink>
+                                        <span className="text-white">&#124;</span>
+                                        <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/register">
+                                            Đăng ký
+                                        </NavLink>
+                                    </>
+                                ) : (
+                                    <>
+                                        <NavLink
+                                            onClick={handleOpenLogoutModal}
+                                            className="font-light text-white duration-100 hover:text-yellow-400"
+                                            to="#">
+                                            Đăng xuất
+                                        </NavLink>
+                                        {showLogoutModal && (
+                                            <div className="z-30 fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+                                                <div className="bg-white p-5 rounded-md">
+                                                    <p className="mb-3">Bạn có chắc muốn đăng xuất?</p>
+                                                    <div className="flex justify-end">
+                                                        <button
+                                                            onClick={handleCloseLogoutModal}
+                                                            className="mr-2 px-4 py-2 bg-gray-400 text-white rounded-md"
+                                                        >
+                                                            Hủy
+                                                        </button>
+                                                        <button
+                                                            onClick={handleLogout}
+                                                            className="px-4 py-2 bg-red-500 text-white rounded-md"
+                                                        >
+                                                            Đăng xuất
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </>
+                                )
+                            }
+                            <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/admin/dashboard">
+                                Admin
+                            </NavLink>
+                        </div>
+                    </div>
+                </nav> */}
             </div>
         </div>
     );
