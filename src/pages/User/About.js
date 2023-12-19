@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../../components/Layouts/Layout";
-import AboutUs from "../../assets/images/about-us.jpg";
 
 const About = () => {
     return (

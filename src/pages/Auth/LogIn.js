@@ -27,9 +27,12 @@ const LogIn = () => {
                     token: res.data.data.token,
                 });
                 localStorage.setItem("auth", JSON.stringify(res.data.data));
-                setTimeout(() => navigate("/"), 200);
-                // Store the token (res.data.data.token) and other user information as needed
-                // You can use local storage or state management for this
+                // setTimeout(() => navigate("/"), 200);
+                if (res.data.data.userInfo.isAdmin) {
+                    setTimeout(() => navigate("/admin/dashboard"), 200);
+                } else {
+                    setTimeout(() => navigate("/"), 200);
+                }
 
             } else {
                 toast.error("Email hoặc mật khẩu không đúng, hãy kiểm tra lại!");

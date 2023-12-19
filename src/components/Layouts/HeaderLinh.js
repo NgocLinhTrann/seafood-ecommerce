@@ -5,7 +5,7 @@ import { BsCart3 } from 'react-icons/bs';
 import { useAuth } from "../../context/auth";
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-
+import UserBlankAvatar from '../../assets/images/user-blank-avatar.jpeg';
 
 const HeaderLinh = () => {
     const [auth, setAuth] = useAuth();
@@ -91,9 +91,16 @@ const HeaderLinh = () => {
                             </NavLink>
                         </div>
                         <div className="flex cursor-pointer flex-col items-center justify-center group">
-                            {/* <VscAccount size={24} className="z-10 text-white hover:text-yellow-400" /> */}
-                            <img className='z-10 h-8 w-8 rounded-full' src={auth.user.avatarUrl}/>
-                            <div className='z-0 absolute top-0 mr-4 text-cyan-500 h-8 w-6 pt-0 right-0 mt-2 bg-cyan-500'>__________</div>
+                            {auth.user ? (
+                                <>
+                                    <img className='z-10 h-8 w-8 rounded-full' src={auth.user.avatarUrl} />
+                                </>
+                            ) : (
+                                <>
+                                    <img className='z-10 h-8 w-8 rounded-full' src={UserBlankAvatar} />
+                                </>
+                            )}
+                            <div className='z-0 absolute top-0 mr-4 text-cyan-500 h-8 w-6 pt-0 right-0 mt-2 bg--cyan-500'>__________</div>
                             <div
                                 id="dropdown"
                                 className="z-30 hidden min-w-max group-hover:block absolute top-full right-0 mt-2 p-2 bg-white divide-y divide-gray-100 rounded-lg shadow text-black"

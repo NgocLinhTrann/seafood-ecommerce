@@ -59,7 +59,7 @@ const App = () => {
                 <Route path="/account/orders-history" element={<OrdersHistory />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
                 <Route path="/account/change-avatar" element={<ChangeAvatar />} />
-                <Route path="/" element={<HomePageLinhTest />} />
+                <Route path="/" element={<HomePage />} />
 
                 {/* More pages */}
                 <Route path="/instruction" element={<Instruction />} />
