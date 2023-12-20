@@ -32,6 +32,10 @@ import Support from './pages/User/Support';
 import About from './pages/User/About';
 import PageNotFound from './pages/User/PageNotFound';
 
+
+// Testt homepage
+import HomePageNLinh from '../src/components/HomePageNLinh/HomePageNLinh';
+
 const App = () => {
     return (
         <>
@@ -59,7 +63,7 @@ const App = () => {
                 <Route path="/account/orders-history" element={<OrdersHistory />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
                 <Route path="/account/change-avatar" element={<ChangeAvatar />} />
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<HomePageNLinh />} />
 
                 {/* More pages */}
                 <Route path="/instruction" element={<Instruction />} />
