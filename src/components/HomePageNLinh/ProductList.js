@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 import ProductItem from './ProductItem';
 import { Link } from 'react-router-dom';
 
-const ProductList = ({ products, productsPerPage, userInfo }) => {
+const ProductList = ({ products, productsPerPage }) => {
     const [currentPage, setCurrentPage] = useState(0);
 
     const handlePageChange = ({ selected }) => {
@@ -25,7 +25,7 @@ const ProductList = ({ products, productsPerPage, userInfo }) => {
                         key={product.id}
                         className="hover:shadow-md transition duration-300"
                     >
-                        <ProductItem userInfo={userInfo} product={product} />
+                        <ProductItem product={product} />
                     </Link>
                 ))}
             </div>

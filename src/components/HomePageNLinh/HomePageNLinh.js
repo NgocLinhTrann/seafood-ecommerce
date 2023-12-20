@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../Layouts/Header';
-import Footer from '../Layouts/Footer';
 import ProductList from './ProductList';
 import ConsBages from '../ConsBages';
 import Category from './Category';
 import Slider from './Slider';
 import LoadingProduct from './LoadingProduct';
 import { useAuth } from '../../context/auth';
+import Layout from '../Layouts/Layout';
 
 const HomePageNLinh = () => {
     const [auth, setAuth] = useAuth();
@@ -14,7 +13,6 @@ const HomePageNLinh = () => {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState('Tất cả');
-    const [userInfo, setUserInfo] = useState({});
 
     const handleCategoryChange = (category) => {
         setSelectedCategory(category);
@@ -32,7 +30,7 @@ const HomePageNLinh = () => {
     };
 
     const fetchProduct = () => {
-        fetch('https://daohaisan.azurewebsites.net/api/products')
+        fetch('https://seafoodharbor.azurewebsites.net/api/products')
             .then((response) => response.json())
             .then((data) => {
                 const { products } = data.data;
@@ -45,19 +43,8 @@ const HomePageNLinh = () => {
             });
     };
 
-    // const fetchUserInfo = () => {
-    //     if (true) {
-    //         setUserInfo({
-    //             id: 'dnh005',
-    //             name: 'Dương Ngọc Hải',
-    //             cart: [{}, {}, {}],
-    //         });
-    //     }
-    // };
-
     useEffect(() => {
         fetchProduct();
-        // fetchUserInfo();
     }, []);
 
     useEffect(() => {
@@ -65,8 +52,7 @@ const HomePageNLinh = () => {
     }, [selectedCategory, products]);
 
     return (
-        <>
-            <Header userInfo={userInfo} />
+        <Layout>
             Linh new home page
             <pre>{JSON.stringify(auth, null, 4)}</pre>
             <div className="max-w-[1200px] mx-auto">
@@ -96,7 +82,6 @@ const HomePageNLinh = () => {
                             </div>
                         ) : (
                             <ProductList
-                                userInfo={userInfo}
                                 products={filteredProducts}
                                 productsPerPage={8}
                             />
@@ -105,8 +90,7 @@ const HomePageNLinh = () => {
                 )}
                 <ConsBages />
             </div>
-            <Footer />
-        </>
+        </Layout>
     );
 };
 

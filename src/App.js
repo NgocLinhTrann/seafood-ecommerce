@@ -35,6 +35,7 @@ import PageNotFound from './pages/User/PageNotFound';
 
 // Testt homepage
 import HomePageNLinh from '../src/components/HomePageNLinh/HomePageNLinh';
+import ProductDetailPage from './components/DetailProductLinh/ProductDetailPage';
 
 const App = () => {
     return (
@@ -43,7 +44,7 @@ const App = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<LogIn />} />
                 <Route path="/search" element={<SearchPage />} />
-                <Route path="/product/:id" element={<DetailProduct />} />
+                <Route path="/product/:id" element={<ProductDetailPage />} />
                 <Route path="/cart" element={<Cart />} />
 
                 {/* Admin */}
