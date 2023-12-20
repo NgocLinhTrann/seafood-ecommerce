@@ -53,7 +53,6 @@ const HomePageNLinh = () => {
 
     return (
         <Layout>
-            Linh new home page
             <pre>{JSON.stringify(auth, null, 4)}</pre>
             <div className="max-w-[1200px] mx-auto">
                 <div className="flex mt-2">

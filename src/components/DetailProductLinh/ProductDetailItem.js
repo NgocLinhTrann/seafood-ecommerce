@@ -3,10 +3,20 @@ import advise from '../../assets/images/tuvandathang.png';
 import SkeletonItem from '../HomePage/SkeletonItem';
 import { FaHome } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useAuth } from '../../context/auth';
 
-const ProductDetailItem = (props) => {
-    const { product } = props;
+const ProductDetailItem = ({ product}) => {
+    const [auth, setAuth] = useAuth();
     const [count, setCount] = useState(0);
+    const [cartItemCount, setCartItemCount] = useState(0);
+
+    useEffect(() => {
+        const itemCount = auth.user?.cart?.items?.length || 0;
+        setCartItemCount(itemCount);
+    }, [auth.user]);
+
     const handleIncreaseCount = () => {
         if (count < product.available) setCount((prev) => prev + 1);
     };
@@ -41,10 +51,39 @@ const ProductDetailItem = (props) => {
                     <SkeletonItem />
                     <SkeletonItem />
                     <SkeletonItem />
+                    <SkeletonItem />
                 </div>
             </>
         );
     }
+    const handleClickBuy = async () => {
+        try {
+            const data = {
+                productId: product.id
+            };
+            const response = await axios.post(
+                "https://seafoodharbor.azurewebsites.net/api/user/addCartItem",
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${auth.token}`,
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            auth.user.cart = response.data.data.cart;
+            localStorage.setItem('auth', JSON.stringify(auth));
+            setAuth(auth);
+            setCartItemCount(response.data.data.cart.items.length);
+            toast.success(response.data.message);
+            // Notify the parent component about the change in cart item count
+        } catch (error) {
+            console.error("Error adding item to cart", error);
+            toast.error("Không thể thêm sản phẩm vào giỏ hàng");
+        }
+    };
+    console.log("cartItemCount ", cartItemCount);
+
     return (
         <>
             <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
@@ -107,7 +146,10 @@ const ProductDetailItem = (props) => {
                             </button>
                         </div>
                     </div>
-                    <button className="buy-button bg-amber-400 text-white px-4 py-2 w-full rounded-md hover:bg-yellow-300 transition duration-300 my-3 mx-auto">
+                    <button
+                        className="buy-button bg-amber-400 text-white px-4 py-2 w-full rounded-md hover:bg-yellow-300 transition duration-300 my-3 mx-auto"
+                        onClick={handleClickBuy}
+                    >
                         Thêm vào giỏ hàng
                     </button>
                 </div>

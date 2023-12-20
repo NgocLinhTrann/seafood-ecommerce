@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from "react-router-dom";
-import { VscAccount } from 'react-icons/vsc';
 import { BsCart3 } from 'react-icons/bs';
 import { useAuth } from "../../context/auth";
 import toast from 'react-hot-toast';
@@ -10,8 +9,16 @@ import UserBlankAvatar from '../../assets/images/user-blank-avatar.jpeg';
 const HeaderLinh = () => {
     const [auth, setAuth] = useAuth();
     const [inputValue, setInputValue] = useState('');
+    const [cartItemCount, setCartItemCount] = useState(0);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (auth?.user) {
+            setCartItemCount(auth.user.cart.items.length || 0);
+        }
+    }, [auth?.user]);
+    
     const handleChange = (event) => {
         setInputValue(event.target.value);
         console.log(inputValue);
@@ -41,6 +48,7 @@ const HeaderLinh = () => {
         handleCloseLogoutModal();
         navigate('/login');
     };
+
     return (
         <div className="bg-cyan-500">
             <div className="bg-cyan-500 max-w-[1200px] mx-auto ">
@@ -87,7 +95,7 @@ const HeaderLinh = () => {
                         <div className="flex cursor-pointer flex-col mr-4 items-center justify-center">
                             <NavLink to="/cart" className="flex items-center">
                                 <BsCart3 size={24} className="text-white hover:text-yellow-400" />
-                                <span className="ml-1 text-white">(0)</span>
+                                <span className="ml-1 text-white">({cartItemCount})</span>
                             </NavLink>
                         </div>
                         <div className="flex cursor-pointer flex-col items-center justify-center group">
@@ -186,83 +194,6 @@ const HeaderLinh = () => {
                         </div>
                     </div>
                 </nav>
-                {/* <nav className="relative bg-cyan-500">
-                    <div className="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
-                        <div className="mx-7 flex gap-8">
-                            <NavLink
-                                className="font-light text-white duration-100 hover:text-yellow-400"
-                                to="/"
-                            >
-                                Trang chủ
-                            </NavLink>
-                            <NavLink
-                                className="font-light text-white duration-100 hover:text-yellow-400"
-                                to="/instruction"
-                            >
-                                Hướng dẫn mua hàng
-                            </NavLink>
-                            <NavLink
-                                className="font-light text-white duration-100 hover:text-yellow-400"
-                                to="/about"
-                            >
-                                Về chúng tôi
-                            </NavLink>
-                            <NavLink
-                                className="font-light text-white duration-100 hover:text-yellow-400"
-                                to="/support">
-                                Hỗ trợ
-                            </NavLink>
-                        </div>
-                        <div className="ml-auto flex gap-4 px-5">
-                            {
-                                !auth.user ? (
-                                    <>
-                                        <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/login">
-                                            Đăng nhập
-                                        </NavLink>
-                                        <span className="text-white">&#124;</span>
-                                        <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/register">
-                                            Đăng ký
-                                        </NavLink>
-                                    </>
-                                ) : (
-                                    <>
-                                        <NavLink
-                                            onClick={handleOpenLogoutModal}
-                                            className="font-light text-white duration-100 hover:text-yellow-400"
-                                            to="#">
-                                            Đăng xuất
-                                        </NavLink>
-                                        {showLogoutModal && (
-                                            <div className="z-30 fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-                                                <div className="bg-white p-5 rounded-md">
-                                                    <p className="mb-3">Bạn có chắc muốn đăng xuất?</p>
-                                                    <div className="flex justify-end">
-                                                        <button
-                                                            onClick={handleCloseLogoutModal}
-                                                            className="mr-2 px-4 py-2 bg-gray-400 text-white rounded-md"
-                                                        >
-                                                            Hủy
-                                                        </button>
-                                                        <button
-                                                            onClick={handleLogout}
-                                                            className="px-4 py-2 bg-red-500 text-white rounded-md"
-                                                        >
-                                                            Đăng xuất
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </>
-                                )
-                            }
-                            <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/admin/dashboard">
-                                Admin
-                            </NavLink>
-                        </div>
-                    </div>
-                </nav> */}
             </div>
         </div>
     );

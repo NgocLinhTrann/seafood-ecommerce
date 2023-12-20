@@ -16,7 +16,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
                 <meta name="author" content={author}></meta>
                 <title>{title}</title>
             </Helmet>
-            <HeaderLinh />
+            <HeaderLinh/>
             {/* <Header/> */}
             <main>
                 <Toaster />
@@ -31,7 +31,7 @@ Layout.defaultProps = {
     title: "Seafood Harbor - mua ngay!",
     description: "Uy tín tạo nên thương hiệu",
     keywords: "Hải sản, tươi sống, thơm ngon, uy tín",
-    author: "Seafood Harbor"
+    author: "Seafood Harbor",
 }
 
 export default Layout;

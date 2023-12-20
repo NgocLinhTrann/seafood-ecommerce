@@ -10,6 +10,12 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [moreProducts, setMoreProducts] = useState([]);
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  // Callback function to receive data from the child component
+  const handleCartItemCountChange = (newItemCount) => {
+    setCartItemCount(newItemCount);
+  };
 
   const fetchData = async () => {
     try {
@@ -43,9 +49,7 @@ const ProductDetailPage = () => {
 
   useEffect(() => {
     fetchData();
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
     setMoreProducts([]);
     setTimeout(() => {
       fetchMoreProducts();
@@ -53,14 +57,17 @@ const ProductDetailPage = () => {
     }, 1000);
   }, [id]);
 
+  const productsPerPage = 4;
+
   return (
     <Layout>
-      <div>Detail linh</div>
       <div className="max-w-[1200px] mx-auto">
-        <ProductDetailItem product={product} />
+        <ProductDetailItem
+          product={product}
+        />
         <div className="mb-10">
           <h1 className="font-bold text-gray-700 text-2xl my-5">Các sản phẩm khác</h1>
-          {moreProducts.length === 0 ? <LoadingProduct /> : <ProductList products={moreProducts} productsPerPage={4} />}
+          {moreProducts.length === 0 ? <LoadingProduct /> : <ProductList products={moreProducts} productsPerPage={productsPerPage} />}
         </div>
         <ConsBages />
       </div>
