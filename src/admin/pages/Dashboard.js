@@ -1,11 +1,12 @@
-import Layout from "../components/Layout";
+import Layout from '../components/Layout';
+import StatisticPage from '../components/StatisticPage';
 
 function Dashboard() {
     return (
         <Layout title="Thống kê báo cáo">
-            <div>Trang dashboard - Trang báo cáo thống kê</div>
+            <StatisticPage />
         </Layout>
-    )
+    );
 }
 
 export default Dashboard;
