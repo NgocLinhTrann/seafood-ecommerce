@@ -40,13 +40,13 @@ function Cart() {
                 </ul>
             </nav>
             {/* breadcrumbs */}
-            <div className="flex flex-col h-screen justify-between">
+            <div className="flex flex-col h-screen justify-between max-w-[1200px] mx-auto">
                 <div
                     className="container mx-auto flex-grow max-w-[1200px] border-b py-5 lg:flex lg:flex-row lg:py-10"
                 >
                     {/* <!-- Desktop cart table  --> */}
                     <div
-                        className="hidden h-[600px] w-full max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10 md:grid"
+                        className="bg-white rounded z-10 hidden border shadow-md h-[600px] w-full max-w-[1200px] grid-cols-1 gap-3 px-5 pb-10 md:grid"
                     >
                         <table className="table-fixed">
                             <thead className="h-16 bg-neutral-100">
@@ -221,9 +221,9 @@ function Cart() {
                         </table>
                     </div>
                     {/* <!-- Summary  --> */}
-                    <div className="mx-auto w-full px-4 md:max-w-[400px]">
+                    <div className="z-10 bg-white mx-auto w-full px-4 md:max-w-[400px]">
                         <div className="">
-                            <div className="border py-5 px-4 shadow-md">
+                            <div className="border rounded py-5 px-4 shadow-md">
                                 <p className="font-bold">THÔNG TIN HÓA ĐƠN</p>
                                 <div className="flex justify-between border-b py-5">
                                     <p>Tổng tiền hàng</p>
@@ -244,7 +244,6 @@ function Cart() {
                                     <p>Tổng thanh toán</p>
                                     <p className="text-rose-600 text-base">870,000đ</p>
                                 </div>
-
                                 <a href="#">
                                     <button
                                         className="w-full bg-amber-500 px-5 py-2 text-white font-semibold"

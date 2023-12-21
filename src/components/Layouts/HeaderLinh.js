@@ -17,7 +17,7 @@ const HeaderLinh = () => {
         if (auth?.user) {
             setCartItemCount(auth.user.cart.items.length || 0);
         }
-    }, [auth?.user]);
+    }, [auth?.user?.cart]);
     
     const handleChange = (event) => {
         setInputValue(event.target.value);

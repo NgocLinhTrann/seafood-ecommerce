@@ -19,7 +19,7 @@ root.render(
                 <OrdersProvider>
                     <ProductsProvider>
                         <CustomersProvider>
-                            <App />
+                                <App />
                         </CustomersProvider>
                     </ProductsProvider>
                 </OrdersProvider>
