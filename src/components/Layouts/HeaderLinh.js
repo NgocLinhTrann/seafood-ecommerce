@@ -5,6 +5,7 @@ import { useAuth } from "../../context/auth";
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import UserBlankAvatar from '../../assets/images/user-blank-avatar.jpeg';
+import "../../styles/main.css";
 
 const HeaderLinh = () => {
     const [auth, setAuth] = useAuth();
@@ -18,7 +19,7 @@ const HeaderLinh = () => {
             setCartItemCount(auth.user.cart.items.length || 0);
         }
     }, [auth?.user?.cart]);
-    
+
     const handleChange = (event) => {
         setInputValue(event.target.value);
         console.log(inputValue);
@@ -92,10 +93,10 @@ const HeaderLinh = () => {
                         </button>
                     </div>
                     <div className="gap-3 md:flex relative">
-                        <div className="flex cursor-pointer flex-col mr-4 items-center justify-center">
-                            <NavLink to="/cart" className="flex items-center">
-                                <BsCart3 size={24} className="text-white hover:text-yellow-400" />
-                                <span className="ml-1 text-white">({cartItemCount})</span>
+                        <div className="flex cursor-pointer flex-col mr-4 justify-center">
+                            <NavLink to="/cart" className="cart-drawer flex items-center relative overflow-visible">
+                                <BsCart3 size={24} className="text-white inline-block relative mr-2.5 hover:text-yellow-400" />
+                                <span className="cart-number-badge ml-1 text-red -left-5 -top-2.5 text-xs">{cartItemCount}</span>
                             </NavLink>
                         </div>
                         <div className="flex cursor-pointer flex-col items-center justify-center group">

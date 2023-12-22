@@ -89,3 +89,38 @@ p {
 .app_background_color {
   background-color: #ececec;
 }
+
+.cart-drawer .cart-number-badge {
+  left: -1.25rem;
+  top: -0.6875rem;
+}
+
+.cart-number-badge {
+  background-color: #ee4d2d;
+  border: 0.125rem solid var(--brand-primary-color, #ee4d2d);
+  border-radius: 2.75rem;
+  color: #fff;
+  height: 1rem;
+  line-height: 1.2em;
+  margin-right: -0.875rem;
+  min-width: 0.6875rem;
+  padding: 0 0.3125rem;
+  position: relative;
+  text-align: center;
+}
+
+/* Modal Payment */
+.modalpayment-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalpayment-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
