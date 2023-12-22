@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/main.css";
 const PaymentModal = ({ isOpen, onClose, totalCost }) => {
     if (!isOpen) return null;
     const paypalIconUrl = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
@@ -7,8 +8,8 @@ const PaymentModal = ({ isOpen, onClose, totalCost }) => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-            <div className="modal-overlay fixed inset-0 bg-black opacity-50"></div>
-            <div className="modal-content bg-white rounded-lg p-8 z-50">
+            <div className="modalpayment-overlay fixed inset-0 bg-black opacity-50"></div>
+            <div className="modalpayment-content bg-white rounded-lg p-8 z-50">
                 <h2 className="text-2xl font-semibold mb-5">THANH TOÁN ĐƠN HÀNG</h2>
                 <div className="border rounded-md p-4 mb-5">
                     <div className="text-sm font-medium text-gray-600">
@@ -54,8 +55,11 @@ const PaymentModal = ({ isOpen, onClose, totalCost }) => {
                             870,000{totalCost}đ
                         </div>
                     </div>
-                    <button className="bg-amber-500 font-medium text-white px-4 py-2 rounded" onClick={onClose}>
+                    <button className="bg-emerald-500 font-medium text-white px-4 py-2 rounded" onClick={onClose}>
                         THANH TOÁN
+                    </button>
+                    <button className="bg-neutral-400 font-medium text-white px-4 py-2 rounded" onClick={onClose}>
+                        HỦY
                     </button>
                 </div>
             </div>

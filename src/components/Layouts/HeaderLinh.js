@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from "react-router-dom";
-import { VscAccount } from 'react-icons/vsc';
 import { BsCart3 } from 'react-icons/bs';
 import { useAuth } from "../../context/auth";
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import UserBlankAvatar from '../../assets/images/user-blank-avatar.jpeg';
+import "../../styles/main.css";
 
 const HeaderLinh = () => {
     const [auth, setAuth] = useAuth();
     const [inputValue, setInputValue] = useState('');
+    const [cartItemCount, setCartItemCount] = useState(0);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (auth?.user) {
+            setCartItemCount(auth.user.cart.items.length || 0);
+        }
+    }, [auth?.user?.cart]);
+
     const handleChange = (event) => {
         setInputValue(event.target.value);
         console.log(inputValue);
@@ -40,6 +49,7 @@ const HeaderLinh = () => {
         handleCloseLogoutModal();
         navigate('/login');
     };
+
     return (
         <div className="bg-cyan-500">
             <div className="bg-cyan-500 max-w-[1200px] mx-auto ">
@@ -82,13 +92,73 @@ const HeaderLinh = () => {
                             Tìm
                         </button>
                     </div>
-                    <div className="hidden gap-3 md:flex">
-                        <NavLink to="/cart" className="flex cursor-pointer flex-col items-center justify-center">
-                            <BsCart3 size={24} className="text-white hover:text-yellow-400" />
-                        </NavLink>
-                        <NavLink to="/account" className="relative flex cursor-pointer flex-col items-center justify-center">
-                            <VscAccount size={24} className="text-white hover:text-yellow-400" />
-                        </NavLink>
+                    <div className="gap-3 md:flex relative">
+                        <div className="flex cursor-pointer flex-col mr-4 justify-center">
+                            <NavLink to="/cart" className="cart-drawer flex items-center relative overflow-visible">
+                                <BsCart3 size={24} className="text-white inline-block relative mr-2.5 hover:text-yellow-400" />
+                                <span className="cart-number-badge ml-1 text-red -left-5 -top-2.5 text-xs">{cartItemCount}</span>
+                            </NavLink>
+                        </div>
+                        <div className="flex cursor-pointer flex-col items-center justify-center group">
+                            {auth.user ? (
+                                <>
+                                    <img className='z-10 h-8 w-8 rounded-full' src={auth.user.avatarUrl} />
+                                </>
+                            ) : (
+                                <>
+                                    <img className='z-10 h-8 w-8 rounded-full' src={UserBlankAvatar} />
+                                </>
+                            )}
+                            <div className='z-0 absolute top-0 mr-4 text-cyan-500 h-8 w-6 pt-0 right-0 mt-2 bg--cyan-500'>__________</div>
+                            <div
+                                id="dropdown"
+                                className="z-30 hidden min-w-max group-hover:block absolute top-full right-0 mt-2 p-2 bg-white divide-y divide-gray-100 rounded-lg shadow text-black"
+                            >
+                                {auth.user ? (
+                                    <>
+                                        <div className="block px-4 py-2 hover:bg-gray-100 mb-0">
+                                            <NavLink to="/account">Thông tin cá nhân</NavLink>
+                                        </div>
+                                        <NavLink
+                                            onClick={handleOpenLogoutModal}
+                                            className="block px-4 py-2 hover:bg-gray-100"
+                                            to="#">
+                                            Đăng xuất
+                                        </NavLink>
+                                        {showLogoutModal && (
+                                            <div className="z-30 fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+                                                <div className="bg-white p-5 rounded-md">
+                                                    <p className="mb-3">Bạn có chắc muốn đăng xuất?</p>
+                                                    <div className="flex justify-end">
+                                                        <button
+                                                            onClick={handleCloseLogoutModal}
+                                                            className="mr-2 px-4 py-2 bg-gray-400 text-white rounded-md"
+                                                        >
+                                                            Hủy
+                                                        </button>
+                                                        <button
+                                                            onClick={handleLogout}
+                                                            className="px-4 py-2 bg-red-500 text-white rounded-md"
+                                                        >
+                                                            Đăng xuất
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="block px-4 py-2 hover:bg-gray-100 mb-0">
+                                            <NavLink to="/login">Đăng nhập</NavLink>
+                                        </div>
+                                        <div className="block px-4 py-2 hover:bg-gray-100">
+                                            <NavLink to="/register">Đăng ký</NavLink>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </header>
                 <nav className="relative bg-cyan-500">
@@ -119,49 +189,6 @@ const HeaderLinh = () => {
                             </NavLink>
                         </div>
                         <div className="ml-auto flex gap-4 px-5">
-                            {
-                                !auth.user ? (
-                                    <>
-                                        <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/login">
-                                            Đăng nhập
-                                        </NavLink>
-                                        <span className="text-white">&#124;</span>
-                                        <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/register">
-                                            Đăng ký
-                                        </NavLink>
-                                    </>
-                                ) : (
-                                    <>
-                                        <NavLink
-                                            onClick={handleOpenLogoutModal}
-                                            className="font-light text-white duration-100 hover:text-yellow-400"
-                                            to="#">
-                                            Đăng xuất
-                                        </NavLink>
-                                        {showLogoutModal && (
-                                            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-                                                <div className="bg-white p-5 rounded-md">
-                                                    <p className="mb-3">Bạn có chắc muốn đăng xuất?</p>
-                                                    <div className="flex justify-end">
-                                                        <button
-                                                            onClick={handleCloseLogoutModal}
-                                                            className="mr-2 px-4 py-2 bg-gray-400 text-white rounded-md"
-                                                        >
-                                                            Hủy
-                                                        </button>
-                                                        <button
-                                                            onClick={handleLogout}
-                                                            className="px-4 py-2 bg-red-500 text-white rounded-md"
-                                                        >
-                                                            Đăng xuất
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </>
-                                )
-                            }
                             <NavLink className="font-light text-white duration-100 hover:text-yellow-400" to="/admin/dashboard">
                                 Admin
                             </NavLink>
@@ -174,3 +201,4 @@ const HeaderLinh = () => {
 };
 
 export default HeaderLinh;
+

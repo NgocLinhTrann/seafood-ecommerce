@@ -32,6 +32,11 @@ import Support from './pages/User/Support';
 import About from './pages/User/About';
 import PageNotFound from './pages/User/PageNotFound';
 
+
+// Testt homepage
+import HomePageNLinh from '../src/components/HomePageNLinh/HomePageNLinh';
+import ProductDetailPage from './components/DetailProductLinh/ProductDetailPage';
+
 const App = () => {
     return (
         <>
@@ -39,7 +44,7 @@ const App = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<LogIn />} />
                 <Route path="/search" element={<SearchPage />} />
-                <Route path="/product/:id" element={<DetailProduct />} />
+                <Route path="/product/:id" element={<ProductDetailPage />} />
                 <Route path="/cart" element={<Cart />} />
 
                 {/* Admin */}
@@ -59,7 +64,7 @@ const App = () => {
                 <Route path="/account/orders-history" element={<OrdersHistory />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
                 <Route path="/account/change-avatar" element={<ChangeAvatar />} />
-                <Route path="/" element={<HomePageLinhTest />} />
+                <Route path="/" element={<HomePageNLinh />} />
 
                 {/* More pages */}
                 <Route path="/instruction" element={<Instruction />} />

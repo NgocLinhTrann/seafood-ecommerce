@@ -10,12 +10,6 @@ function Cart({ srcImg, altImg, ProductName, Price, Unit, OldPrice, Num }) {
                         src={srcImg}
                         alt={altImg}
                     />
-
-                    {/* <div
-                        class="absolute right-1 mt-3 flex items-center justify-center bg-amber-400"
-                    >
-                        <p class="px-2 py-2 text-sm">&minus; 25%</p>
-                    </div> */}
                 </div>
 
                 <div>
