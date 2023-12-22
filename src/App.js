@@ -13,8 +13,7 @@ import Dashboard from './admin/pages/Dashboard';
 // User pages
 import Cart from './pages/User/Cart';
 // import HomePage from './components/HomePage'
-import SearchPage from './components/SearchPage';
-import DetailProduct from './components/DetailProduct';
+import SearchPage from './components/SearchPage/SearchPage';
 import LogIn from './pages/Auth/LogIn';
 import Register from './pages/Auth/Register';
 import HomePageLinhTest from './pages/User/HomePageLinhTest';
