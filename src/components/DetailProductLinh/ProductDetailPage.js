@@ -18,7 +18,7 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState({});
   const [moreProducts, setMoreProducts] = useState([]);
   const [auth, setAuth] = useAuth();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [cartItemCount, setCartItemCount] = useState(0);
   const fetchData = async () => {
     try {
@@ -46,7 +46,6 @@ const ProductDetailPage = () => {
     }
     return shuffled;
   };
-
   useEffect(() => {
     fetchData();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -70,7 +69,7 @@ const ProductDetailPage = () => {
     if (count > 1) setCount((prev) => prev - 1);
   };
   const resetCount = () => {
-    setCount(0);
+    setCount(1);
   };
   useEffect(() => {
     resetCount();
@@ -122,7 +121,8 @@ const ProductDetailPage = () => {
       setAuth(auth);
       setCartItemCount(response.data.data.cart.items.length);
       toast.success(response.data.message);
-      // Notify the parent component about the change in cart item count
+      toast.success('Thêm vào giỏ hàng thành công');
+      resetCount();
     } catch (error) {
       console.error("Error adding item to cart", error);
       toast.error("Không thể thêm sản phẩm vào giỏ hàng");
