@@ -4,7 +4,7 @@ import "../styles/main.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, auth, setAuth }) => {
+const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, setCartItems, auth, setAuth }) => {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("Thanh toán khi nhận hàng");
     if (!isOpen) return null;
     const paypalIconUrl = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
@@ -59,10 +59,6 @@ const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, auth, setAuth }
                     },
                 }
             );
-            // auth.user.cart = response.data.data.cart;
-            // localStorage.setItem('auth', JSON.stringify(auth));
-            // setAuth(auth);
-            // setCartItemCount(response.data.data.cart.items.length);
             const updatedAuth = {
                 ...auth,
                 user: {
@@ -73,6 +69,7 @@ const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, auth, setAuth }
                 },
             };
             setAuth(updatedAuth);
+            setCartItems([]);
             console.log("Order created successfully:", response.data);
             toast.success("Đặt hàng thành công, xin cảm ơn quý khách.");
             onClose();

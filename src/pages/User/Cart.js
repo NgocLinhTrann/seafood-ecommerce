@@ -30,7 +30,7 @@ function Cart() {
         };
 
         fetchCartInfo();
-    }, []);
+    }, [cartItems]);
     const handleOpenModal = () => {
         setIsModalOpen(true);
     };
@@ -167,6 +167,7 @@ function Cart() {
                                     onClose={handleCloseModal}
                                     totalAmount={totalAmountWithShipping}
                                     cartItems={cartItems}
+                                    setCartItems={setCartItems}
                                     auth={auth}
                                     setAuth={setAuth}
                                 />
