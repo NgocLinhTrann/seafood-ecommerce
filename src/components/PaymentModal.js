@@ -1,90 +1,10 @@
-// import React from "react";
-// import "../styles/main.css";
-// const PaymentModal = ({ isOpen, onClose, totalAmount }) => {
-//     if (!isOpen) return null;
-//     const paypalIconUrl = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
-//     const momoIconUrl = 'https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png';
-//     const codIconUrl = 'https://www.mungbaobao.com/upload/news/2019/05/19/12/08/14/icon-thanh-toan-1.png?v=1';
-//     const internetbankingIconUrl = 'https://cdn2.iconfinder.com/data/icons/fintech-butterscotch-vol-2/512/Internet_Banking-512.png';
-//     const formatPrice = (price) => {
-//         return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
-//     };
-//     return (
-//         <div className="fixed inset-0 flex items-center justify-center z-50">
-//             <div className="modalpayment-overlay fixed inset-0 bg-black opacity-50"></div>
-//             <div className="modalpayment-content bg-white rounded-lg p-8 z-50">
-//                 <h2 className="text-2xl font-semibold mb-5">THANH TOÁN ĐƠN HÀNG</h2>
-//                 <div className="border rounded-md p-4 mb-5">
-//                     <div className="text-sm font-medium text-gray-600">
-//                         Địa chỉ nhận hàng:
-//                     </div>
-//                     <label className="text-sm font-normal text-gray-600">
-//                         Nguyễn Văn A
-//                     </label>
-//                     <br />
-//                     <label className="text-sm font-normal text-gray-600">
-//                         0367191290
-//                     </label>
-//                     <br />
-//                     <label className="text-sm font-normal text-gray-600">
-//                         203 Lê Văn Việt, Phường Hiệp Phú, Thành phố Thủ Đức
-//                     </label>
-//                 </div>
-//                 <div className="mb-4">
-//                     <p className="text-normal font-medium text-gray-600 mb-4">Lựa chọn phương thức thanh toán:</p>
-//                     <label className="flex items-center mb-4 cursor-pointer">
-//                         <input type="radio" className="form-radio cursor-pointer" name="paymentMethod" value="momo" />
-//                         <img src={momoIconUrl} alt="MoMo Icon" className="w-6 h-6 mr-2 ml-2" />
-//                         <span className="ml-2">MoMo</span>
-//                     </label>
-//                     <label className="flex items-center mb-4 cursor-pointer">
-//                         <input type="radio" className="form-radio cursor-pointer" name="paymentMethod" value="paypal" />
-//                         <img src={paypalIconUrl} alt="PayPal Icon" className="w-6 h-6 mr-2 ml-2" />
-//                         <span className="ml-2">
-//                             PayPal
-//                         </span>
-//                     </label>
-//                     <label className="flex items-center mb-4 cursor-pointer">
-//                         <input type="radio" className="form-radio cursor-pointer" name="paymentMethod" value="internetbanking" />
-//                         <img src={internetbankingIconUrl} alt="Internet Banking Icon" className="w-6 h-6 mr-2 ml-2" />
-//                         <span className="ml-2">
-//                             Internet Banking
-//                         </span>
-//                     </label>
-//                     <label className="flex items-center mb-4 cursor-pointer">
-//                         <input type="radio" className="form-radio cursor-pointer" name="paymentMethod" value="cod" />
-//                         <img src={codIconUrl} alt="Cod Icon" className="w-6 h-6 mr-2 ml-2" />
-//                         <span className="ml-2">Thanh toán khi nhận hàng</span>
-//                     </label>
-//                 </div>
-//                 <div className="flex justify-between">
-//                     <div className="text-base font-medium mb-2">Tổng thanh toán:
-//                         <br />
-//                         <div className="text-rose-600">
-//                             {formatPrice(totalAmount)}
-//                         </div>
-//                     </div>
-//                     <button className="bg-emerald-500 font-medium text-white px-4 py-2 rounded" onClick={onClose}>
-//                         THANH TOÁN
-//                     </button>
-//                     <button className="bg-neutral-400 font-medium text-white px-4 py-2 rounded" onClick={onClose}>
-//                         HỦY
-//                     </button>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default PaymentModal;
-
 import React from "react";
 import { useState } from "react";
 import "../styles/main.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, auth }) => {
+const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, auth, setAuth }) => {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("Thanh toán khi nhận hàng");
     if (!isOpen) return null;
     const paypalIconUrl = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
@@ -139,6 +59,20 @@ const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, auth }) => {
                     },
                 }
             );
+            // auth.user.cart = response.data.data.cart;
+            // localStorage.setItem('auth', JSON.stringify(auth));
+            // setAuth(auth);
+            // setCartItemCount(response.data.data.cart.items.length);
+            const updatedAuth = {
+                ...auth,
+                user: {
+                    ...auth.user,
+                    cart: {
+                        items: [],
+                    },
+                },
+            };
+            setAuth(updatedAuth);
             console.log("Order created successfully:", response.data);
             toast.success("Đặt hàng thành công, xin cảm ơn quý khách.");
             onClose();
@@ -169,40 +103,6 @@ const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, auth }) => {
                         203 Lê Văn Việt, Phường Hiệp Phú, Thành phố Thủ Đức
                     </label>
                 </div>
-                {/* <div className="mb-4">
-                    <p className="text-normal font-medium text-gray-600 mb-4">Lựa chọn phương thức thanh toán:</p>
-                    <label className="flex items-center mb-4 cursor-pointer">
-                        <input
-                            type="radio"
-                            className="form-radio cursor-pointer"
-                            name="paymentMethod"
-                            value="MoMo"
-                        />
-                        <img src={momoIconUrl}
-                            alt="MoMo Icon"
-                            className="w-6 h-6 mr-2 ml-2" />
-                        <span className="ml-2">MoMo</span>
-                    </label>
-                    <label className="flex items-center mb-4 cursor-pointer">
-                        <input type="radio" className="form-radio cursor-pointer" name="paymentMethod" value="PayPal" />
-                        <img src={paypalIconUrl} alt="PayPal Icon" className="w-6 h-6 mr-2 ml-2" />
-                        <span className="ml-2">
-                            PayPal
-                        </span>
-                    </label>
-                    <label className="flex items-center mb-4 cursor-pointer">
-                        <input type="radio" className="form-radio cursor-pointer" name="paymentMethod" value="Internet Banking" />
-                        <img src={internetbankingIconUrl} alt="Internet Banking Icon" className="w-6 h-6 mr-2 ml-2" />
-                        <span className="ml-2">
-                            Internet Banking
-                        </span>
-                    </label>
-                    <label className="flex items-center mb-4 cursor-pointer">
-                        <input type="radio" className="form-radio cursor-pointer" name="paymentMethod" value="Cod" />
-                        <img src={codIconUrl} alt="Cod Icon" className="w-6 h-6 mr-2 ml-2" />
-                        <span className="ml-2">Thanh toán khi nhận hàng</span>
-                    </label>
-                </div> */}
                 <div className="mb-4">
                     <p className="text-normal font-medium text-gray-600 mb-4">Lựa chọn phương thức thanh toán:</p>
                     {["MoMo", "PayPal", "Internet Banking", "Cod"].map((method) => (

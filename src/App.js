@@ -16,7 +16,6 @@ import Cart from './pages/User/Cart';
 import SearchPage from './components/SearchPage/SearchPage';
 import LogIn from './pages/Auth/LogIn';
 import Register from './pages/Auth/Register';
-import HomePageLinhTest from './pages/User/HomePageLinhTest';
 import HomePage from './components/HomePage';
 
 // Account pages

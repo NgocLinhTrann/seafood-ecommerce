@@ -168,6 +168,7 @@ function Cart() {
                                     totalAmount={totalAmountWithShipping}
                                     cartItems={cartItems}
                                     auth={auth}
+                                    setAuth={setAuth}
                                 />
                             </div>
                         </div>
