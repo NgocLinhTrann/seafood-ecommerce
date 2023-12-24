@@ -19,8 +19,8 @@ import Register from './pages/Auth/Register';
 import HomePage from './components/HomePage';
 
 // Account pages
-import Account from "./pages/account";
-import OrdersHistory from "./pages/account/orders_history";
+import Account from './pages/account';
+import OrdersHistory from './pages/account/orders_history';
 import ChangePassword from './pages/account/change_password';
 import ChangeAvatar from './pages/account/change_avatar';
 
@@ -29,7 +29,6 @@ import Instruction from './pages/User/Instruction';
 import Support from './pages/User/Support';
 import About from './pages/User/About';
 import PageNotFound from './pages/User/PageNotFound';
-
 
 // Testt homepage
 import HomePageNLinh from '../src/components/HomePageNLinh/HomePageNLinh';
@@ -57,7 +56,6 @@ const App = () => {
                 {/* <Route path="/ad-product-detail" element={<ProductDetail />} /> */}
                 <Route path="admin/product-detail/:productId" element={<ProductDetail />} />
 
-
                 {/* Account pages */}
                 <Route path="/account" element={<Account />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
@@ -74,6 +72,6 @@ const App = () => {
             </Routes>
         </>
     );
-}
+};
 
-export default App
+export default App;

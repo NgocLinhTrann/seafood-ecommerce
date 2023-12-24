@@ -1,10 +1,11 @@
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import CategoryChart from './CategoryChart';
 import FilterDay from './FilterDay';
 import ProductChart from './ProductChart';
 import React, { useEffect, useState } from 'react';
 import API_DOMAIN from '../../../config';
 import axios from 'axios';
+import html2pdf from 'html2pdf.js';
 
 const converDateToString = (obj) => {
     return `${obj.$y}-${obj.$M + 1}-${obj.$D}`;
@@ -72,6 +73,20 @@ const StatisticPage = () => {
 
         return formatter.format(amount);
     };
+    const _exportToPDF = () => {
+        const element = document.getElementById('report-content');
+
+        html2pdf(element, {
+            filename: 'report.pdf',
+            margin: 10,
+            jsPDF: {
+                unit: 'mm',
+                format: [500, 600], // [width, height] với đơn vị là mm
+
+                orientation: 'portrait',
+            },
+        });
+    };
     return (
         <div
             style={{
@@ -80,35 +95,48 @@ const StatisticPage = () => {
                 paddingRight: '100px',
             }}
         >
-            <FilterDay
-                startDate={startDate}
-                setStartDate={setStartDate}
-                setEndDate={setEndDate}
-                endDate={endDate}
-                handleFilterButton={_handleFilterButton}
-            />
-            <Typography
-                variant="h6"
-                sx={{
-                    marginTop: '10px',
-                    backgroundColor: '#27ae60',
-                    color: '#fff',
-                    padding: '10px',
-                    borderRadius: '5px',
-                    textAlign: 'center',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                    transition: 'background-color 0.3s ease-in-out, opacity 0.3s ease-in-out',
-                    cursor: 'pointer',
-                    '&:hover': {
-                        backgroundColor: '#2ecc71',
-                        opacity: 0.8,
-                    },
+            <div id="report-content">
+                <FilterDay
+                    startDate={startDate}
+                    setStartDate={setStartDate}
+                    setEndDate={setEndDate}
+                    endDate={endDate}
+                    handleFilterButton={_handleFilterButton}
+                />
+                <Typography
+                    variant="h6"
+                    sx={{
+                        marginTop: '10px',
+                        backgroundColor: '#27ae60',
+                        color: '#fff',
+                        padding: '10px',
+                        borderRadius: '5px',
+                        textAlign: 'center',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                        transition: 'background-color 0.3s ease-in-out, opacity 0.3s ease-in-out',
+                        cursor: 'pointer',
+                        '&:hover': {
+                            backgroundColor: '#2ecc71',
+                            opacity: 0.8,
+                        },
+                    }}
+                >
+                    Tổng doanh thu: {_formatCurrency(chartData.total)}
+                </Typography>
+                <CategoryChart data={chartData.dataCategory} />
+                <ProductChart data={chartData.dataProduct} />
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    margin: '30px',
                 }}
             >
-                Tổng doanh thu: {_formatCurrency(chartData.total)}
-            </Typography>
-            <CategoryChart data={chartData.dataCategory} />
-            <ProductChart data={chartData.dataProduct} />
+                <Button variant="contained" onClick={_exportToPDF}>
+                    Xuất báo cáo
+                </Button>
+            </div>
         </div>
     );
 };
