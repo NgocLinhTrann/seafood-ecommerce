@@ -75,7 +75,6 @@ const StatisticPage = () => {
     };
     const _exportToPDF = () => {
         const element = document.getElementById('report-content');
-        const contentRect = element.getBoundingClientRect();
 
         html2pdf(element, {
             filename: 'report.pdf',
