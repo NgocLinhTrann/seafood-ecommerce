@@ -13,11 +13,9 @@ import Dashboard from './admin/pages/Dashboard';
 // User pages
 import Cart from './pages/User/Cart';
 // import HomePage from './components/HomePage'
-import SearchPage from './components/SearchPage';
-import DetailProduct from './components/DetailProduct';
+import SearchPage from './components/SearchPage/SearchPage';
 import LogIn from './pages/Auth/LogIn';
 import Register from './pages/Auth/Register';
-import HomePageLinhTest from './pages/User/HomePageLinhTest';
 import HomePage from './components/HomePage';
 
 // Account pages
@@ -36,6 +34,7 @@ import PageNotFound from './pages/User/PageNotFound';
 // Testt homepage
 import HomePageNLinh from '../src/components/HomePageNLinh/HomePageNLinh';
 import ProductDetailPage from './components/DetailProductLinh/ProductDetailPage';
+import ViewOrderDetail from './pages/account/view_order_detail';
 
 const App = () => {
     return (
@@ -61,9 +60,10 @@ const App = () => {
 
                 {/* Account pages */}
                 <Route path="/account" element={<Account />} />
-                <Route path="/account/orders-history" element={<OrdersHistory />} />
                 <Route path="/account/change-password" element={<ChangePassword />} />
                 <Route path="/account/change-avatar" element={<ChangeAvatar />} />
+                <Route path="/account/orders-history" element={<OrdersHistory />} />
+                <Route path="/account/view-order-detail" element={<ViewOrderDetail />} />
                 <Route path="/" element={<HomePageNLinh />} />
 
                 {/* More pages */}
