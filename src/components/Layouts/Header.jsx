@@ -151,30 +151,45 @@ class Header extends Component {
                                 >
                                     Trang chủ
                                 </Link>
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="catalog.html">
+                                <a
+                                    className="font-light text-white duration-100 hover:text-yellow-400"
+                                    href="catalog.html"
+                                >
                                     Hướng dẫn mua hàng
                                 </a>
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="about-us.html">
+                                <a
+                                    className="font-light text-white duration-100 hover:text-yellow-400"
+                                    href="about-us.html"
+                                >
                                     Về chúng tôi
                                 </a>
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="contact-us.html">
+                                <a
+                                    className="font-light text-white duration-100 hover:text-yellow-400"
+                                    href="contact-us.html"
+                                >
                                     Hỗ trợ
                                 </a>
                             </div>
                             <div className="ml-auto flex gap-4 px-5">
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="/login">
+                                <a
+                                    className="font-light text-white duration-100 hover:text-yellow-400"
+                                    href="/login"
+                                >
                                     Đăng nhập
                                 </a>
 
                                 <span className="text-white">&#124;</span>
 
-                                <a className="font-light text-white duration-100 hover:text-yellow-400" href="/signup">
+                                <a
+                                    className="font-light text-white duration-100 hover:text-yellow-400"
+                                    href="/signup"
+                                >
                                     Đăng ký
                                 </a>
 
-                                <Link className="font-light text-white duration-100 hover:text-yellow-400" href="/admin-page">
+                                {/* <Link className="font-light text-white duration-100 hover:text-yellow-400" href="/admin-page">
                                     Admin
-                                </Link>
+                                </Link> */}
                             </div>
                         </div>
                     </nav>
