@@ -1,11 +1,7 @@
 import Layout from "../components/Layout";
-
+import DiscountList from "./Discount/DiscountList";
 function ManageDiscount() {
-    return (
-        <Layout title="Quản lý khuyến mãi" activePage="discount">
-            <div>Trang quản lý khuyến mãi</div>
-        </Layout>
-    )
+  return <DiscountList />;
 }
 
 export default ManageDiscount;
