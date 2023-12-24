@@ -22,6 +22,8 @@ import SearchPage from "./components/SearchPage/SearchPage";
 import LogIn from "./pages/Auth/LogIn";
 import Register from "./pages/Auth/Register";
 import HomePage from "./components/HomePage";
+import ForgetPassword from "./pages/Auth/ForgetPassword";
+import Reset from "./pages/Auth/Reset";
 
 // Account pages
 import Account from "./pages/account";
@@ -47,6 +49,14 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route
+          path="/forget-password"
+          element={<ForgetPassword />}
+        />
+        <Route
+          path="/reset-password/:id"
+          element={<Reset />}
+        />
         <Route
           path="/product/:id"
           element={<ProductDetailPage />}
