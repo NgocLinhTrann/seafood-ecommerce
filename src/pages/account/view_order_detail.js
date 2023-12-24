@@ -6,7 +6,6 @@ import Layout from '../../components/Layouts/Layout';
 function ViewOrderDetail() {
     return (
         <Layout title="Xem chi tiết đơn hàng">
-            <div>Chi tiet don hang</div>
             <div className='bgcolor-app-gray'>
                 <div className='wrapbox-content-account'>
                     <div className='container-fluid max-w-screen-xl mx-auto px-2.5 pt-4 pb-2.5 pt-0 w-full block'>
