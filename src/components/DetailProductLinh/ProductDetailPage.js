@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ConsBages from '../HomePage/ConsBages';
-import ProductList from '../HomePage/ProductList';
-import LoadingProduct from '../HomePage/LoadingProduct';
+import ConsBages from "../HomePageNLinh/ConsBages";
+import ProductList from '../HomePageNLinh/ProductList';
+import LoadingProduct from '../HomePageNLinh/LoadingProduct';
 import advise from '../../assets/images/tuvandathang.png';
-import SkeletonItem from '../HomePage/SkeletonItem';
+import SkeletonItem from '../HomePageNLinh/SkeletonItem';
 import { FaHome } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import toast from 'react-hot-toast';

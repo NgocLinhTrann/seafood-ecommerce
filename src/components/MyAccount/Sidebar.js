@@ -22,18 +22,18 @@ function Sidebar({ activePage }) {
     <div className='order-1 mb-6 px-2 grow-0 shrink-0 w-1/4 relative box-border block colleft'>
       <div className='left-sidebar h-full bg-white rounded box-border m-0 p-0 block text-sm font-normal'>
         <div className='left-sidebar__avatar relative z-0 border-b-2 border-solid border-gray-200 p-4 mb-1 flex items-center box-border text-sm font-normal'>
-          <div class="icon w-12 h-12 box-border block">
+          <div class="icon my-auto w-12 h-12 box-border block">
             <img
               src={avatarUrl}
               alt="Current Avatar"
             >
             </img>
           </div>
-          <div className="info pl-6 grow shrink basis-auto box-border block">
+          <div className="info pl-5 grow shrink basis-auto box-border block">
             <div className="customer-name font-semibold text-lg leading-6 box-border block text-left" style={{ marginBottom: 8 + 'px' }}>{fullname}</div>
             <NavLink
               to="/account/change-avatar"
-              className={`text-sm box-border block text-left rounded bg-slate-100 py-1 px-1 border border-2 ${activePage === "changeavatar" ? "text-red-600" : ""
+              className={`text-sm w-3/4 hover:text-red-600 box-border block text-left rounded bg-slate-100 py-1 px-1 border border-2 ${activePage === "changeavatar" ? "text-red-600" : ""
                 }`}
             >Cập nhật ảnh đại diện
             </NavLink>
@@ -46,7 +46,7 @@ function Sidebar({ activePage }) {
               className={`font-semibold block py-3 px-4 relative text-base box-border list-none ${activePage === "profile" ? "text-red-600" : ""
                 }`}
             >
-              <span class="icon w-4 text-center mr-3 inline-block box-boder">
+              <span class="icon w-4 text-center mr-3 box-boder">
                 <FaUser />
               </span>
               <span className='box-border'>Thông tin tài khoản</span>
@@ -58,7 +58,7 @@ function Sidebar({ activePage }) {
               className={`font-semibold block py-3 px-4 relative text-base box-border list-none ${activePage === "changepassword" ? "text-red-600" : ""
                 }`}
             >
-              <span class="icon w-4 text-center mr-3 inline-block box-boder">
+              <span class="icon w-4 text-center mr-3 box-boder">
                 <FaEye />
               </span>
               <span className='box-border'>Thay đổi mật khẩu</span>
@@ -71,7 +71,7 @@ function Sidebar({ activePage }) {
               className={`font-semibold block py-3 px-4 relative text-base box-border list-none ${activePage === "orders-history" ? "text-red-600" : ""
                 }`}
             >
-              <span class="icon w-4 text-center mr-3 inline-block box-boder">
+              <span class="icon w-4 text-center mr-3 box-boder">
                 <FaBagShopping />
               </span>
               <span className='box-border'>Quản lý đơn hàng</span>
@@ -92,3 +92,4 @@ function Sidebar({ activePage }) {
 }
 
 export default Sidebar;
+

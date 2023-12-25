@@ -21,7 +21,6 @@ import Cart from "./pages/User/Cart";
 import SearchPage from "./components/SearchPage/SearchPage";
 import LogIn from "./pages/Auth/LogIn";
 import Register from "./pages/Auth/Register";
-import HomePage from "./components/HomePage";
 import ForgetPassword from "./pages/Auth/ForgetPassword";
 import Reset from "./pages/Auth/Reset";
 
@@ -41,7 +40,6 @@ import PageNotFound from "./pages/User/PageNotFound";
 import HomePageNLinh from "../src/components/HomePageNLinh/HomePageNLinh";
 import ProductDetailPage from "./components/DetailProductLinh/ProductDetailPage";
 import ViewOrderDetail from "./pages/account/view_order_detail";
-
 const App = () => {
   return (
     <>
