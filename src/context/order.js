@@ -1,13 +1,14 @@
-import { createContext, useState } from "react";
-import axios from "axios";
+import { createContext, useState } from 'react';
+import axios from 'axios';
+import API_DOMAIN from '../config';
 
 const OrdersContext = createContext();
-function OrdersProvider({children}) {
+function OrdersProvider({ children }) {
     const [orders, setOrders] = useState([]);
-    
+
     const fetchOrders = async () => {
         try {
-            const response = await axios.get('https://daohaisan.azurewebsites.net/api/orders');
+            const response = await axios.get(`${API_DOMAIN}/api/orders`);
             setOrders(response.data['data']['orders']);
         } catch (error) {
             console.error('Error fetching orders: ', error);
@@ -16,15 +17,11 @@ function OrdersProvider({children}) {
 
     const valueToshare = {
         orders,
-        fetchOrders
-    }
+        fetchOrders,
+    };
 
-    return (
-        <OrdersContext.Provider value={valueToshare}>
-            {children}
-        </OrdersContext.Provider>
-    )
+    return <OrdersContext.Provider value={valueToshare}>{children}</OrdersContext.Provider>;
 }
 
-export {OrdersProvider};
+export { OrdersProvider };
 export default OrdersContext;

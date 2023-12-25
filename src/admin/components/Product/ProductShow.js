@@ -1,7 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ProductsContext from "../../../context/product";
-import { PiTrashLight } from "react-icons/pi";
+import ProductsContext from '../../../context/product';
+import { PiTrashLight } from 'react-icons/pi';
 
 function ProductShow() {
     const { products } = useContext(ProductsContext);
@@ -34,10 +34,10 @@ function ProductShow() {
         'Tên sản phẩm': 'name',
         'Phân loại': 'category',
         'Trọng lượng': 'weight',
-        'Giá': 'price',
+        Giá: 'price',
         'SL tồn': 'available',
     };
-    const displayColumns = Object.keys(columnNameMapping)  // ['Mã sản phẩm', 'Tên sản phẩm', 'Phân loại', 'Trọng lượng', 'Giá', 'SL tồn'];
+    const displayColumns = Object.keys(columnNameMapping); // ['Mã sản phẩm', 'Tên sản phẩm', 'Phân loại', 'Trọng lượng', 'Giá', 'SL tồn'];
     return (
         <div>
             <div className="flex flex-col">
@@ -54,20 +54,35 @@ function ProductShow() {
                                 </thead>
                                 <tbody>
                                     {products.map((product, index) => (
-                                        <tr className="border-b dark:border-neutral-500" key={index}>
+                                        <tr
+                                            className="border-b dark:border-neutral-500"
+                                            key={index}
+                                        >
                                             {displayColumns.map((col, colIndex) => (
-                                                <td className="whitespace-nowrap px-6 py-4 font-medium" key={colIndex}>
+                                                <td
+                                                    className="whitespace-nowrap px-6 py-4 font-medium"
+                                                    key={colIndex}
+                                                >
                                                     <h3>{product[columnNameMapping[col]]}</h3>
                                                 </td>
                                             ))}
                                             <td className="whitespace-nowrap  py-4">
                                                 <button
                                                     className="text-emerald-500 font-normal underline"
-                                                    onClick={() => handleViewDetailClick(product.id)}
-                                                >Xem chi tiết</button>
+                                                    onClick={() =>
+                                                        handleViewDetailClick(product.id)
+                                                    }
+                                                >
+                                                    Xem chi tiết
+                                                </button>
                                             </td>
                                             <td className="whitespace-nowrap py-4">
-                                                <div className="text-rose-600 underline ml-6 cursor-pointer hover:text-rose-500" onClick={() => handleDeleteClick(product)}><PiTrashLight size={24} /></div>
+                                                <div
+                                                    className="text-rose-600 underline ml-6 cursor-pointer hover:text-rose-500"
+                                                    onClick={() => handleDeleteClick(product)}
+                                                >
+                                                    <PiTrashLight size={24} />
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}
@@ -75,13 +90,22 @@ function ProductShow() {
                                 {isDeleteConfirmationVisible && productToDelete && (
                                     <div className="fixed inset-0 flex items-center justify-center z-50">
                                         <div className="bg-white p-8 rounded-lg shadow-md">
-                                            <p className="text-lg font-semibold mb-4">Bạn có chắc muốn xóa sản phẩm không?</p>
+                                            <p className="text-lg font-semibold mb-4">
+                                                Khi xóa sản phẩm. Giỏ hàng của khách hàng sẽ tự loại
+                                                bỏ sản phẩm này. Bạn có chắc muốn xóa?
+                                            </p>
                                             <div className="flex justify-end">
-                                                <button className="text-blue-500 mr-4 cursor-pointer" onClick={cancelDelete}>
+                                                <button
+                                                    className="text-blue-500 mr-4 cursor-pointer"
+                                                    onClick={cancelDelete}
+                                                >
                                                     Hủy
                                                 </button>
-                                                <button className="text-red-500 cursor-pointer" onClick={confirmDelete}>
-                                                    Xóa
+                                                <button
+                                                    className="text-red-500 cursor-pointer"
+                                                    onClick={confirmDelete}
+                                                >
+                                                    Xác nhận
                                                 </button>
                                             </div>
                                         </div>
@@ -93,7 +117,7 @@ function ProductShow() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default ProductShow;
