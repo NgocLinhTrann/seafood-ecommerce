@@ -256,7 +256,7 @@ function SignUpPage() {
                                                 </select>
                                             </div>
 
-                                            <div className="select ml-2">
+                                            <div className="select ml-2 pr-5">
                                                 <select onChange={changeDistrict} value={district}>
                                                     <option>Phường/Xã</option>
                                                     {districs.map((dis) => (
