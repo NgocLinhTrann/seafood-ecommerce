@@ -7,14 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  useRef,
-  useState,
-  useEffect,
-  useContext,
-} from "react";
+import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-function Reset(props) {
+function Reset() {
   const PWD_REGEX =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
