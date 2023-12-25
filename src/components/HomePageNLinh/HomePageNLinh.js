@@ -6,6 +6,7 @@ import Slider from './Slider';
 import LoadingProduct from './LoadingProduct';
 import { useAuth } from '../../context/auth';
 import Layout from '../Layouts/Layout';
+import API_DOMAIN from '../../config';
 
 const HomePageNLinh = () => {
     const [auth, setAuth] = useAuth();
@@ -30,7 +31,7 @@ const HomePageNLinh = () => {
     };
 
     const fetchProduct = () => {
-        fetch('https://seafoodharbor.azurewebsites.net/api/products')
+        fetch(`${API_DOMAIN}/api/products`)
             .then((response) => response.json())
             .then((data) => {
                 const { products } = data.data;
@@ -80,10 +81,7 @@ const HomePageNLinh = () => {
                                 Danh mục này chưa có sản phẩm.
                             </div>
                         ) : (
-                            <ProductList
-                                products={filteredProducts}
-                                productsPerPage={8}
-                            />
+                            <ProductList products={filteredProducts} productsPerPage={8} />
                         )}
                     </>
                 )}
