@@ -89,12 +89,12 @@ const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, setCartItems, a
                 <h2 className="text-2xl font-semibold mb-5">THANH TOÁN ĐƠN HÀNG</h2>
                 <div className="border rounded-md p-4 mb-5">
                     <div className="text-sm font-medium text-gray-600">Địa chỉ nhận hàng:</div>
-                    <label className="text-sm font-normal text-gray-600">Nguyễn Văn A</label>
+                    <label className="text-sm font-normal text-gray-600">{auth.user.fullname}</label>
                     <br />
-                    <label className="text-sm font-normal text-gray-600">0367191290</label>
+                    <label className="text-sm font-normal text-gray-600">{auth.user.phone}</label>
                     <br />
                     <label className="text-sm font-normal text-gray-600">
-                        203 Lê Văn Việt, Phường Hiệp Phú, Thành phố Thủ Đức
+                        {auth.user.address}
                     </label>
                 </div>
                 <div className="mb-4">
@@ -123,7 +123,7 @@ const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, setCartItems, a
                         <div className="text-rose-600">{formatPrice(totalAmount)}</div>
                     </div>
                     <button
-                        className="bg-emerald-500 font-medium text-white px-4 py-2 rounded"
+                        className="bg-emerald-500 font-medium text-white mx-4 px-4 py-2 rounded"
                         onClick={handleCompleteOrder}
                     >
                         THANH TOÁN
