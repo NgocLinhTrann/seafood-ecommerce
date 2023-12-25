@@ -6,7 +6,15 @@ const CustomersContext = createContext();
 function CustomersProvider({ children }) {
     const [customers, setCustomers] = useState([]);
     const fetchCustomers = async () => {
-        const response = await axios.get(`${API_DOMAIN}/api/customers`);
+        var config = {
+            method: 'get',
+            url: `${API_DOMAIN}/api/admin/customers`,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${JSON.parse(window.localStorage.getItem('auth')).token}`,
+            },
+        };
+        const response = await axios(config);
         setCustomers(response.data['data']['customers']);
     };
     const valueToshare = {
