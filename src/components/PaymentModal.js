@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import API_DOMAIN from '../config';
 
-const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, setCartItems, auth, setAuth}) => {
+const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, setCartItems, auth, setAuth }) => {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Thanh toán khi nhận hàng');
     if (!isOpen) return null;
     const paypalIconUrl = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
@@ -40,7 +40,6 @@ const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, setCartItems, a
     const getPaymentMethodName = (method) => {
         return method;
     };
-
     const handleCompleteOrder = async () => {
         try {
             const orderData = {
@@ -83,7 +82,6 @@ const PaymentModal = ({ isOpen, onClose, totalAmount, cartItems, setCartItems, a
             toast.error('Không thể đặt hàng, vui lòng kiểm tra lại!');
         }
     };
-
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="modalpayment-overlay fixed inset-0 bg-black opacity-50"></div>
