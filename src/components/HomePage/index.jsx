@@ -6,6 +6,7 @@ import ConsBages from '../ConsBages';
 import Category from './Category';
 import Slider from './Slider';
 import LoadingProduct from './LoadingProduct';
+import API_DOMAIN from '../../config';
 
 class HomePage extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class HomePage extends Component {
     }
 
     fetchProduct = () => {
-        fetch('https://daohaisan.azurewebsites.net/api/products')
+        fetch(`${API_DOMAIN}/api/products`)
             .then((response) => response.json())
             .then((data) => {
                 const { products } = data.data;

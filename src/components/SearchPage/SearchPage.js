@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import LoadingProduct from '../HomePageNLinh/LoadingProduct';
-import ProductList from "../HomePageNLinh/ProductList";
-import Layout from "../Layouts/Layout";
+import ProductList from '../HomePageNLinh/ProductList';
+import Layout from '../Layouts/Layout';
 import { useAuth } from '../../context/auth';
-import { FaHome } from "react-icons/fa";
+import { FaHome } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import API_DOMAIN from '../../config';
 
 function SearchPage() {
     const [auth, setAuth] = useAuth();
-    const location = useLocation()
-    const [queryValue, setQueryValue] = useState('')
-    const [filteredProducts, setFilteredProducts] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    const location = useLocation();
+    const [queryValue, setQueryValue] = useState('');
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    `https://seafoodharbor.azurewebsites.net/api/admin/products/${encodeURIComponent(queryValue)}`,
+                    `${API_DOMAIN}/api/admin/products/${encodeURIComponent(queryValue)}`,
                     {
                         headers: {
-                            'Authorization': `Bearer ${auth.token}`,
+                            Authorization: `Bearer ${auth.token}`,
                         },
                     }
                 );
@@ -37,20 +38,19 @@ function SearchPage() {
             }
         };
         if (location) {
-            const searchParams = new URLSearchParams(location.search)
-            const query = searchParams.get('query')
-            setQueryValue(query || '')
-            fetchData()
+            const searchParams = new URLSearchParams(location.search);
+            const query = searchParams.get('query');
+            setQueryValue(query || '');
+            fetchData();
         }
-    }, [location, queryValue])
+    }, [location, queryValue]);
     return (
         <Layout>
             <div className="max-w-[1200px] mx-auto mb-5">
                 <div>
                     <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">
                         <ul className="flex items-center">
-                            <NavLink
-                                to="/">
+                            <NavLink to="/">
                                 <FaHome size={21} />
                             </NavLink>
                             <li>
@@ -59,14 +59,18 @@ function SearchPage() {
                             <li className="text-gray-500">Tìm kiếm sản phẩm: "{queryValue}"</li>
                         </ul>
                     </nav>
-                    <h3 className="my-5 text-2xl font-semibold text-gray-700 text-shadow-md">Kết quả tìm kiếm</h3>
+                    <h3 className="my-5 text-2xl font-semibold text-gray-700 text-shadow-md">
+                        Kết quả tìm kiếm
+                    </h3>
                     {isLoading ? (
                         <LoadingProduct />
                     ) : (
                         <>
                             {filteredProducts.length === 0 ? (
                                 <div className="h-screen">
-                                    <p className="bg-red-100 p-4 text-gray-500 font-bold text-base">Không tìm thấy sản phẩm phù hợp.</p>
+                                    <p className="bg-red-100 p-4 text-gray-500 font-bold text-base">
+                                        Không tìm thấy sản phẩm phù hợp.
+                                    </p>
                                 </div>
                             ) : (
                                 <ProductList products={filteredProducts} productsPerPage={4} />
@@ -76,7 +80,7 @@ function SearchPage() {
                 </div>
             </div>
         </Layout>
-    )
+    );
 }
 
-export default SearchPage
+export default SearchPage;
