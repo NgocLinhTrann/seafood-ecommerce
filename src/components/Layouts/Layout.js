@@ -1,6 +1,7 @@
 import React from "react";
-import Header from "./Header";
+import HeaderLinh from "./HeaderLinh";
 import Footer from "./Footer";
+import Header from "./Header";
 import { Helmet } from "react-helmet";
 import { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,12 +16,12 @@ const Layout = ({ children, title, description, keywords, author }) => {
                 <meta name="author" content={author}></meta>
                 <title>{title}</title>
             </Helmet>
-            <Header />
+            <HeaderLinh/>
             <main>
                 <Toaster />
                 {children}
             </main>
-            <Footer />
+            <Footer />  
         </div>
     );
 }
@@ -29,8 +30,7 @@ Layout.defaultProps = {
     title: "Seafood Harbor - mua ngay!",
     description: "Uy tín tạo nên thương hiệu",
     keywords: "Hải sản, tươi sống, thơm ngon, uy tín",
-    author: "Seafood Harbor"
-
+    author: "Seafood Harbor",
 }
 
 export default Layout;

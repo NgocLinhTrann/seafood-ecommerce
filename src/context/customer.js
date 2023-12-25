@@ -1,26 +1,28 @@
-import { createContext, useState } from "react";
-import axios from "axios";
+import { createContext, useState } from 'react';
+import axios from 'axios';
+import API_DOMAIN from '../config';
 
 const CustomersContext = createContext();
-function CustomersProvider({children}) {
+function CustomersProvider({ children }) {
     const [customers, setCustomers] = useState([]);
-
     const fetchCustomers = async () => {
-        const response = await axios.get('https://daohaisan.azurewebsites.net/api/customers');
+        var config = {
+            method: 'get',
+            url: `${API_DOMAIN}/api/admin/customers`,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${JSON.parse(window.localStorage.getItem('auth')).token}`,
+            },
+        };
+        const response = await axios(config);
         setCustomers(response.data['data']['customers']);
     };
-
     const valueToshare = {
         customers,
-        fetchCustomers
+        fetchCustomers,
     };
-
-    return (
-        <CustomersContext.Provider value={valueToshare}>
-            {children}
-        </CustomersContext.Provider>
-    )
+    return <CustomersContext.Provider value={valueToshare}>{children}</CustomersContext.Provider>;
 }
 
-export {CustomersProvider};
+export { CustomersProvider };
 export default CustomersContext;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Logo from '../../assets/images/logo_seafood.png'
+import Logo from '../../assets/images/logo_seafoodharbor.png'
 import { BiLogoFacebookCircle, BiLogoLinkedinSquare, BiLogoInstagramAlt } from 'react-icons/bi'
 
 class Footer extends Component {
@@ -15,7 +15,6 @@ class Footer extends Component {
                                 <br />
                             </p>
                         </div>
-
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                             <div className="mx-5 mt-10">
                                 <p className="font-medium text-white">CHĂM SÓC KHÁCH HÀNG</p>
@@ -42,13 +41,12 @@ class Footer extends Component {
                                     </li>
                                 </ul>
                             </div>
-
                             <div className="mx-5 mt-10">
                                 <p className="font-medium text-white">VỀ CHÚNG TÔI</p>
                                 <ul className="text-sm leading-8 text-white">
                                     <li>
                                         <a className="text-white hover:text-orange-300" href="#">
-                                            Giới thiệu về Vuahaisan
+                                            Giới thiệu về Seafood Harbor
                                         </a>
                                     </li>
                                     <li>
@@ -63,7 +61,6 @@ class Footer extends Component {
                                     </li>
                                 </ul>
                             </div>
-
                             <div className="mx-5 mt-10">
                                 <p className="font-medium text-white">TÀI KHOẢN</p>
                                 <ul className="text-sm leading-8 text-white">
@@ -94,7 +91,6 @@ class Footer extends Component {
                                     </li>
                                 </ul>
                             </div>
-
                             <div className="mx-5 mt-10">
                                 <p className="font-medium text-white">THEO DÕI CHÚNG TÔI TRÊN</p>
                                 <ul className="text-sm leading-8 text-white">
@@ -111,7 +107,6 @@ class Footer extends Component {
                                             Linkedin
                                         </a>
                                     </li>
-
                                     <li className="flex flex-row place-items-center hover:text-orange-300">
                                         <BiLogoInstagramAlt size={18} className="mr-1.5" />
                                         <a className="text-white hover:text-orange-300" href="#">
@@ -122,9 +117,8 @@ class Footer extends Component {
                             </div>
                         </div>
                     </footer>
-
                     <div className="grid justify-items-center text-slate-500">
-                        <p>@ Bản quyền thuộc về Harbor Shop</p>
+                        <p>@ Bản quyền thuộc về Seafood Harbor</p>
                     </div>
                 </div>
             </div>
