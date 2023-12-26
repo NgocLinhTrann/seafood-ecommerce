@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderLinh from "./HeaderLinh";
+import Header from "./Header";
 import Footer from "./Footer";
 import { Helmet } from "react-helmet";
 import { Toaster } from 'react-hot-toast';
@@ -15,7 +15,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
                 <meta name="author" content={author}></meta>
                 <title>{title}</title>
             </Helmet>
-            <HeaderLinh/>
+            <Header/>
             <main>
                 <Toaster />
                 {children}

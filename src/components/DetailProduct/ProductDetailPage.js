@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ConsBages from "../HomePageNLinh/ConsBages";
-import ProductList from '../HomePageNLinh/ProductList';
-import LoadingProduct from '../HomePageNLinh/LoadingProduct';
+import ConsBages from "../HomePage/ConsBages";
+import ProductList from '../HomePage/ProductList';
+import LoadingProduct from '../HomePage/LoadingProduct';
 import advise from '../../assets/images/tuvandathang.png';
-import SkeletonItem from '../HomePageNLinh/SkeletonItem';
+import SkeletonItem from '../HomePage/SkeletonItem';
 import { FaHome } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
-import HeaderLinh from '../Layouts/HeaderLinh';
+import Header from '../Layouts/Header';
 import Footer from '../Layouts/Footer';
 import API_DOMAIN from '../../config';
 
@@ -130,7 +130,7 @@ const ProductDetailPage = () => {
     console.log('Số lượng cần mua', count);
     return (
         <div>
-            <HeaderLinh />
+            <Header />
             <div className="max-w-[1200px] mx-auto">
                 <div>
                     <nav className="mx-auto w-full mt-4 max-w-[1200px] px-5">

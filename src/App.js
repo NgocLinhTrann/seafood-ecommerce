@@ -37,8 +37,8 @@ import About from "./pages/User/About";
 import PageNotFound from "./pages/User/PageNotFound";
 
 // Testt homepage
-import HomePageNLinh from "../src/components/HomePageNLinh/HomePageNLinh";
-import ProductDetailPage from "./components/DetailProductLinh/ProductDetailPage";
+import HomePage from "./components/HomePage/HomePage";
+import ProductDetailPage from "./components/DetailProduct/ProductDetailPage";
 import ViewOrderDetail from "./pages/account/view_order_detail";
 const App = () => {
   return (
@@ -118,7 +118,7 @@ const App = () => {
           path="/account/view-order-detail"
           element={<ViewOrderDetail />}
         />
-        <Route path="/" element={<HomePageNLinh />} />
+        <Route path="/" element={<HomePage />} />
 
         {/* More pages */}
         <Route

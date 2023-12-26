@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import LoadingProduct from '../HomePageNLinh/LoadingProduct';
-import ProductList from '../HomePageNLinh/ProductList';
+import LoadingProduct from '../HomePage/LoadingProduct';
+import ProductList from '../HomePage/ProductList';
 import Layout from '../Layouts/Layout';
 import { useAuth } from '../../context/auth';
 import { FaHome } from 'react-icons/fa';

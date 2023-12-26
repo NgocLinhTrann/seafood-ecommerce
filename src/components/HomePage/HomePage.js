@@ -8,7 +8,7 @@ import { useAuth } from '../../context/auth';
 import Layout from '../Layouts/Layout';
 import API_DOMAIN from '../../config';
 
-const HomePageNLinh = () => {
+const HomePage = () => {
     const [auth, setAuth] = useAuth();
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -91,4 +91,4 @@ const HomePageNLinh = () => {
     );
 };
 
-export default HomePageNLinh;
+export default HomePage;

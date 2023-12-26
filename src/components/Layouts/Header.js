@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import UserBlankAvatar from '../../assets/images/user-blank-avatar.jpeg';
 import '../../styles/main.css';
 
-const HeaderLinh = () => {
+const Header = () => {
     const [auth, setAuth] = useAuth();
     const [inputValue, setInputValue] = useState('');
     const [cartItemCount, setCartItemCount] = useState(0);
@@ -220,4 +220,4 @@ const HeaderLinh = () => {
     );
 };
 
-export default HeaderLinh;
+export default Header;
