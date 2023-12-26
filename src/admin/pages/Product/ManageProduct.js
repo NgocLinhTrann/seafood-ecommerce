@@ -25,7 +25,7 @@ function ManageProduct() {
         <Layout title="Quản lý sản phẩm" activePage="product">
             <div className="flex justify-start">    
                 <div className="w-full">
-                    <div className="bg-stone-100 py-2">
+                    <div className="py-2">
                         <header className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5">
                             <div className="hidden h-9 w-2/5 items-center border md:flex bg-white rounded-lg">
                                 <svg
