@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
-import ConsBages from '../ConsBages';
+import ConsBages from './ConsBages';
 import Category from './Category';
 import Slider from './Slider';
 import LoadingProduct from './LoadingProduct';

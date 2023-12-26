@@ -6,7 +6,7 @@ const ConsBages = () => {
         <div className="my-12">
             <section className="container mx-auto my-8 flex flex-col justify-center gap-3 lg:flex-row">
                 {/* 1 */}
-                <Badge icon={<TbTruckDelivery size={24} />} title="MIỄN PHÍ VẬN CHUYỂN" description="Miễn phí vận chuyển cho hóa đơn từ 500K" />
+                <Badge icon={<TbTruckDelivery size={24} />} title="MIỄN PHÍ VẬN CHUYỂN" description="Miễn phí vận chuyển cho hóa đơn từ 100.000Đ" />
 
                 {/* 2 */}
                 <Badge icon={<TbHeadset size={24} />} title="CHĂM SÓC KHÁCH HÀNG 24/7" description="Hỗ trợ khách hàng mọi lúc" />
