@@ -1,7 +1,6 @@
 import React from "react";
 import HeaderLinh from "./HeaderLinh";
 import Footer from "./Footer";
-import Header from "./Header";
 import { Helmet } from "react-helmet";
 import { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';

@@ -14,7 +14,7 @@ const CategoryChart = ({ data }) => {
         },
         legend: {
             orient: 'vertical',
-            right: 500,
+            right: 300,
             top: 'center',
         },
         series: [
