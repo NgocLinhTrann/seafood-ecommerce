@@ -213,27 +213,27 @@ function ProductDetail() {
                         ></input>
                     </div>
                     <div className="flex justify-center">
-                        <label className="label w-3/12 mr-5 mt-3 font-medium">
+                        <label className="label w-2/12 ml-5 mr-5 mt-3 font-medium">
                             Hình ảnh sản phẩm:{' '}
                         </label>
                         {!isEditMode && (
-                            <div className="mt-3 w-2/6 px-4 rounded-md border">
+                            <div className="mt-3 w-2/6 px-4 rounded-md">
                                 {product.imageUrl && (
                                     <img
                                         src={product.imageUrl}
                                         alt="Product"
-                                        style={{ width: '100%', height: 'auto' }}
+                                        style={{ width: '80%', height: 'auto' }}
                                     />
                                 )}
                             </div>
                         )}
                         {isEditMode && (
-                            <div className="mt-3 w-2/6 px-4 rounded-md border">
+                            <div className="mt-3 w-2/6 px-4 rounded-md">
                                 {
                                     <img
                                         src={imageUrl}
                                         alt="Selected Product"
-                                        style={{ width: '400px', height: '400px' }}
+                                        style={{ width: '80%', height: 'auto' }}
                                     />
                                 }
                                 <label className="block">
